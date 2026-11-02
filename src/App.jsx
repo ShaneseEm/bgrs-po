@@ -83,15 +83,21 @@ export default function App() {
                   
                   {/* Portrait Column */}
                   <div className="lg:col-span-4 flex justify-center">
-                    <div className="relative rounded-xl overflow-hidden border border-amber-500/60 shadow-lg max-w-[280px]">
+                    <div className="relative group rounded-2xl overflow-hidden border-2 border-amber-500/60 shadow-xl max-w-[300px] w-full bg-slate-950 transition-all duration-300 hover:shadow-amber-500/20 hover:scale-[1.02]">
                       <img 
-                        src="/images/president-official.png" 
+                        src="/images/president-home-portrait.jpg" 
                         alt="H.E. Ashadli Hassan" 
-                        className="w-full h-80 object-cover object-top"
+                        className="w-full h-88 object-cover object-top transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent p-3 text-center">
-                        <div className="text-white font-bold text-base">{content.presidentSection.name}</div>
-                        <div className="text-amber-400 text-sm">{content.presidentSection.role}</div>
+                      <div className="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-xs px-3 py-1 rounded-full border border-amber-500/40 flex items-center gap-1.5 shadow-sm">
+                        <img src="/images/bgrs-flag-new.png" alt="BGRS Flag" className="w-4 h-2.5 object-cover rounded-xs" />
+                        <span className="text-[10px] font-bold text-amber-300 tracking-wider uppercase">
+                          Executive Keynote
+                        </span>
+                      </div>
+                      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-4 text-center">
+                        <div className="text-white font-bold text-base sm:text-lg">{content.presidentSection.name}</div>
+                        <div className="text-amber-400 text-xs sm:text-sm font-semibold mt-0.5">{content.presidentSection.role}</div>
                       </div>
                     </div>
                   </div>
