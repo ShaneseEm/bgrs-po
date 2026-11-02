@@ -274,13 +274,6 @@ export const contentData = {
           "image": "/images/agriculture-real.jpg",
           "desc": "High-yield bamboo forests, livestock ranching, Abbay river basin, and rich alluvial mineral gold belts.",
           "woredas": "5 Woredas • Kamashi, Yaso, Belo Jegonfoy, Agalo Mite, Sirba Abbay"
-        },
-        {
-          "name": "Mao-Komo Special Woreda",
-          "capital": "Tongo",
-          "image": "/images/culture.jpg",
-          "desc": "Highland agro-ecological climate, specialty honey and coffee cultivation, and cross-border commercial corridors.",
-          "woredas": "Autonomous Special Administrative District"
         }
       ],
       "bureaus": [
@@ -635,13 +628,6 @@ export const contentData = {
           "image": "/images/agriculture-real.jpg",
           "desc": "በቆላ ቀርከሃ ደን፣ በከብት እርባታ፣ በአባይ ተፋሰስ እና በወርቅ ማዕድን የበለፀገ።",
           "woredas": "5 ወረዳዎች • ካማሺ፣ ያሶ፣ ቤሎ ጀጎንፎይ፣ አጋሎ ሚቴ፣ ሲርባ አባይ"
-        },
-        {
-          "name": "ማኦ-ኮሞ ልዩ ወረዳ",
-          "capital": "ቶንጎ",
-          "image": "/images/culture.jpg",
-          "desc": "ልዩ የባህል ቅርሶች፣ የተፈጥሮ ማር እና ቡና አምራች እንዲሁም የድንበር መተላለፊያ።",
-          "woredas": "ራሱን የቻለ ልዩ የአስተዳደር ወረዳ"
         }
       ],
       "bureaus": [
@@ -996,13 +982,6 @@ export const contentData = {
           "image": "/images/agriculture-real.jpg",
           "desc": "High-yield bamboo forests, livestock ranching, Abbay river basin, and rich alluvial mineral gold belts.",
           "woredas": "5 Woredas • Kamashi, Yaso, Belo Jegonfoy, Agalo Mite, Sirba Abbay"
-        },
-        {
-          "name": "Mao-Komo Special Woreda",
-          "capital": "Tongo",
-          "image": "/images/culture.jpg",
-          "desc": "Highland agro-ecological climate, specialty honey and coffee cultivation, and cross-border commercial corridors.",
-          "woredas": "Autonomous Special Administrative District"
         }
       ],
       "bureaus": [

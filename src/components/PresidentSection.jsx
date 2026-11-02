@@ -148,36 +148,6 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                   </div>
                 )}
               </div>
-
-              {/* 4 Clean Thumbnails */}
-              <div className="w-full max-w-sm mt-3">
-                <div className="grid grid-cols-4 gap-2">
-                  {photos.map((item, idx) => {
-                    const isSelected = activePhotoIdx === idx;
-                    return (
-                      <button
-                        key={item.id}
-                        onClick={() => {
-                          setActivePhotoIdx(idx);
-                          setIsAutoPlaying(false);
-                        }}
-                        className={`relative rounded-lg overflow-hidden border transition-all cursor-pointer h-14 bg-slate-900 ${
-                          isSelected 
-                            ? 'border-amber-400 ring-2 ring-amber-400/40 scale-102 shadow-xs' 
-                            : 'border-slate-300 dark:border-slate-700 opacity-75 hover:opacity-100 hover:border-emerald-600'
-                        }`}
-                        title={item.title}
-                      >
-                        <img 
-                          src={item.url} 
-                          alt={item.title} 
-                          className="w-full h-full object-cover object-top"
-                        />
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
             </div>
 
             {/* Right Column: Executive Overview & Tabs (7 cols) */}
