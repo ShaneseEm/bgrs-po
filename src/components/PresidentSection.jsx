@@ -7,16 +7,7 @@ import {
 
 export function PresidentSection({ content, onOpenSpeeches }) {
   const p = content.presidentSection;
-  const photos = p.photos || [
-    {
-      id: 1,
-      url: p.portraitOfficial || '/images/president-official.png',
-      title: p.name,
-      caption: p.role,
-      tag: 'Official Portrait',
-      location: 'Assosa'
-    }
-  ];
+  const photos = p.photos || [];
 
   const [activePhotoIdx, setActivePhotoIdx] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -25,7 +16,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
 
   // Auto-transition slides every 5 seconds
   useEffect(() => {
-    if (!isAutoPlaying || fullscreenPhoto) return;
+    if (!isAutoPlaying || fullscreenPhoto || photos.length === 0) return;
     const interval = setInterval(() => {
       setActivePhotoIdx((prev) => (prev + 1) % photos.length);
     }, 5000);
@@ -33,10 +24,12 @@ export function PresidentSection({ content, onOpenSpeeches }) {
   }, [isAutoPlaying, photos.length, fullscreenPhoto]);
 
   const nextPhoto = () => {
+    if (photos.length === 0) return;
     setActivePhotoIdx((prev) => (prev + 1) % photos.length);
   };
 
   const prevPhoto = () => {
+    if (photos.length === 0) return;
     setActivePhotoIdx((prev) => (prev - 1 + photos.length) % photos.length);
   };
 
@@ -78,24 +71,28 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               <div className="relative group w-full max-w-sm rounded-2xl overflow-hidden border-2 border-amber-500/80 shadow-2xl bg-slate-950">
                 
                 {/* Active Photo Container with Smooth Fade & Scale Transition */}
-                <div className="relative h-[490px] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
-                  <img 
-                    key={currentPhoto.id}
-                    src={currentPhoto.url} 
-                    alt={currentPhoto.title}
-                    className="w-full h-full object-cover object-top transition-all duration-700 animate-fade-in group-hover:scale-105"
-                  />
+                <div className="relative h-[480px] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
+                  {currentPhoto && (
+                    <img 
+                      key={currentPhoto.id}
+                      src={currentPhoto.url} 
+                      alt={currentPhoto.title}
+                      className="w-full h-full object-cover object-top transition-all duration-700 animate-fade-in group-hover:scale-105"
+                    />
+                  )}
 
                   {/* Gradient shadow overlay at bottom of photo */}
                   <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent pointer-events-none"></div>
 
                   {/* Top Left: Regional Flag Badge */}
-                  <div className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-amber-500/40 flex items-center gap-2 shadow-lg">
-                    <img src="/images/bgrs-flag-new.png" alt="BGRS Flag" className="w-5 h-3.5 object-cover rounded-xs" />
-                    <span className="text-[10px] font-bold text-amber-300 tracking-wider uppercase">
-                      {currentPhoto.tag}
-                    </span>
-                  </div>
+                  {currentPhoto && (
+                    <div className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-amber-500/40 flex items-center gap-2 shadow-lg">
+                      <img src="/images/bgrs-flag-new.png" alt="BGRS Flag" className="w-5 h-3.5 object-cover rounded-xs" />
+                      <span className="text-[10px] font-bold text-amber-300 tracking-wider uppercase">
+                        {currentPhoto.tag}
+                      </span>
+                    </div>
+                  )}
 
                   {/* Top Right: Fullscreen Expand & Auto-Play indicator */}
                   <div className="absolute top-4 right-4 flex items-center gap-1.5">
@@ -103,6 +100,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                       onClick={() => setFullscreenPhoto(currentPhoto)}
                       className="bg-slate-900/80 hover:bg-emerald-800 text-white p-2 rounded-full border border-slate-700 transition-colors shadow-lg cursor-pointer"
                       title="View High-Resolution Photo"
+                      aria-label="View Fullscreen"
                     >
                       <Maximize2 className="w-3.5 h-3.5" />
                     </button>
@@ -110,6 +108,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                       onClick={() => setIsAutoPlaying(!isAutoPlaying)}
                       className="bg-slate-900/80 hover:bg-slate-800 text-slate-300 p-2 rounded-full border border-slate-700 transition-colors shadow-lg cursor-pointer"
                       title={isAutoPlaying ? "Pause Slideshow" : "Resume Slideshow"}
+                      aria-label="Toggle autoplay"
                     >
                       {isAutoPlaying ? <Pause className="w-3.5 h-3.5 text-amber-400" /> : <Play className="w-3.5 h-3.5 text-emerald-400" />}
                     </button>
@@ -133,18 +132,20 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                   </button>
 
                   {/* Dynamic Caption on Bottom */}
-                  <div className="absolute bottom-4 inset-x-4 text-center z-10">
-                    <h3 className="text-xl sm:text-2xl font-black text-white font-serif tracking-wide drop-shadow-md">
-                      {p.name}
-                    </h3>
-                    <p className="text-xs text-amber-400 font-semibold tracking-wider mt-0.5 uppercase drop-shadow-sm">
-                      {p.role}
-                    </p>
-                    <div className="mt-2 text-[11px] text-slate-300 line-clamp-1 bg-slate-950/80 backdrop-blur-xs py-1 px-3 rounded-full border border-slate-800 flex items-center justify-center gap-1.5 shadow-sm">
-                      <MapPin className="w-3 h-3 text-emerald-400 flex-shrink-0" />
-                      <span className="truncate">{currentPhoto.caption}</span>
+                  {currentPhoto && (
+                    <div className="absolute bottom-4 inset-x-4 text-center z-10">
+                      <h3 className="text-xl sm:text-2xl font-black text-white font-serif tracking-wide drop-shadow-md">
+                        {p.name}
+                      </h3>
+                      <p className="text-xs text-amber-400 font-semibold tracking-wider mt-0.5 uppercase drop-shadow-sm">
+                        {p.role}
+                      </p>
+                      <div className="mt-2 text-[11px] text-slate-300 line-clamp-1 bg-slate-950/80 backdrop-blur-xs py-1 px-3 rounded-full border border-slate-800 flex items-center justify-center gap-1.5 shadow-sm">
+                        <MapPin className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                        <span className="truncate">{currentPhoto.caption}</span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Animated Auto-Play Progress Bar */}
@@ -162,17 +163,17 @@ export function PresidentSection({ content, onOpenSpeeches }) {
 
               </div>
 
-              {/* Thumbnails Navigation Row (Scrollable / Grid for All Real Photos) */}
+              {/* Thumbnails Navigation Row (Clean 4 Photos Grid) */}
               <div className="w-full max-w-sm mt-4">
-                <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 font-medium mb-1.5 px-1">
-                  <span className="flex items-center gap-1">
-                    <Camera className="w-3 h-3 text-emerald-700 dark:text-emerald-400" />
+                <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 font-medium mb-2 px-1">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <Camera className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
                     <span>Real Media Archive</span>
                   </span>
-                  <span className="font-mono text-slate-400">0{activePhotoIdx + 1} / 0{photos.length}</span>
+                  <span className="font-mono text-slate-400 font-bold">0{activePhotoIdx + 1} / 0{photos.length}</span>
                 </div>
 
-                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin">
+                <div className="grid grid-cols-4 gap-2">
                   {photos.map((item, idx) => {
                     const isSelected = activePhotoIdx === idx;
                     return (
@@ -182,10 +183,10 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                           setActivePhotoIdx(idx);
                           setIsAutoPlaying(false);
                         }}
-                        className={`relative flex-shrink-0 w-12 h-14 rounded-lg overflow-hidden border-2 transition-all cursor-pointer bg-slate-900 group/thumb ${
+                        className={`relative rounded-xl overflow-hidden border-2 transition-all cursor-pointer h-16 bg-slate-900 group/thumb ${
                           isSelected 
-                            ? 'border-amber-500 ring-2 ring-amber-400/50 scale-105' 
-                            : 'border-slate-300 dark:border-slate-700 opacity-70 hover:opacity-100 hover:border-emerald-600'
+                            ? 'border-amber-500 ring-2 ring-amber-400/50 scale-105 shadow-md' 
+                            : 'border-slate-300 dark:border-slate-700 opacity-75 hover:opacity-100 hover:border-emerald-600'
                         }`}
                         title={item.title}
                       >

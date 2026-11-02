@@ -89,7 +89,7 @@ export const contentData = {
           "id": 3,
           "url": "/images/president-gerd-forum.jpg",
           "title": "GERD Renewal Keynote Address",
-          "caption": "Delivering the keynote address at the 'GERD for Ethiopia's Renewal' leadership forum",
+          "caption": "Delivering the keynote address at the \"GERD for Ethiopia's Renewal\" leadership forum",
           "tag": "Megaproject Forum",
           "location": "Assosa Forum Hall"
         },
@@ -97,33 +97,9 @@ export const contentData = {
           "id": 4,
           "url": "/images/president-interview.jpg",
           "title": "Agro-Industrial Strategy Interview",
-          "caption": "Outlining the 1.2M hectare farming roadmap & 'Bounty of the Basket' initiatives",
-          "tag": "Economic Direction",
-          "location": "Executive Directorate"
-        },
-        {
-          "id": 5,
-          "url": "/images/president-close-up.jpg",
-          "title": "Executive Leadership Profile",
-          "caption": "Chief Administrator of Benishangul Gumuz Regional State",
-          "tag": "Executive Profile",
-          "location": "Assosa, Ethiopia"
-        },
-        {
-          "id": 6,
-          "url": "/images/president-briefing.jpg",
-          "title": "Executive Press Briefing",
-          "caption": "President Ashadli Hassan delivering strategic media address at the regional secretariat",
-          "tag": "Press Briefing",
-          "location": "Regional Secretariat, Assosa"
-        },
-        {
-          "id": 7,
-          "url": "/images/president-standing.png",
-          "title": "Official State Protocol Portrait",
-          "caption": "H.E. President Ashadli Hassan in formal state attire beside the National Flag",
-          "tag": "State Protocol",
-          "location": "Federal Executive Complex"
+          "caption": "Outlining the 1.2M hectare farming roadmap & \"Bounty of the Basket\" initiatives",
+          "tag": "Economic Roadmap",
+          "location": "Media Secretariat, Assosa"
         }
       ],
       "quote": "Our region is blessed by history and nature. We are the proud host of the Grand Ethiopian Renaissance Dam, the custodian of ancient fertile river basins, and the cradle of vibrant brotherly peoples. Our central priority is enduring peace, disciplined governance, and shared economic bounty for every citizen.",
@@ -457,58 +433,34 @@ export const contentData = {
         {
           "id": 1,
           "url": "/images/president-official.png",
-          "title": "ይፋዊ የመንግሥት ምስል",
-          "caption": "ክቡር ርዕሰ መስተዳድር አሻድሊ ሀሰን በዋናው ጽሕፈት ቤት ከብሔራዊ ሰንደቅ ዓላማ ጋር",
+          "title": "ክቡር ፕሬዚዳንት ይፋዊ የቁም ፎቶ",
+          "caption": "ክቡር ፕሬዚዳንት አሻድሊ ሀሰን በብሔራዊ ሰንደቅ ዓላማ አጠገብ በይፋዊ ስነ-ስርዓት",
           "tag": "ይፋዊ ምስል",
-          "location": "አሶሳ ዋና ጽሕፈት ቤት"
+          "location": "አሶሳ፣ ፕሬዚዳንት ቢሮ"
         },
         {
           "id": 2,
           "url": "/images/president-press.jpg",
-          "title": "የፕሬስ መግለጫ እና ጋዜጣዊ መግለጫ",
-          "caption": "ርዕሰ መስተዳድሩ በክልሉ የልማት እና የሰላም ስራዎች ዙሪያ ለመገናኛ ብዙሃን መግለጫ ሲሰጡ",
-          "tag": "የፕሬስ መግለጫ",
-          "location": "አሶሳ ፕሬስ አዳራሽ"
+          "title": "የፕሬዚዳንት ጋዜጣዊ መግለጫ",
+          "caption": "ክቡር ፕሬዚዳንት አሻድሊ ሀሰን ስለ ክልሉ ሰላምና ልማት ለጋዜጠኞች ማብራሪያ ሲሰጡ",
+          "tag": "ጋዜጣዊ መግለጫ",
+          "location": "አሶሳ፣ የክልሉ ሴክሬታሪያት"
         },
         {
           "id": 3,
           "url": "/images/president-gerd-forum.jpg",
-          "title": "የህዳሴው ግድብ የምክክር መድረክ ንግግር",
-          "caption": "በ'ህዳሴው ለኢትዮጵያ ታዳሽነት' የምክክር መድረክ ላይ የተደረገ ቁልፍ ንግግር",
-          "tag": "የህዳሴው ግድብ መድረክ",
-          "location": "አሶሳ / ጉባ"
+          "title": "የህዳሴ ግድብ መድረክ የመክፈቻ ንግግር",
+          "caption": "በአሶሳ ከተማ በተካሄደው \"ህዳሴ ግድብ ለኢትዮጵያ ህዳሴ\" መድረክ ላይ የተደረገ ንግግር",
+          "tag": "ልዩ መድረክ",
+          "location": "አሶሳ አዳራሽ"
         },
         {
           "id": 4,
           "url": "/images/president-interview.jpg",
-          "title": "የግብርና ትራንስፎርሜሽን ቃለ-መጠይቅ",
-          "caption": "የ1.2 ሚሊዮን ሄክታር መሬት ልማት እና የሌማት ትሩፋት መርሃግብርን ሲያብራሩ",
-          "tag": "የልማት መግለጫ",
-          "location": "አሶሳ"
-        },
-        {
-          "id": 5,
-          "url": "/images/president-close-up.jpg",
-          "title": "የአመራር ፕሮፋይል",
-          "caption": "የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር",
-          "tag": "የአመራር ምስል",
-          "location": "አሶሳ፣ ኢትዮጵያ"
-        },
-        {
-          "id": 6,
-          "url": "/images/president-briefing.jpg",
-          "title": "የፕሬዚዳንት መግለጫ አዳራሽ",
-          "caption": "ክቡር ፕሬዚዳንት አሻድሊ ሀሰን በክልሉ ጽሕፈት ቤት ጋዜጣዊ መግለጫ ሲሰጡ",
-          "tag": "ጋዜጣዊ መግለጫ",
-          "location": "አሶሳ፣ የክልሉ ጽ/ቤት"
-        },
-        {
-          "id": 7,
-          "url": "/images/president-standing.png",
-          "title": "ክቡር ፕሬዚዳንት ይፋዊ የፕሮቶኮል ፎቶ",
-          "caption": "ክቡር ፕሬዚዳንት አሻድሊ ሀሰን በብሔራዊ ሰንደቅ ዓላማ አጠገብ በይፋዊ ስነ-ስርዓት",
-          "tag": "ይፋዊ ፕሮቶኮል",
-          "location": "አሶሳ፣ ፕሬዚዳንት ቢሮ"
+          "title": "የግብርናና ኢኮኖሚ ስትራቴጂ ቃለ-መጠይቅ",
+          "caption": "በ1.2 ሚሊዮን ሄክታር መሬት ልማትና የሌማት ትሩፋት ዙሪያ የተሰጠ ማብራሪያ",
+          "tag": "የኢኮኖሚ ራዕይ",
+          "location": "የሚዲያ ማዕከል"
         }
       ],
       "quote": "ክልላችን በተፈጥሮም ሆነ በታሪክ የታደለች ናት። ታላቁን የህዳሴ ግድብ በማስተናገዳችን፣ በለም ወንዞቻችን እና በአስተዋዩ ህዝባችን እንኮራለን። ዋናው አላማችን አስተማማኝ ሰላምን ማስፈን፣ መልካም አስተዳደርን መገንባት እና ፍትሃዊ የልማት ተጠቃሚነትን ማረጋገጥ ነው።",
@@ -859,7 +811,7 @@ export const contentData = {
           "id": 3,
           "url": "/images/president-gerd-forum.jpg",
           "title": "GERD Renewal Keynote Address",
-          "caption": "Delivering the keynote address at the 'GERD for Ethiopia's Renewal' leadership forum",
+          "caption": "Delivering the keynote address at the \"GERD for Ethiopia's Renewal\" leadership forum",
           "tag": "Megaproject Forum",
           "location": "Assosa Forum Hall"
         },
@@ -867,33 +819,9 @@ export const contentData = {
           "id": 4,
           "url": "/images/president-interview.jpg",
           "title": "Agro-Industrial Strategy Interview",
-          "caption": "Outlining the 1.2M hectare farming roadmap & 'Bounty of the Basket' initiatives",
-          "tag": "Economic Direction",
-          "location": "Executive Directorate"
-        },
-        {
-          "id": 5,
-          "url": "/images/president-close-up.jpg",
-          "title": "Executive Leadership Profile",
-          "caption": "Chief Administrator of Benishangul Gumuz Regional State",
-          "tag": "Executive Profile",
-          "location": "Assosa, Ethiopia"
-        },
-        {
-          "id": 6,
-          "url": "/images/president-briefing.jpg",
-          "title": "Executive Press Briefing",
-          "caption": "President Ashadli Hassan delivering strategic media address at the regional secretariat",
-          "tag": "Press Briefing",
-          "location": "Regional Secretariat, Assosa"
-        },
-        {
-          "id": 7,
-          "url": "/images/president-standing.png",
-          "title": "Official State Protocol Portrait",
-          "caption": "H.E. President Ashadli Hassan in formal state attire beside the National Flag",
-          "tag": "State Protocol",
-          "location": "Federal Executive Complex"
+          "caption": "Outlining the 1.2M hectare farming roadmap & \"Bounty of the Basket\" initiatives",
+          "tag": "Economic Roadmap",
+          "location": "Media Secretariat, Assosa"
         }
       ],
       "quote": "Our region is blessed by history and nature. We are the proud host of the Grand Ethiopian Renaissance Dam, the custodian of ancient fertile river basins, and the cradle of vibrant brotherly peoples. Our central priority is enduring peace, disciplined governance, and shared economic bounty for every citizen.",
