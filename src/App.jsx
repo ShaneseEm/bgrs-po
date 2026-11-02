@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { contentData } from './data/content';
 import { Header } from './components/Header';
 import { Navigation } from './components/Navigation';
@@ -19,28 +19,32 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
-  const [fontSize, setFontSize] = useState(16);
-  const [isHighContrast, setIsHighContrast] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    try { return localStorage.getItem('bgrs-theme') === 'dark'; } catch { return false; }
+  });
 
   const content = contentData[currentLang] || contentData.en;
 
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDark) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    try { localStorage.setItem('bgrs-theme', isDark ? 'dark' : 'light'); } catch {}
+  }, [isDark]);
+
   return (
-    <div 
-      className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${
-        isHighContrast ? 'contrast-125 bg-slate-900 text-white' : 'bg-slate-50 text-slate-800'
-      }`}
-      style={{ fontSize: `${fontSize}px` }}
-    >
+    <div className="min-h-screen flex flex-col font-sans transition-colors duration-300 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
       {/* 1. Official Header with Regional Emblem, Flag & Utility Bar */}
       <Header
         currentLang={currentLang}
         setLang={setCurrentLang}
         content={content}
         onOpenSearch={() => setIsSearchOpen(true)}
-        fontSize={fontSize}
-        setFontSize={setFontSize}
-        isHighContrast={isHighContrast}
-        setIsHighContrast={setIsHighContrast}
+        isDark={isDark}
+        setIsDark={setIsDark}
       />
 
       {/* 2. Main Executive Sticky Navigation */}
