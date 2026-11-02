@@ -107,13 +107,13 @@ export default function App() {
                       {content.presidentSection.name}
                     </h2>
 
-                    <div className="bg-white dark:bg-slate-800/80 p-4 rounded-xl border-l-4 border-amber-500 border-y border-r border-slate-200 dark:border-slate-700">
-                      <p className="italic text-slate-700 dark:text-slate-200 text-sm sm:text-base leading-relaxed">
+                    <div className="bg-white dark:bg-slate-800/80 p-5 rounded-xl border-l-4 border-amber-500 border-y border-r border-slate-200 dark:border-slate-700 shadow-xs">
+                      <p className="italic text-slate-800 dark:text-slate-100 text-base sm:text-xl leading-relaxed font-sans">
                         "{content.presidentSection.quote}"
                       </p>
                     </div>
 
-                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p className="text-base sm:text-lg text-slate-700 dark:text-slate-200 leading-relaxed">
                       {content.presidentSection.bioExcerpt}
                     </p>
 

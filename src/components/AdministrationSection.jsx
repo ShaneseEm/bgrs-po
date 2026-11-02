@@ -18,7 +18,7 @@ export function AdministrationSection({ content }) {
           <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
             {admin.title}
           </h2>
-          <p className="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p className="mt-2 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
             {admin.description}
           </p>
           <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
@@ -57,7 +57,7 @@ export function AdministrationSection({ content }) {
                     {zone.name}
                   </h4>
 
-                  <p className={`text-sm leading-relaxed mb-4 ${isSelected ? 'text-emerald-100' : 'text-slate-600 dark:text-slate-400'}`}>
+                  <p className={`text-base leading-relaxed mb-4 ${isSelected ? 'text-emerald-100' : 'text-slate-600 dark:text-slate-300'}`}>
                     {zone.desc}
                   </p>
 

@@ -86,7 +86,7 @@ export function NewsHub({ content, currentLang }) {
                   <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-sans leading-snug group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
                     {featuredArticle.title}
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed line-clamp-3">
+                  <p className="text-slate-700 dark:text-slate-200 text-base sm:text-lg leading-relaxed line-clamp-3">
                     {featuredArticle.summary}
                   </p>
                 </div>

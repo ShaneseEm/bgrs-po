@@ -21,22 +21,22 @@ export function Navigation({ content, activeSection, setActiveSection }) {
   };
 
   return (
-    <nav className="sticky top-0 z-40 bg-[#0d4a2c] dark:bg-[#072415] text-white shadow-md border-b-2 border-amber-500 transition-colors duration-300">
+    <nav className="sticky top-0 z-40 bg-[#062415]/85 dark:bg-[#021309]/85 backdrop-blur-md text-white shadow-lg shadow-emerald-950/20 border-b border-amber-500/40 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-13">
+        <div className="flex items-center justify-between h-14">
           
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-1">
+          {/* Desktop Navigation Links - Single Line Guaranteed (whitespace-nowrap), Classic Glassmorphism & Smooth Animations */}
+          <div className="hidden lg:flex items-center space-x-1.5 xl:space-x-2">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-3.5 py-2 rounded-md text-sm tracking-wider transition-all uppercase font-bold cursor-pointer ${
+                  className={`whitespace-nowrap px-3.5 py-2 rounded-lg text-xs xl:text-sm uppercase font-bold tracking-wider transition-all duration-300 cursor-pointer select-none ${
                     isActive 
-                      ? 'bg-amber-500 text-slate-950 shadow-sm' 
-                      : 'text-emerald-100 hover:bg-[#146039] hover:text-white'
+                      ? 'bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 text-slate-950 shadow-md shadow-amber-500/30 ring-1 ring-amber-300/60 scale-[1.02]' 
+                      : 'text-emerald-100/90 hover:text-white hover:bg-white/10 hover:scale-105 active:scale-95'
                   }`}
                 >
                   {item.label}
@@ -45,13 +45,13 @@ export function Navigation({ content, activeSection, setActiveSection }) {
             })}
           </div>
 
-          {/* Quick Citizen Action button */}
+          {/* Quick Citizen Action button - Single Line with Classic Gold Glow */}
           <div className="hidden lg:flex items-center">
             <button
               onClick={() => handleNavClick('services')}
-              className="bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wider shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
+              className="whitespace-nowrap bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 px-4 py-2 rounded-lg text-xs xl:text-sm font-black uppercase tracking-wider shadow-md shadow-amber-500/25 hover:shadow-lg hover:shadow-amber-500/40 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 cursor-pointer ring-1 ring-amber-300/40"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-slate-950" />
+              <MessageSquare className="w-4 h-4 text-slate-950" />
               <span>{content.nav.services}</span>
             </button>
           </div>
@@ -73,30 +73,30 @@ export function Navigation({ content, activeSection, setActiveSection }) {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer with Classic Glassmorphic Styling */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#093520] dark:bg-[#04140b] border-t border-emerald-800 px-4 pt-3 pb-5 space-y-1.5 shadow-2xl animate-fade-in">
+        <div className="lg:hidden bg-[#062415]/95 dark:bg-[#021309]/95 backdrop-blur-xl border-t border-amber-500/30 px-4 pt-3 pb-5 space-y-2 shadow-2xl animate-fade-in">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium tracking-wide transition-all text-left cursor-pointer ${
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 text-left cursor-pointer ${
                   isActive 
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow-sm' 
-                    : 'text-emerald-100 hover:bg-emerald-800 hover:text-white'
+                    ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20' 
+                    : 'text-emerald-100/90 hover:bg-white/10 hover:text-white'
                 }`}
               >
                 <span>{item.label}</span>
-                <ChevronRight className={`w-4 h-4 ${isActive ? 'text-slate-950' : 'text-emerald-400'}`} />
+                <ChevronRight className={`w-4 h-4 ${isActive ? 'text-slate-950' : 'text-amber-400'}`} />
               </button>
             );
           })}
-          <div className="pt-2 border-t border-emerald-800/80 mt-2">
+          <div className="pt-2 border-t border-emerald-800/60 mt-2">
             <button
               onClick={() => handleNavClick('services')}
-              className="w-full bg-amber-400 text-slate-950 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider shadow-md flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 py-3 rounded-lg text-sm font-black uppercase tracking-wider shadow-md shadow-amber-500/30 flex items-center justify-center gap-2 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-slate-950" />
               <span>{content.nav.services}</span>

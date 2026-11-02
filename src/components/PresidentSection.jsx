@@ -218,12 +218,12 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               {activeTab === 'vision' && (
                 <div className="space-y-4 animate-fade-in">
                   <div className="relative bg-white dark:bg-slate-800/80 border-l-4 border-amber-500 p-5 rounded-r-xl shadow-xs border-y border-r border-slate-200 dark:border-slate-700">
-                    <p className="text-base sm:text-lg italic font-sans text-slate-800 dark:text-slate-100 leading-relaxed">
+                    <p className="text-lg sm:text-2xl italic font-sans text-slate-800 dark:text-slate-100 leading-relaxed">
                       "{p.quote}"
                     </p>
                   </div>
 
-                  <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-200 text-base sm:text-lg leading-relaxed">
                     {p.bioExcerpt}
                   </p>
 
@@ -266,7 +266,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                           </span>
                           <span>{pillar.title}</span>
                         </div>
-                        <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                           {pillar.desc}
                         </p>
                       </div>
@@ -314,10 +314,10 @@ export function PresidentSection({ content, onOpenSpeeches }) {
 
               {/* Tab 4: Biography */}
               {activeTab === 'bio' && (
-                <div className="space-y-3 animate-fade-in text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
-                  <div className="bg-white dark:bg-slate-800/80 p-4 rounded-lg border border-slate-200 dark:border-slate-700 space-y-2">
-                    <p>{p.biographyDetails.intro}</p>
-                    <p>{p.biographyDetails.career}</p>
+                <div className="space-y-3 animate-fade-in text-slate-700 dark:text-slate-200 text-base sm:text-lg leading-relaxed">
+                  <div className="bg-white dark:bg-slate-800/80 p-6 rounded-xl border border-slate-200 dark:border-slate-700 space-y-4">
+                    <p className="leading-relaxed">{p.biographyDetails.intro}</p>
+                    <p className="leading-relaxed">{p.biographyDetails.career}</p>
                   </div>
                 </div>
               )}

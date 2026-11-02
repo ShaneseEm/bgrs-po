@@ -77,7 +77,7 @@ export function HeroBanner({ content, onSelectNews }) {
               {slides[currentSlide].headline}
             </h2>
 
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-light max-w-2xl transition-all duration-500">
+            <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal max-w-2xl transition-all duration-500">
               {slides[currentSlide].subheadline}
             </p>
 

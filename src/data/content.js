@@ -67,7 +67,7 @@ export const contentData = {
       "name": "H.E. Ashadli Hassan",
       "role": "President of the Benishangul Gumuz Regional State",
       "portraitOfficial": "/images/president-official.png",
-      "portraitPress": "/images/president-press.jpg",
+      "portraitPress": "/images/president-gerd-forum.jpg",
       "photos": [
         {
           "id": 1,
@@ -79,19 +79,19 @@ export const contentData = {
         },
         {
           "id": 2,
-          "url": "/images/president-press.jpg",
-          "title": "Executive Press Conference",
-          "caption": "President Ashadli Hassan addressing regional and national media on peace and development",
-          "tag": "Press Briefing",
-          "location": "Regional Secretariat, Assosa"
-        },
-        {
-          "id": 3,
           "url": "/images/president-gerd-forum.jpg",
-          "title": "GERD Renewal Keynote Address",
+          "title": "GERD Transformation Keynote",
           "caption": "Delivering the keynote address at the \"GERD for Ethiopia's Renewal\" leadership forum",
           "tag": "Megaproject Forum",
           "location": "Assosa Forum Hall"
+        },
+        {
+          "id": 3,
+          "url": "/images/president-state-portrait.png",
+          "title": "Executive State Profile",
+          "caption": "Chief Administrator of Benishangul Gumuz Regional State",
+          "tag": "Executive Profile",
+          "location": "Assosa Executive Complex"
         },
         {
           "id": 4,
@@ -421,7 +421,7 @@ export const contentData = {
       "name": "ክቡር አቶ አሻድሊ ሀሰን",
       "role": "የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር",
       "portraitOfficial": "/images/president-official.png",
-      "portraitPress": "/images/president-press.jpg",
+      "portraitPress": "/images/president-gerd-forum.jpg",
       "photos": [
         {
           "id": 1,
@@ -775,7 +775,7 @@ export const contentData = {
       "name": "H.E. Ashadli Hassan",
       "role": "Rais al-Hukuma al-Iqlimiya - Benishangul Gumuz",
       "portraitOfficial": "/images/president-official.png",
-      "portraitPress": "/images/president-press.jpg",
+      "portraitPress": "/images/president-gerd-forum.jpg",
       "photos": [
         {
           "id": 1,
@@ -787,19 +787,19 @@ export const contentData = {
         },
         {
           "id": 2,
-          "url": "/images/president-press.jpg",
-          "title": "Executive Press Conference",
-          "caption": "President Ashadli Hassan addressing regional and national media on peace and development",
-          "tag": "Press Briefing",
-          "location": "Regional Secretariat, Assosa"
-        },
-        {
-          "id": 3,
           "url": "/images/president-gerd-forum.jpg",
-          "title": "GERD Renewal Keynote Address",
+          "title": "GERD Transformation Keynote",
           "caption": "Delivering the keynote address at the \"GERD for Ethiopia's Renewal\" leadership forum",
           "tag": "Megaproject Forum",
           "location": "Assosa Forum Hall"
+        },
+        {
+          "id": 3,
+          "url": "/images/president-state-portrait.png",
+          "title": "Executive State Profile",
+          "caption": "Chief Administrator of Benishangul Gumuz Regional State",
+          "tag": "Executive Profile",
+          "location": "Assosa Executive Complex"
         },
         {
           "id": 4,
