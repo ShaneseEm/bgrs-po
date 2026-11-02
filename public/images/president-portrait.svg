@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09281a" />
+      <stop offset="50%" stop-color="#144e32" />
+      <stop offset="100%" stop-color="#051a10" />
+    </linearGradient>
+    <linearGradient id="goldAcc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#eab308" />
+      <stop offset="100%" stop-color="#a16207" />
+    </linearGradient>
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="tieGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b91c1c" />
+      <stop offset="100%" stop-color="#7f1d1d" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="750" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Ethiopian Tricolor watermark on left edge -->
+  <rect x="0" y="0" width="12" height="250" fill="#15803d" opacity="0.6"/>
+  <rect x="0" y="250" width="12" height="250" fill="#eab308" opacity="0.6"/>
+  <rect x="0" y="500" width="12" height="250" fill="#dc2626" opacity="0.6"/>
+
+  <!-- Golden Frame Inner Border -->
+  <rect x="25" y="25" width="550" height="700" rx="16" fill="none" stroke="url(#goldAcc)" stroke-width="2.5" opacity="0.8"/>
+
+  <!-- Executive Silhouette Portrait -->
+  <g transform="translate(300, 360)">
+    <!-- Shoulders / Suit Coat -->
+    <path d="M -230 350 C -220 220 -150 150 -70 120 L 70 120 C 150 150 220 220 230 350 Z" fill="url(#suitGrad)"/>
+    
+    <!-- White Dress Shirt Collar -->
+    <polygon points="-50,115 0,190 50,115 35,90 -35,90" fill="#f8fafc"/>
+    <polygon points="-40,115 -10,120 0,185 -25,120" fill="#e2e8f0"/>
+    <polygon points="40,115 10,120 0,185 25,120" fill="#e2e8f0"/>
+
+    <!-- Silk Executive Tie -->
+    <polygon points="-12,125 12,125 18,340 0,360 -18,340" fill="url(#tieGrad)"/>
+    <!-- Gold Tie Pin -->
+    <rect x="-10" y="210" width="20" height="4" fill="url(#goldAcc)" rx="1"/>
+
+    <!-- Neck -->
+    <rect x="-35" y="30" width="70" height="75" fill="#8d5b4c" rx="10"/>
+
+    <!-- Head / Jawline -->
+    <path d="M -65 10 C -70 -60 -45 -120 0 -120 C 45 -120 70 -60 65 10 C 60 70 35 90 0 90 C -35 90 -60 70 -65 10 Z" fill="#78473a"/>
+
+    <!-- Hair Silhouette -->
+    <path d="M -68 -40 C -75 -110 -40 -145 0 -145 C 40 -145 75 -110 68 -40 C 60 -75 35 -130 0 -130 C -35 -130 -60 -75 -68 -40 Z" fill="#1e1815"/>
+
+    <!-- Glasses Silhouette -->
+    <rect x="-52" y="-30" width="42" height="26" rx="6" fill="none" stroke="url(#goldAcc)" stroke-width="3"/>
+    <rect x="10" y="-30" width="42" height="26" rx="6" fill="none" stroke="url(#goldAcc)" stroke-width="3"/>
+    <line x1="-10" y1="-18" x2="10" y2="-18" stroke="url(#goldAcc)" stroke-width="3"/>
+    <!-- Subtle eyes / expression -->
+    <circle cx="-31" cy="-17" r="4" fill="#1e1815"/>
+    <circle cx="31" cy="-17" r="4" fill="#1e1815"/>
+
+    <!-- Presidential Lapel Pin (Ethiopian Flag / Star Pin) -->
+    <circle cx="-110" cy="190" r="14" fill="#0f172a" stroke="url(#goldAcc)" stroke-width="2"/>
+    <circle cx="-110" cy="190" r="10" fill="#15803d"/>
+    <polygon points="-110,183 -107,189 -101,189 -105,193 -103,199 -110,195 -117,199 -115,193 -119,189 -113,189" fill="#facc15"/>
+  </g>
+
+  <!-- Presidential Badge at bottom -->
+  <rect x="50" y="605" width="500" height="95" rx="12" fill="#061f14" fill-opacity="0.95" stroke="url(#goldAcc)" stroke-width="2"/>
+  <text x="300" y="640" font-family="'Cinzel', serif, sans-serif" font-weight="700" font-size="20" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">
+    H.E. ASHADLI HASSAN
+  </text>
+  <text x="300" y="662" font-family="'Inter', sans-serif" font-weight="600" font-size="12" fill="#e2e8f0" text-anchor="middle" letter-spacing="1">
+    PRESIDENT OF BENISHANGUL GUMUZ REGIONAL STATE
+  </text>
+  <text x="300" y="682" font-family="'Noto Sans Ethiopic', sans-serif" font-weight="500" font-size="12" fill="#cbd5e1" text-anchor="middle">
+    ክቡር አቶ አሻድሊ ሀሰን • የቤኒሻንጉል ጉሙዝ ክልል ርዕሰ መስተዳድር
+  </text>
+</svg>

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f2b48" />
+      <stop offset="45%" stop-color="#1d4e7a" />
+      <stop offset="70%" stop-color="#5a8bb8" />
+      <stop offset="100%" stop-color="#d0e2ec" />
+    </linearGradient>
+    <linearGradient id="sunGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <linearGradient id="mountain1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#143e2b" />
+      <stop offset="100%" stop-color="#0a2618" />
+    </linearGradient>
+    <linearGradient id="mountain2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#24593f" />
+      <stop offset="100%" stop-color="#103322" />
+    </linearGradient>
+    <linearGradient id="damConcrete" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="25%" stop-color="#94a3b8" />
+      <stop offset="50%" stop-color="#e2e8f0" />
+      <stop offset="75%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+    <linearGradient id="nileWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#0369a1" />
+      <stop offset="100%" stop-color="#075985" />
+    </linearGradient>
+    <linearGradient id="waterSpray" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#e0f2fe" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1200" height="600" fill="url(#skyGrad)"/>
+
+  <!-- Golden Sunrise Rays behind mountains -->
+  <circle cx="600" cy="240" r="160" fill="url(#sunGrad)" opacity="0.85"/>
+  
+  <!-- Distant Blue Nile Gorge Mountains (Guba, Benishangul-Gumuz) -->
+  <polygon points="0,380 180,240 380,340 540,210 750,330 920,220 1100,320 1200,260 1200,600 0,600" fill="url(#mountain1)"/>
+  <polygon points="0,420 120,320 300,410 460,290 640,390 850,280 1020,370 1200,310 1200,600 0,600" fill="url(#mountain2)" opacity="0.8"/>
+
+  <!-- Reservoir Water behind Dam -->
+  <polygon points="120,410 1080,410 1120,490 80,490" fill="url(#nileWater)"/>
+
+  <!-- The Grand Ethiopian Renaissance Dam (GERD Main Concrete Wall) -->
+  <!-- Main Roller Compacted Concrete (RCC) Structure -->
+  <polygon points="100,430 1100,430 1140,560 60,560" fill="url(#damConcrete)"/>
+
+  <!-- Dam Crest Roads and Pillars -->
+  <rect x="80" y="425" width="1040" height="8" fill="#334155"/>
+  <g fill="#1e293b">
+    <rect x="250" y="420" width="8" height="10"/>
+    <rect x="350" y="420" width="8" height="10"/>
+    <rect x="450" y="420" width="8" height="10"/>
+    <rect x="550" y="420" width="8" height="10"/>
+    <rect x="650" y="420" width="8" height="10"/>
+    <rect x="750" y="420" width="8" height="10"/>
+    <rect x="850" y="420" width="8" height="10"/>
+    <rect x="950" y="420" width="8" height="10"/>
+  </g>
+
+  <!-- Spillway Gates & Cascading Water -->
+  <g fill="#0284c7">
+    <rect x="510" y="433" width="180" height="25" fill="#475569"/>
+    <!-- Water rush down spillway -->
+    <path d="M 520,455 Q 600,460 680,455 L 710,560 L 490,560 Z" fill="url(#waterSpray)"/>
+  </g>
+
+  <!-- Powerhouses (Right Bank & Left Bank Turbines) -->
+  <polygon points="160,490 320,490 340,550 140,550" fill="#334155"/>
+  <polygon points="880,490 1040,490 1060,550 860,550" fill="#334155"/>
+
+  <!-- Downstream Tailrace Flow -->
+  <rect x="0" y="550" width="1200" height="50" fill="#0369a1"/>
+  <path d="M 0,550 Q 300,545 600,555 T 1200,550 L 1200,600 L 0,600 Z" fill="#0284c7" opacity="0.6"/>
+
+  <!-- Overlay Badge -->
+  <rect x="50" y="50" width="460" height="75" rx="8" fill="#0f172a" fill-opacity="0.85" stroke="#f59e0b" stroke-width="2"/>
+  <text x="75" y="85" font-family="'Inter', sans-serif" font-weight="700" font-size="20" fill="#fef08a">
+    GRAND ETHIOPIAN RENAISSANCE DAM (GERD)
+  </text>
+  <text x="75" y="108" font-family="'Inter', sans-serif" font-weight="500" font-size="13" fill="#cbd5e1">
+    Guba Woreda, Benishangul-Gumuz • 5,150 MW Clean Energy
+  </text>
+</svg>
