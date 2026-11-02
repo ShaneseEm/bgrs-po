@@ -150,9 +150,9 @@ export const contentData = {
         "subtext": "28 Million quintals annual yield"
       },
       {
-        "value": "3 Zones + 1 Special",
+        "value": "3 Zones",
         "label": "Administrative Divisions",
-        "subtext": "Assosa, Metekel, Kamashi & Mao-Komo"
+        "subtext": "Assosa, Metekel & Kamashi"
       }
     ],
     "initiatives": {
@@ -858,9 +858,9 @@ export const contentData = {
         "subtext": "28 Million quintals annual yield"
       },
       {
-        "value": "3 Zones + 1 Special",
+        "value": "3 Zones",
         "label": "Administrative Divisions",
-        "subtext": "Assosa, Metekel, Kamashi & Mao-Komo"
+        "subtext": "Assosa, Metekel & Kamashi"
       }
     ],
     "initiatives": {

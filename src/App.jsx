@@ -90,8 +90,8 @@ export default function App() {
                         className="w-full h-80 object-cover object-top"
                       />
                       <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent p-3 text-center">
-                        <div className="text-white font-bold text-sm">{content.presidentSection.name}</div>
-                        <div className="text-amber-400 text-xs">{content.presidentSection.role}</div>
+                        <div className="text-white font-bold text-base">{content.presidentSection.name}</div>
+                        <div className="text-amber-400 text-sm">{content.presidentSection.role}</div>
                       </div>
                     </div>
                   </div>
@@ -103,7 +103,7 @@ export default function App() {
                       <span>{content.presidentSection.subtitle}</span>
                     </div>
 
-                    <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+                    <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
                       {content.presidentSection.name}
                     </h2>
 
@@ -113,7 +113,7 @@ export default function App() {
                       </p>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
                       {content.presidentSection.bioExcerpt}
                     </p>
 
@@ -147,7 +147,7 @@ export default function App() {
                     <span className="text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">
                       Media Secretariat
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
+                    <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-1">
                       {content.news.title}
                     </h3>
                   </div>
@@ -183,10 +183,10 @@ export default function App() {
                             <Calendar className="w-3 h-3 text-amber-500" />
                             <span>{article.date}</span>
                           </div>
-                          <h4 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors line-clamp-2">
+                          <h4 className="font-bold text-base text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors line-clamp-2">
                             {article.title}
                           </h4>
-                          <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2">
+                          <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
                             {article.summary}
                           </p>
                         </div>

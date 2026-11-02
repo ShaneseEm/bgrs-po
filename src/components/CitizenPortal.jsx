@@ -47,10 +47,10 @@ export function CitizenPortal({ content }) {
             <MessageSquare className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
             <span>{cp.subtitle}</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
             {cp.title}
           </h2>
-          <p className="mt-2 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+          <p className="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
             {cp.intro}
           </p>
           <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
@@ -67,10 +67,10 @@ export function CitizenPortal({ content }) {
                 <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 group-hover:bg-amber-400 group-hover:text-slate-950 flex items-center justify-center mb-4 transition-all">
                   <FileText className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-base text-slate-900 dark:text-white group-hover:text-white font-sans mb-2 transition-colors">
+                <h3 className="font-bold text-lg text-slate-900 dark:text-white group-hover:text-white font-sans mb-2 transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 group-hover:text-emerald-100 leading-relaxed transition-colors">
+                <p className="text-sm text-slate-600 dark:text-slate-400 group-hover:text-emerald-100 leading-relaxed transition-colors">
                   {service.desc}
                 </p>
               </div>
@@ -96,10 +96,10 @@ export function CitizenPortal({ content }) {
                   <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span>Direct Citizen Channel</span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-black font-sans text-white leading-tight">
+                <h3 className="text-3xl sm:text-4xl font-black font-sans text-white leading-tight">
                   {cp.formTitle}
                 </h3>
-                <p className="text-slate-300 text-sm leading-relaxed font-light">
+                <p className="text-slate-300 text-base leading-relaxed font-light">
                   {cp.formDesc}
                 </p>
 
@@ -207,8 +207,6 @@ export function CitizenPortal({ content }) {
                         <option value="Assosa Zone">Assosa Zone (አሶሳ ዞን)</option>
                         <option value="Metekel Zone">Metekel Zone (መተከል ዞን)</option>
                         <option value="Kamashi Zone">Kamashi Zone (ካማሺ ዞን)</option>
-                        <option value="Mao-Komo Special Woreda">Mao-Komo Special Woreda (ማኦ-ኮሞ)</option>
-                        <option value="Pawe Special Woreda">Pawe Special Woreda (ፓዌ)</option>
                         <option value="Federal / Diaspora">Federal / Diaspora</option>
                       </select>
                     </div>

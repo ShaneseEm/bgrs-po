@@ -15,10 +15,10 @@ export function AdministrationSection({ content }) {
             <Users className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
             <span>{admin.subtitle}</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
             {admin.title}
           </h2>
-          <p className="mt-2 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+          <p className="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
             {admin.description}
           </p>
           <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
@@ -26,9 +26,9 @@ export function AdministrationSection({ content }) {
 
         {/* 1. Zonal Administrations Grid */}
         <div className="mb-16">
-          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-sans mb-6 flex items-center gap-2">
+          <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-sans mb-6 flex items-center gap-2">
             <MapPin className="w-5 h-5 text-amber-500" />
-            <span>Administrative Zones & Special Woredas</span>
+            <span>Administrative Zones</span>
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -53,11 +53,11 @@ export function AdministrationSection({ content }) {
                     <Layers className={`w-4 h-4 ${isSelected ? 'text-amber-400' : 'text-slate-400'}`} />
                   </div>
 
-                  <h4 className={`text-lg font-bold font-sans mb-2 ${isSelected ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
+                  <h4 className={`text-xl font-bold font-sans mb-2 ${isSelected ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
                     {zone.name}
                   </h4>
 
-                  <p className={`text-xs leading-relaxed mb-4 ${isSelected ? 'text-emerald-100' : 'text-slate-600 dark:text-slate-400'}`}>
+                  <p className={`text-sm leading-relaxed mb-4 ${isSelected ? 'text-emerald-100' : 'text-slate-600 dark:text-slate-400'}`}>
                     {zone.desc}
                   </p>
 

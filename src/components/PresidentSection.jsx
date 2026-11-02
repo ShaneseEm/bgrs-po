@@ -9,16 +9,17 @@ export function PresidentSection({ content, onOpenSpeeches }) {
   const photos = p.photos || [];
 
   const [activePhotoIdx, setActivePhotoIdx] = useState(0);
+  const [prevPhotoIdx, setPrevPhotoIdx] = useState(null);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [activeTab, setActiveTab] = useState('vision');
   const [fullscreenPhoto, setFullscreenPhoto] = useState(null);
 
-  // Auto-transition slides every 5 seconds
+  // Auto-transition slides every 3 seconds
   useEffect(() => {
     if (!isAutoPlaying || fullscreenPhoto || photos.length === 0) return;
     const interval = setInterval(() => {
       setActivePhotoIdx((prev) => (prev + 1) % photos.length);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(interval);
   }, [isAutoPlaying, photos.length, fullscreenPhoto]);
 
@@ -44,7 +45,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
             <Sparkles className="w-3 h-3 text-amber-500" />
             <span>{p.subtitle}</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
             {p.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
@@ -63,14 +64,18 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               {/* Portrait Frame */}
               <div className="relative group w-full max-w-sm rounded-xl overflow-hidden border border-amber-500/60 shadow-xl bg-slate-950">
                 <div className="relative h-[420px] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
-                  {currentPhoto && (
-                    <img 
-                      key={currentPhoto.id}
-                      src={currentPhoto.url} 
-                      alt={currentPhoto.title}
-                      className="w-full h-full object-cover object-top transition-all duration-700 animate-fade-in group-hover:scale-105"
+                  {/* Cross-fade photo stack */}
+                  {photos.map((photo, idx) => (
+                    <img
+                      key={photo.id}
+                      src={photo.url}
+                      alt={photo.title}
+                      className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 ${
+                        idx === activePhotoIdx ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
+                      } group-hover:scale-105`}
+                      style={{ transitionProperty: 'opacity, transform', transitionDuration: '700ms' }}
                     />
-                  )}
+                  ))}
 
                   {/* Subtle bottom shadow overlay */}
                   <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent pointer-events-none"></div>
@@ -93,13 +98,6 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                       title="View High-Resolution"
                     >
                       <Maximize2 className="w-3.5 h-3.5" />
-                    </button>
-                    <button
-                      onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                      className="bg-slate-900/80 hover:bg-slate-800 text-slate-300 p-1.5 rounded-full border border-slate-700 transition-colors cursor-pointer"
-                      title={isAutoPlaying ? "Pause" : "Play"}
-                    >
-                      {isAutoPlaying ? <Pause className="w-3.5 h-3.5 text-amber-400" /> : <Play className="w-3.5 h-3.5 text-emerald-400" />}
                     </button>
                   </div>
 
@@ -143,10 +141,33 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                     <div 
                       key={activePhotoIdx}
                       className="bg-amber-400 h-full w-full"
-                      style={{ animation: 'marquee 5s linear infinite' }}
+                      style={{ animation: 'marquee 3s linear infinite' }}
                     />
                   </div>
                 )}
+
+                {/* Photo Dot Indicators */}
+                <div className="flex items-center justify-center gap-2 py-2.5 bg-slate-950">
+                  {photos.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => { setActivePhotoIdx(idx); setIsAutoPlaying(false); }}
+                      className={`rounded-full transition-all duration-300 cursor-pointer ${
+                        idx === activePhotoIdx
+                          ? 'w-6 h-2 bg-amber-400'
+                          : 'w-2 h-2 bg-slate-600 hover:bg-slate-400'
+                      }`}
+                      aria-label={`Photo ${idx + 1}`}
+                    />
+                  ))}
+                  <button
+                    onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                    className="ml-2 text-slate-500 hover:text-amber-400 transition-colors cursor-pointer"
+                    title={isAutoPlaying ? 'Pause' : 'Resume auto-cycle'}
+                  >
+                    {isAutoPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-emerald-400" />}
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -156,10 +177,10 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               {/* Dignified Header Badge */}
               <div className="border-b border-slate-200 dark:border-slate-800 pb-3 flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-sans">
+                  <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white font-sans">
                     {p.name}
                   </h3>
-                  <p className="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase tracking-wide">
+                  <p className="text-sm text-amber-700 dark:text-amber-400 font-bold uppercase tracking-wide">
                     {p.role}
                   </p>
                 </div>
@@ -202,7 +223,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                     </p>
                   </div>
 
-                  <p className="text-slate-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
                     {p.bioExcerpt}
                   </p>
 
@@ -212,8 +233,8 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                         <FileText className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-emerald-950 dark:text-emerald-300">{p.decreeCount}</div>
-                        <div className="text-[10px] text-slate-600 dark:text-slate-400">Executive Decrees</div>
+                        <div className="text-base font-bold text-emerald-950 dark:text-emerald-300">{p.decreeCount}</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400">Executive Decrees</div>
                       </div>
                     </div>
 
@@ -222,8 +243,8 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                         <Mic className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-amber-950 dark:text-amber-300">{p.speechesCount}</div>
-                        <div className="text-[10px] text-slate-600 dark:text-slate-400">Policy Briefings</div>
+                        <div className="text-base font-bold text-amber-950 dark:text-amber-300">{p.speechesCount}</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400">Policy Briefings</div>
                       </div>
                     </div>
                   </div>
@@ -293,7 +314,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
 
               {/* Tab 4: Biography */}
               {activeTab === 'bio' && (
-                <div className="space-y-3 animate-fade-in text-slate-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+                <div className="space-y-3 animate-fade-in text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
                   <div className="bg-white dark:bg-slate-800/80 p-4 rounded-lg border border-slate-200 dark:border-slate-700 space-y-2">
                     <p>{p.biographyDetails.intro}</p>
                     <p>{p.biographyDetails.career}</p>

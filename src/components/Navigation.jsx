@@ -33,7 +33,7 @@ export function Navigation({ content, activeSection, setActiveSection }) {
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-3.5 py-1.5 rounded-md text-xs tracking-wider transition-all uppercase font-bold cursor-pointer ${
+                  className={`px-3.5 py-2 rounded-md text-sm tracking-wider transition-all uppercase font-bold cursor-pointer ${
                     isActive 
                       ? 'bg-amber-500 text-slate-950 shadow-sm' 
                       : 'text-emerald-100 hover:bg-[#146039] hover:text-white'
@@ -49,7 +49,7 @@ export function Navigation({ content, activeSection, setActiveSection }) {
           <div className="hidden lg:flex items-center">
             <button
               onClick={() => handleNavClick('services')}
-              className="bg-amber-400 hover:bg-amber-300 text-slate-950 px-3.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
+              className="bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wider shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <MessageSquare className="w-3.5 h-3.5 text-slate-950" />
               <span>{content.nav.services}</span>
