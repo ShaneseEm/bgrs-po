@@ -11,14 +11,12 @@ import { AdministrationSection } from './components/AdministrationSection';
 import { CitizenPortal } from './components/CitizenPortal';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { ImageGuideModal } from './components/ImageGuideModal';
 import { SearchModal } from './components/SearchModal';
 import { NewsModal } from './components/NewsModal';
 
 export default function App() {
   const [currentLang, setCurrentLang] = useState('en');
   const [activeSection, setActiveSection] = useState('home');
-  const [isImageGuideOpen, setIsImageGuideOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [fontSize, setFontSize] = useState(16);
@@ -28,18 +26,17 @@ export default function App() {
 
   return (
     <div 
-      className={`min-h-screen flex flex-col font-sans transition-colors ${
+      className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${
         isHighContrast ? 'contrast-125 bg-slate-900 text-white' : 'bg-slate-50 text-slate-800'
       }`}
       style={{ fontSize: `${fontSize}px` }}
     >
-      {/* 1. Header with national tricolor, official emblem & utility bar */}
+      {/* 1. Official Header with Regional Emblem, Flag & Utility Bar */}
       <Header
         currentLang={currentLang}
         setLang={setCurrentLang}
         content={content}
         onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenImageGuide={() => setIsImageGuideOpen(true)}
         fontSize={fontSize}
         setFontSize={setFontSize}
         isHighContrast={isHighContrast}
@@ -107,13 +104,7 @@ export default function App() {
         content={content}
       />
 
-      {/* Modals & Dialogs */}
-      <ImageGuideModal
-        isOpen={isImageGuideOpen}
-        onClose={() => setIsImageGuideOpen(false)}
-        currentLang={currentLang}
-      />
-
+      {/* Search & News Reader Modals */}
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}

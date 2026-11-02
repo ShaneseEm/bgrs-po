@@ -24,7 +24,8 @@ export function Footer({ content }) {
           {/* Col 1: Emblem + About (5 Cols) */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <img src={content.meta.emblem || "/images/emblem.png"} alt="BGRS Emblem" className="w-14 h-14 object-contain" />
+              <img src="/images/bgrs-official-emblem.png" alt="BGRS Official Emblem" className="w-16 h-16 object-contain" />
+              <img src="/images/bgrs-official-flag.png" alt="BGRS Official Flag" className="w-10 h-7 object-cover rounded shadow-xs border border-slate-700 hidden sm:block" />
               <div>
                 <h3 className="text-white font-bold font-serif text-lg leading-tight uppercase">
                   {content.meta.region}
@@ -156,7 +157,8 @@ export function Footer({ content }) {
 
       </div>
 
-      {/* Tricolor Bottom Accent Strip */}
+      {/* Regional BGRS Flag & National Tricolor Bottom Accent Strips */}
+      <div className="bgrs-flag-bar w-full" />
       <div className="ethiopian-tricolor-bar w-full" />
     </footer>
   );

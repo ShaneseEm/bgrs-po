@@ -35,8 +35,8 @@ export function HeroBanner({ content, onSelectNews }) {
           {/* Left Column: Headlines & Actions */}
           <div className="lg:col-span-7 space-y-6">
             
-            <div className="inline-flex items-center gap-2 bg-emerald-900/60 border border-emerald-700/60 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-300 backdrop-blur-xs">
-              <ShieldCheck className="w-4 h-4 text-amber-400" />
+            <div className="inline-flex items-center gap-2.5 bg-emerald-950/80 border border-emerald-600/70 px-4 py-1.5 rounded-full text-xs font-bold text-emerald-200 backdrop-blur-md shadow-lg">
+              <img src="/images/bgrs-official-flag.png" alt="BGRS Flag" className="w-5 h-3.5 object-cover rounded-xs shadow-xs" />
               <span>{content.hero.badge}</span>
             </div>
 
@@ -113,11 +113,14 @@ export function HeroBanner({ content, onSelectNews }) {
               {/* Outer Golden Glow Border */}
               <div className="absolute -inset-1 bg-gradient-to-r from-amber-500 to-emerald-600 rounded-2xl blur-xs opacity-50"></div>
               
-              <div className="relative bg-slate-800 rounded-xl overflow-hidden shadow-2xl border border-slate-700/80">
+              <div 
+                key={currentSlide}
+                className="relative bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-slate-700/80 animate-fade-in"
+              >
                 <img 
                   src={slides[currentSlide].image} 
                   alt={slides[currentSlide].alt}
-                  className="w-full h-80 sm:h-96 object-cover object-center transition-all duration-700"
+                  className="w-full h-80 sm:h-96 object-cover object-top transition-all duration-700 hover:scale-105"
                 />
                 
                 {/* Floating Caption Overlay */}

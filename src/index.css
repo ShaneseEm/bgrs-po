@@ -20,18 +20,19 @@
 
 /* Custom smooth transitions */
 .transition-standard {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Custom Ethiopian flag top bar accent */
+/* Benishangul-Gumuz Regional Flag Top Accent Strip */
+.bgrs-flag-bar {
+  background: linear-gradient(90deg, #dc2626 0%, #dc2626 4%, #18181b 4%, #18181b 36%, #eab308 36%, #eab308 68%, #16a34a 68%, #16a34a 100%);
+  height: 5px;
+}
+
+/* Ethiopian Federal Tricolor Accent Strip */
 .ethiopian-tricolor-bar {
-  background: linear-gradient(90deg, #078930 33.3%, #fcdd09 33.3%, #fcdd09 66.6%, #da121a 66.6%);
-  height: 4px;
-}
-
-/* Benishangul-Gumuz regional accent ribbon */
-.bgrs-ribbon {
-  background: linear-gradient(90deg, #0d4a2c 0%, #15803d 40%, #c8963e 50%, #b45309 60%, #1e293b 100%);
+  background: linear-gradient(90deg, #15803d 33.3%, #facc15 33.3%, #facc15 66.6%, #dc2626 66.6%);
+  height: 3px;
 }
 
 /* Smooth ticker marquee */
@@ -41,9 +42,34 @@
 }
 
 .animate-marquee {
-  animation: marquee 28s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Smooth fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Presidential Gold Crest Glow */
+.gold-glow {
+  box-shadow: 0 10px 30px -5px rgba(234, 179, 8, 0.25), 0 4px 12px -2px rgba(13, 74, 44, 0.3);
+}
+
+.gold-glow-hover:hover {
+  box-shadow: 0 15px 35px -5px rgba(234, 179, 8, 0.35), 0 6px 16px -2px rgba(13, 74, 44, 0.4);
 }
