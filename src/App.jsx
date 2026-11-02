@@ -76,65 +76,84 @@ export default function App() {
               content={content}
             />
 
-            {/* Presidential Welcome Spotlight (Clean & Non-Bulky) */}
-            <section className="py-12 sm:py-16 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-sm">
+            {/* Presidential Welcome Spotlight (Classic Translucent Glass & Smooth Animations) */}
+            <section className="relative py-14 sm:py-20 bg-gradient-to-b from-slate-50 via-emerald-950/5 to-slate-100 dark:from-slate-950 dark:via-emerald-950/15 dark:to-slate-950 border-b border-slate-200/80 dark:border-slate-800 overflow-hidden transition-colors duration-500">
+              {/* Ambient Glassmorphic Glow Orbs */}
+              <div className="absolute -top-32 -left-32 w-96 h-96 bg-emerald-500/10 dark:bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-amber-500/10 dark:bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-white/75 dark:bg-slate-900/65 backdrop-blur-xl rounded-3xl p-6 sm:p-10 lg:p-12 border border-white/60 dark:border-slate-700/60 shadow-2xl shadow-emerald-950/10 dark:shadow-black/50 transition-all duration-500 hover:border-amber-400/40">
                   
-                  {/* Portrait Column */}
-                  <div className="lg:col-span-4 flex justify-center">
-                    <div className="relative group rounded-2xl overflow-hidden border-2 border-amber-500/60 shadow-xl max-w-[300px] w-full bg-slate-950 transition-all duration-300 hover:shadow-amber-500/20 hover:scale-[1.02]">
+                  {/* Portrait Column with Shimmer, Glass Frame & Lift Transition */}
+                  <div className="lg:col-span-5 flex justify-center">
+                    <div className="relative group/portrait rounded-2xl overflow-hidden border-2 border-amber-500/70 shadow-2xl max-w-[320px] w-full bg-slate-950/90 backdrop-blur-md transition-all duration-500 hover:shadow-amber-500/30 hover:-translate-y-1.5 hover:scale-[1.02]">
+                      {/* Image with smooth zoom transition */}
                       <img 
                         src="/images/president-home-portrait.jpg" 
                         alt="H.E. Ashadli Hassan" 
-                        className="w-full h-88 object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-92 object-cover object-top transition-transform duration-700 ease-out group-hover/portrait:scale-108"
                       />
-                      <div className="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-xs px-3 py-1 rounded-full border border-amber-500/40 flex items-center gap-1.5 shadow-sm">
+
+                      {/* Interactive Light-Sweep / Shimmer Overlay */}
+                      <div className="absolute inset-0 -translate-x-full group-hover/portrait:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+
+                      {/* Executive Keynote Badge with Pulsing Live Indicator */}
+                      <div className="absolute top-3.5 left-3.5 bg-slate-900/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-amber-500/50 flex items-center gap-2 shadow-lg">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
                         <img src="/images/bgrs-flag-new.png" alt="BGRS Flag" className="w-4 h-2.5 object-cover rounded-xs" />
                         <span className="text-[10px] font-bold text-amber-300 tracking-wider uppercase">
                           Executive Keynote
                         </span>
                       </div>
-                      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-4 text-center">
-                        <div className="text-white font-bold text-base sm:text-lg">{content.presidentSection.name}</div>
-                        <div className="text-amber-400 text-xs sm:text-sm font-semibold mt-0.5">{content.presidentSection.role}</div>
+
+                      {/* Frosted Bottom Banner */}
+                      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent p-4 sm:p-5 text-center">
+                        <div className="text-white font-bold text-base sm:text-lg tracking-wide">{content.presidentSection.name}</div>
+                        <div className="text-amber-400 text-xs sm:text-sm font-semibold tracking-wide mt-0.5">{content.presidentSection.role}</div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Overview Column */}
-                  <div className="lg:col-span-8 space-y-4">
-                    <div className="inline-flex items-center gap-1.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 px-3 py-1 rounded-full text-xs font-semibold">
-                      <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                  {/* Overview Column with Frosted Glass Quote & Action Transitions */}
+                  <div className="lg:col-span-7 space-y-5">
+                    <div className="inline-flex items-center gap-2 bg-emerald-50/80 dark:bg-emerald-950/60 backdrop-blur-md text-emerald-800 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/80 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-xs transition-transform duration-300 hover:scale-105">
+                      <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-spin-slow" />
                       <span>{content.presidentSection.subtitle}</span>
                     </div>
 
-                    <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
                       {content.presidentSection.name}
                     </h2>
 
-                    <div className="bg-white dark:bg-slate-800/80 p-5 rounded-xl border-l-4 border-amber-500 border-y border-r border-slate-200 dark:border-slate-700 shadow-xs">
-                      <p className="italic text-slate-800 dark:text-slate-100 text-base sm:text-xl leading-relaxed font-sans">
+                    {/* Classic Frosted Glass Quote Box */}
+                    <div className="relative bg-white/80 dark:bg-slate-800/60 backdrop-blur-md p-6 rounded-2xl border-l-4 border-amber-500 border-y border-r border-slate-200/60 dark:border-slate-700/60 shadow-sm transition-all duration-300 hover:shadow-md hover:border-amber-400 group/quote">
+                      <Quote className="absolute right-4 bottom-3 w-12 h-12 text-amber-500/10 group-hover/quote:text-amber-500/20 transition-colors pointer-events-none" />
+                      <p className="italic text-slate-800 dark:text-slate-100 text-base sm:text-xl leading-relaxed font-sans relative z-10">
                         "{content.presidentSection.quote}"
                       </p>
                     </div>
 
-                    <p className="text-base sm:text-lg text-slate-700 dark:text-slate-200 leading-relaxed">
+                    <p className="text-base sm:text-lg text-slate-700 dark:text-slate-200 leading-relaxed font-normal">
                       {content.presidentSection.bioExcerpt}
                     </p>
 
-                    <div className="pt-2 flex flex-wrap items-center gap-3">
+                    {/* Action Buttons with Micro-interactions */}
+                    <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
                       <button
                         onClick={() => navigateTo('president')}
-                        className="bg-emerald-800 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
+                        className="bg-gradient-to-r from-[#0d4a2c] via-[#146039] to-[#0d4a2c] hover:from-[#125c38] hover:to-[#1a7a49] text-white px-6 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md shadow-emerald-950/20 hover:shadow-xl hover:shadow-emerald-700/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2.5 cursor-pointer border border-emerald-600/40"
                       >
                         <span>{content.nav.president} Overview & Priorities</span>
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                       </button>
 
                       <button
                         onClick={() => navigateTo('services')}
-                        className="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                        className="bg-white/80 dark:bg-slate-800/70 hover:bg-white dark:hover:bg-slate-800 text-slate-800 dark:text-slate-100 backdrop-blur-md px-5 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider shadow-xs hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer border border-slate-300/80 dark:border-slate-700/80"
                       >
                         <span>{content.nav.services}</span>
                       </button>

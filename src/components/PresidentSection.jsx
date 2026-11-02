@@ -51,8 +51,8 @@ export function PresidentSection({ content, onOpenSpeeches }) {
           <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
         </div>
 
-        {/* Executive Profile Layout (Inspired by US Embassy & PMO Ethiopia) */}
-        <div className="bg-slate-50/80 dark:bg-slate-900/80 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 lg:p-10 transition-colors duration-300">
+        {/* Executive Profile Layout (Classic Translucent Glass & Dignified Transitions) */}
+        <div className="bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl rounded-3xl border border-white/60 dark:border-slate-700/60 p-6 sm:p-8 lg:p-10 shadow-2xl shadow-emerald-950/10 dark:shadow-black/50 transition-all duration-500">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             
             {/* Left Column: Dignified Portrait & Compact Thumbnails (5 cols) */}
@@ -61,9 +61,12 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               onMouseEnter={() => setIsAutoPlaying(false)}
               onMouseLeave={() => setIsAutoPlaying(true)}
             >
-              {/* Portrait Frame */}
-              <div className="relative group w-full max-w-sm rounded-xl overflow-hidden border border-amber-500/60 shadow-xl bg-slate-950">
-                <div className="relative h-[420px] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
+              {/* Portrait Frame with Classic Border & Hover Transition */}
+              <div className="relative group/portrait w-full max-w-sm rounded-2xl overflow-hidden border-2 border-amber-500/70 shadow-2xl bg-slate-950 transition-all duration-500 hover:shadow-amber-500/30 hover:-translate-y-1">
+                <div className="relative h-[430px] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
+                  {/* Interactive Shimmer Sweep */}
+                  <div className="absolute inset-0 -translate-x-full group-hover/portrait:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none z-20" />
+
                   {/* Cross-fade photo stack */}
                   {photos.map((photo, idx) => (
                     <img
@@ -72,7 +75,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                       alt={photo.title}
                       className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 ${
                         idx === activePhotoIdx ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
-                      } group-hover:scale-105`}
+                      } group-hover/portrait:scale-108`}
                       style={{ transitionProperty: 'opacity, transform', transitionDuration: '700ms' }}
                     />
                   ))}
