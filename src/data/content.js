@@ -69,6 +69,48 @@ export const contentData = {
       role: "President of the Benishangul Gumuz Regional State",
       portraitOfficial: "/images/president-official.png",
       portraitPress: "/images/president-press.jpg",
+      photos: [
+        {
+          id: 1,
+          url: "/images/president-official.png",
+          title: "Official State Portrait",
+          caption: "H.E. President Ashadli Hassan beside the National Flag at the Executive Complex",
+          tag: "State Portrait",
+          location: "Assosa Executive Compound"
+        },
+        {
+          id: 2,
+          url: "/images/president-press.jpg",
+          title: "Executive Press Conference",
+          caption: "President Ashadli Hassan addressing regional and national media on peace and development",
+          tag: "Press Briefing",
+          location: "Regional Secretariat, Assosa"
+        },
+        {
+          id: 3,
+          url: "/images/president-gerd-forum.jpg",
+          title: "GERD Renewal Keynote Address",
+          caption: "Delivering the keynote address at the 'GERD for Ethiopia's Renewal' leadership forum",
+          tag: "Megaproject Forum",
+          location: "Assosa Forum Hall"
+        },
+        {
+          id: 4,
+          url: "/images/president-interview.jpg",
+          title: "Agro-Industrial Strategy Interview",
+          caption: "Outlining the 1.2M hectare farming roadmap & 'Bounty of the Basket' initiatives",
+          tag: "Economic Direction",
+          location: "Executive Directorate"
+        },
+        {
+          id: 5,
+          url: "/images/president-close-up.jpg",
+          title: "Executive Leadership Profile",
+          caption: "Chief Administrator of Benishangul Gumuz Regional State",
+          tag: "Executive Profile",
+          location: "Assosa, Ethiopia"
+        }
+      ],
       quote: "Our region is blessed by history and nature. We are the proud host of the Grand Ethiopian Renaissance Dam, the custodian of ancient fertile river basins, and the cradle of vibrant brotherly peoples. Our central priority is enduring peace, disciplined governance, and shared economic bounty for every citizen.",
       bioExcerpt: "H.E. President Ashadli Hassan has served as Chief Administrator of the Benishangul Gumuz Regional State since June 2016. Under his tenure, the regional administration has prioritized peace reconciliation, the reintegration of former armed combatants into productive agricultural cooperatives, the formalization of artisanal gold mining with the National Bank of Ethiopia, and the realization of mega-development projects surrounding the GERD basin in Metekel Zone.",
       readMore: "View Complete Biography",
@@ -355,6 +397,48 @@ export const contentData = {
       role: "የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር",
       portraitOfficial: "/images/president-official.png",
       portraitPress: "/images/president-press.jpg",
+      photos: [
+        {
+          id: 1,
+          url: "/images/president-official.png",
+          title: "ይፋዊ የመንግሥት ምስል",
+          caption: "ክቡር ርዕሰ መስተዳድር አሻድሊ ሀሰን በዋናው ጽሕፈት ቤት ከብሔራዊ ሰንደቅ ዓላማ ጋር",
+          tag: "ይፋዊ ምስል",
+          location: "አሶሳ ዋና ጽሕፈት ቤት"
+        },
+        {
+          id: 2,
+          url: "/images/president-press.jpg",
+          title: "የፕሬስ መግለጫ እና ጋዜጣዊ መግለጫ",
+          caption: "ርዕሰ መስተዳድሩ በክልሉ የልማት እና የሰላም ስራዎች ዙሪያ ለመገናኛ ብዙሃን መግለጫ ሲሰጡ",
+          tag: "የፕሬስ መግለጫ",
+          location: "አሶሳ ፕሬስ አዳራሽ"
+        },
+        {
+          id: 3,
+          url: "/images/president-gerd-forum.jpg",
+          title: "የህዳሴው ግድብ የምክክር መድረክ ንግግር",
+          caption: "በ'ህዳሴው ለኢትዮጵያ ታዳሽነት' የምክክር መድረክ ላይ የተደረገ ቁልፍ ንግግር",
+          tag: "የህዳሴው ግድብ መድረክ",
+          location: "አሶሳ / ጉባ"
+        },
+        {
+          id: 4,
+          url: "/images/president-interview.jpg",
+          title: "የግብርና ትራንስፎርሜሽን ቃለ-መጠይቅ",
+          caption: "የ1.2 ሚሊዮን ሄክታር መሬት ልማት እና የሌማት ትሩፋት መርሃግብርን ሲያብራሩ",
+          tag: "የልማት መግለጫ",
+          location: "አሶሳ"
+        },
+        {
+          id: 5,
+          url: "/images/president-close-up.jpg",
+          title: "የአመራር ፕሮፋይል",
+          caption: "የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር",
+          tag: "የአመራር ምስል",
+          location: "አሶሳ፣ ኢትዮጵያ"
+        }
+      ],
       quote: "ክልላችን በተፈጥሮም ሆነ በታሪክ የታደለች ናት። ታላቁን የህዳሴ ግድብ በማስተናገዳችን፣ በለም ወንዞቻችን እና በአስተዋዩ ህዝባችን እንኮራለን። ዋናው አላማችን አስተማማኝ ሰላምን ማስፈን፣ መልካም አስተዳደርን መገንባት እና ፍትሃዊ የልማት ተጠቃሚነትን ማረጋገጥ ነው።",
       bioExcerpt: "ክቡር አቶ አሻድሊ ሀሰን ከሰኔ 2008 ዓ.ም ጀምሮ የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር ሆነው በማገልገል ላይ ይገኛሉ። በእሳቸው አመራር ወቅት በክልሉ አስተማማኝ ሰላም ማስፈን፣ የቀድሞ ታጣቂዎችን ወደ ሰላማዊ የግብርና ስራ ማሰማራት፣ የወርቅ ምርትን በቀጥታ ለብሔራዊ ባንክ ማስረከብ እና በታላቁ ህዳሴ ግድብ ዙሪያ የልማት እና የቱሪዝም ስራዎችን ማፋጠን ተችሏል።",
       readMore: "ሙሉ የህይወት ታሪክ",
