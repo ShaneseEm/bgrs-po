@@ -40,31 +40,31 @@ export function PresidentSection({ content, onOpenSpeeches }) {
     setActivePhotoIdx((prev) => (prev - 1 + photos.length) % photos.length);
   };
 
-  const currentPhoto = photos[activePhotoIdx];
+  const currentPhoto = photos[activePhotoIdx] || photos[0];
 
   return (
-    <section id="president" className="py-20 sm:py-28 bg-white relative overflow-hidden">
+    <section id="president" className="py-20 sm:py-28 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-300">
       {/* Background regional watermark */}
-      <div className="absolute -right-20 top-1/2 -translate-y-1/2 opacity-[0.035] pointer-events-none select-none">
-        <img src="/images/bgrs-official-emblem.png" alt="" className="w-[800px] h-[800px] object-contain" />
+      <div className="absolute -right-20 top-1/2 -translate-y-1/2 opacity-[0.03] dark:opacity-[0.05] pointer-events-none select-none">
+        <img src="/images/bgrs-emblem-new.png" alt="" className="w-[800px] h-[800px] object-contain" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-3.5 shadow-xs">
-            <img src="/images/bgrs-official-emblem.png" alt="" className="w-4 h-4 object-contain" />
+          <div className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/80 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-3.5 shadow-xs">
+            <img src="/images/bgrs-emblem-new.png" alt="" className="w-4 h-4 object-contain" />
             <span>{p.subtitle}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-serif uppercase">
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
             {p.title}
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-4 rounded-full"></div>
         </div>
 
         {/* Executive Profile Card Layout */}
-        <div className="bg-gradient-to-b from-slate-50 via-white to-slate-50 rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden p-6 sm:p-10 lg:p-12">
+        <div className="bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden p-6 sm:p-10 lg:p-12 transition-colors duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             
             {/* Left Column: Animated Presidential Photo Showcase (5 cols) */}
@@ -87,11 +87,11 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                   />
 
                   {/* Gradient shadow overlay at bottom of photo */}
-                  <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-slate-950 via-slate-950/75 to-transparent pointer-events-none"></div>
+                  <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent pointer-events-none"></div>
 
                   {/* Top Left: Regional Flag Badge */}
-                  <div className="absolute top-4 left-4 bg-slate-900/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-amber-500/40 flex items-center gap-2 shadow-lg">
-                    <img src="/images/bgrs-official-flag.png" alt="BGRS Flag" className="w-5 h-3.5 object-cover rounded-xs" />
+                  <div className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-amber-500/40 flex items-center gap-2 shadow-lg">
+                    <img src="/images/bgrs-flag-new.png" alt="BGRS Flag" className="w-5 h-3.5 object-cover rounded-xs" />
                     <span className="text-[10px] font-bold text-amber-300 tracking-wider uppercase">
                       {currentPhoto.tag}
                     </span>
@@ -140,7 +140,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                     <p className="text-xs text-amber-400 font-semibold tracking-wider mt-0.5 uppercase drop-shadow-sm">
                       {p.role}
                     </p>
-                    <div className="mt-2 text-[11px] text-slate-300 line-clamp-1 bg-slate-950/70 py-1 px-3 rounded-full border border-slate-800 flex items-center justify-center gap-1.5">
+                    <div className="mt-2 text-[11px] text-slate-300 line-clamp-1 bg-slate-950/80 backdrop-blur-xs py-1 px-3 rounded-full border border-slate-800 flex items-center justify-center gap-1.5 shadow-sm">
                       <MapPin className="w-3 h-3 text-emerald-400 flex-shrink-0" />
                       <span className="truncate">{currentPhoto.caption}</span>
                     </div>
@@ -162,17 +162,17 @@ export function PresidentSection({ content, onOpenSpeeches }) {
 
               </div>
 
-              {/* Thumbnails Navigation Row (5 Photos Selector) */}
+              {/* Thumbnails Navigation Row (Scrollable / Grid for All Real Photos) */}
               <div className="w-full max-w-sm mt-4">
-                <div className="flex items-center justify-between text-[11px] text-slate-500 font-medium mb-1.5 px-1">
+                <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 font-medium mb-1.5 px-1">
                   <span className="flex items-center gap-1">
-                    <Camera className="w-3 h-3 text-emerald-700" />
-                    <span>Official Media Stream</span>
+                    <Camera className="w-3 h-3 text-emerald-700 dark:text-emerald-400" />
+                    <span>Real Media Archive</span>
                   </span>
                   <span className="font-mono text-slate-400">0{activePhotoIdx + 1} / 0{photos.length}</span>
                 </div>
 
-                <div className="grid grid-cols-5 gap-2">
+                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin">
                   {photos.map((item, idx) => {
                     const isSelected = activePhotoIdx === idx;
                     return (
@@ -182,10 +182,10 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                           setActivePhotoIdx(idx);
                           setIsAutoPlaying(false);
                         }}
-                        className={`relative rounded-lg overflow-hidden border-2 transition-all cursor-pointer h-16 bg-slate-900 group/thumb ${
+                        className={`relative flex-shrink-0 w-12 h-14 rounded-lg overflow-hidden border-2 transition-all cursor-pointer bg-slate-900 group/thumb ${
                           isSelected 
                             ? 'border-amber-500 ring-2 ring-amber-400/50 scale-105' 
-                            : 'border-slate-200 opacity-70 hover:opacity-100 hover:border-emerald-600'
+                            : 'border-slate-300 dark:border-slate-700 opacity-70 hover:opacity-100 hover:border-emerald-600'
                         }`}
                         title={item.title}
                       >
@@ -195,7 +195,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                           className="w-full h-full object-cover object-top"
                         />
                         {isSelected && (
-                          <div className="absolute inset-0 bg-amber-500/15 pointer-events-none" />
+                          <div className="absolute inset-0 bg-amber-500/20 pointer-events-none" />
                         )}
                       </button>
                     );
@@ -209,13 +209,13 @@ export function PresidentSection({ content, onOpenSpeeches }) {
             <div className="lg:col-span-7 space-y-6">
               
               {/* Navigation Tabs for President Page */}
-              <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-3">
+              <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
                 <button
                   onClick={() => setActiveTab('vision')}
                   className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold tracking-wide transition-all flex items-center gap-2 cursor-pointer ${
                     activeTab === 'vision' 
-                      ? 'bg-[#0d4a2c] text-white shadow-sm' 
-                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                      ? 'bg-gradient-to-r from-[#0d4a2c] to-[#146039] text-white shadow-sm' 
+                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   <Quote className="w-3.5 h-3.5 text-amber-400" />
@@ -226,8 +226,8 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                   onClick={() => setActiveTab('pillars')}
                   className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold tracking-wide transition-all flex items-center gap-2 cursor-pointer ${
                     activeTab === 'pillars' 
-                      ? 'bg-[#0d4a2c] text-white shadow-sm' 
-                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                      ? 'bg-gradient-to-r from-[#0d4a2c] to-[#146039] text-white shadow-sm' 
+                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   <Layers className="w-3.5 h-3.5 text-amber-400" />
@@ -238,8 +238,8 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                   onClick={() => setActiveTab('gallery')}
                   className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold tracking-wide transition-all flex items-center gap-2 cursor-pointer ${
                     activeTab === 'gallery' 
-                      ? 'bg-[#0d4a2c] text-white shadow-sm' 
-                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                      ? 'bg-gradient-to-r from-[#0d4a2c] to-[#146039] text-white shadow-sm' 
+                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   <Camera className="w-3.5 h-3.5 text-amber-400" />
@@ -250,8 +250,8 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                   onClick={() => setActiveTab('bio')}
                   className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold tracking-wide transition-all flex items-center gap-2 cursor-pointer ${
                     activeTab === 'bio' 
-                      ? 'bg-[#0d4a2c] text-white shadow-sm' 
-                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                      ? 'bg-gradient-to-r from-[#0d4a2c] to-[#146039] text-white shadow-sm' 
+                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   <BookOpen className="w-3.5 h-3.5 text-amber-400" />
@@ -264,47 +264,47 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                 <div className="space-y-6 animate-fade-in">
                   
                   {/* President's Quote Callout */}
-                  <div className="relative bg-gradient-to-br from-amber-50/80 via-white to-emerald-50/50 border-l-4 border-amber-500 p-6 sm:p-8 rounded-r-2xl shadow-xs border-y border-r border-slate-200/80">
+                  <div className="relative bg-gradient-to-br from-amber-50/80 via-white to-emerald-50/50 dark:from-slate-800/80 dark:via-slate-800 dark:to-slate-800/60 border-l-4 border-amber-500 p-6 sm:p-8 rounded-r-2xl shadow-sm border-y border-r border-slate-200/80 dark:border-slate-700">
                     <Quote className="w-12 h-12 text-amber-500/20 absolute top-4 right-4 pointer-events-none" />
-                    <p className="text-lg sm:text-xl italic font-serif text-slate-800 leading-relaxed">
+                    <p className="text-lg sm:text-xl italic font-serif text-slate-800 dark:text-slate-100 leading-relaxed">
                       "{p.quote}"
                     </p>
-                    <div className="mt-5 pt-4 border-t border-slate-200/80 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <img src="/images/bgrs-official-emblem.png" alt="" className="w-7 h-7 object-contain" />
+                    <div className="mt-5 pt-4 border-t border-slate-200/80 dark:border-slate-700 flex items-center justify-between">
+                      <div className="flex items-center gap-2.5">
+                        <img src="/images/bgrs-emblem-new.png" alt="" className="w-8 h-8 object-contain" />
                         <div>
-                          <span className="font-bold text-sm text-slate-900 block">{p.name}</span>
-                          <span className="text-xs text-amber-700 font-semibold">{p.role}</span>
+                          <span className="font-bold text-sm text-slate-900 dark:text-white block">{p.name}</span>
+                          <span className="text-xs text-amber-700 dark:text-amber-400 font-semibold">{p.role}</span>
                         </div>
                       </div>
-                      <img src="/images/bgrs-official-flag.png" alt="" className="w-9 h-6 object-cover rounded shadow-xs border border-slate-200" />
+                      <img src="/images/bgrs-flag-new.png" alt="" className="w-9 h-6 object-cover rounded shadow-xs border border-slate-200 dark:border-slate-700" />
                     </div>
                   </div>
 
                   {/* Bio Excerpt summary */}
-                  <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
                     {p.bioExcerpt}
                   </p>
 
                   {/* 2 Achievement Badges */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="bg-emerald-50/90 border border-emerald-200 p-4 rounded-xl flex items-center gap-3.5 shadow-xs">
-                      <div className="w-11 h-11 rounded-full bg-emerald-800 text-amber-400 flex items-center justify-center flex-shrink-0 shadow-xs">
+                    <div className="bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 p-4 rounded-xl flex items-center gap-3.5 shadow-xs">
+                      <div className="w-11 h-11 rounded-full bg-emerald-800 dark:bg-emerald-700 text-amber-400 flex items-center justify-center flex-shrink-0 shadow-xs">
                         <FileText className="w-5 h-5" />
                       </div>
                       <div>
-                        <div className="text-base font-extrabold text-emerald-950">{p.decreeCount}</div>
-                        <div className="text-xs text-slate-600 font-medium">Reforms & Executive Decrees</div>
+                        <div className="text-base font-extrabold text-emerald-950 dark:text-emerald-300">{p.decreeCount}</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">Reforms & Executive Decrees</div>
                       </div>
                     </div>
 
-                    <div className="bg-amber-50/90 border border-amber-200 p-4 rounded-xl flex items-center gap-3.5 shadow-xs">
+                    <div className="bg-amber-50/90 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 p-4 rounded-xl flex items-center gap-3.5 shadow-xs">
                       <div className="w-11 h-11 rounded-full bg-amber-600 text-white flex items-center justify-center flex-shrink-0 shadow-xs">
                         <Mic className="w-5 h-5" />
                       </div>
                       <div>
-                        <div className="text-base font-extrabold text-amber-950">{p.speechesCount}</div>
-                        <div className="text-xs text-slate-600 font-medium">Policy Addresses & Briefings</div>
+                        <div className="text-base font-extrabold text-amber-950 dark:text-amber-300">{p.speechesCount}</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">Policy Addresses & Briefings</div>
                       </div>
                     </div>
                   </div>
@@ -315,7 +315,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               {/* Tab 2: Key Priorities */}
               {activeTab === 'pillars' && (
                 <div className="space-y-4 animate-fade-in">
-                  <p className="text-xs text-slate-500 uppercase tracking-wider font-bold">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-bold">
                     Strategic Execution Pillars Under President Ashadli Hassan
                   </p>
 
@@ -323,15 +323,15 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                     {p.keyPillars.map((pillar, idx) => (
                       <div 
                         key={idx}
-                        className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs hover:border-emerald-600 hover:shadow-md transition-all group"
+                        className="bg-white dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs hover:border-emerald-600 dark:hover:border-emerald-500 hover:shadow-md transition-all group"
                       >
-                        <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs mb-2 group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
+                        <div className="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 flex items-center justify-center font-bold text-xs mb-2 group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
                           0{idx + 1}
                         </div>
-                        <h4 className="font-bold text-sm text-slate-900 font-serif mb-1 group-hover:text-emerald-800 transition-colors">
+                        <h4 className="font-bold text-sm text-slate-900 dark:text-white font-serif mb-1 group-hover:text-emerald-800 dark:group-hover:text-emerald-400 transition-colors">
                           {pillar.title}
                         </h4>
-                        <p className="text-xs text-slate-600 leading-relaxed">
+                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                           {pillar.desc}
                         </p>
                       </div>
@@ -343,9 +343,9 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               {/* Tab 3: Photo Archive Grid */}
               {activeTab === 'gallery' && (
                 <div className="space-y-4 animate-fade-in">
-                  <p className="text-xs text-slate-500 uppercase tracking-wider font-bold flex items-center justify-between">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-bold flex items-center justify-between">
                     <span>Executive Photographic Documentation</span>
-                    <span className="text-emerald-800">{photos.length} Verified Photos</span>
+                    <span className="text-emerald-800 dark:text-emerald-400 font-bold">{photos.length} Verified Photos</span>
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[380px] overflow-y-auto pr-1">
@@ -356,7 +356,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                           setActivePhotoIdx(idx);
                           setFullscreenPhoto(item);
                         }}
-                        className="p-3 bg-white rounded-xl border border-slate-200 hover:border-amber-500 hover:shadow-md transition-all cursor-pointer flex gap-3 group"
+                        className="p-3 bg-white dark:bg-slate-800/90 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-amber-500 dark:hover:border-amber-400 hover:shadow-md transition-all cursor-pointer flex gap-3 group"
                       >
                         <div className="w-20 h-20 rounded-lg overflow-hidden bg-slate-900 flex-shrink-0">
                           <img 
@@ -367,14 +367,14 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                         </div>
                         <div className="flex-1 flex flex-col justify-between">
                           <div>
-                            <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">
+                            <span className="text-[10px] font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
                               {item.tag}
                             </span>
-                            <h5 className="font-bold text-xs text-slate-900 font-serif mt-1 line-clamp-1 group-hover:text-emerald-800 transition-colors">
+                            <h5 className="font-bold text-xs text-slate-900 dark:text-white font-serif mt-1 line-clamp-1 group-hover:text-emerald-800 dark:group-hover:text-emerald-400 transition-colors">
                               {item.title}
                             </h5>
                           </div>
-                          <div className="text-[11px] text-slate-500 flex items-center gap-1">
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
                             <MapPin className="w-3 h-3 text-slate-400" />
                             <span className="truncate">{item.location}</span>
                           </div>
@@ -387,10 +387,10 @@ export function PresidentSection({ content, onOpenSpeeches }) {
 
               {/* Tab 4: Detailed Biography */}
               {activeTab === 'bio' && (
-                <div className="space-y-4 animate-fade-in text-slate-700 text-sm leading-relaxed">
-                  <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
-                    <h4 className="font-bold text-base text-slate-900 font-serif flex items-center gap-2">
-                      <BookOpen className="w-4 h-4 text-emerald-800" />
+                <div className="space-y-4 animate-fade-in text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                  <div className="bg-slate-50 dark:bg-slate-800/80 p-5 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3">
+                    <h4 className="font-bold text-base text-slate-900 dark:text-white font-serif flex items-center gap-2">
+                      <BookOpen className="w-4 h-4 text-emerald-800 dark:text-emerald-400" />
                       <span>Leadership Record & Public Service</span>
                     </h4>
                     <p>{p.biographyDetails.intro}</p>
@@ -401,11 +401,11 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               )}
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-200">
+              <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                 <a
                   href="#news"
                   onClick={onOpenSpeeches}
-                  className="bg-[#0d4a2c] hover:bg-[#125c38] text-white px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:shadow-emerald-900/30 flex items-center gap-2 cursor-pointer"
+                  className="bg-gradient-to-r from-[#0d4a2c] to-[#146039] hover:from-[#125c38] hover:to-[#1a7a49] text-white px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:shadow-emerald-900/30 flex items-center gap-2 cursor-pointer"
                 >
                   <Mic className="w-4 h-4 text-amber-400" />
                   <span>{p.viewSpeeches}</span>
@@ -414,9 +414,9 @@ export function PresidentSection({ content, onOpenSpeeches }) {
 
                 <a
                   href="#services"
-                  className="bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer"
+                  className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer"
                 >
-                  <Mail className="w-4 h-4 text-emerald-700" />
+                  <Mail className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
                   <span>Message the President</span>
                 </a>
               </div>

@@ -10,7 +10,7 @@ export function HeroBanner({ content, onSelectNews }) {
     if (isPaused) return;
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6500);
+    }, 6000);
     return () => clearInterval(interval);
   }, [isPaused, slides.length]);
 
@@ -19,14 +19,14 @@ export function HeroBanner({ content, onSelectNews }) {
 
   return (
     <section 
-      className="relative bg-slate-900 text-white overflow-hidden"
+      className="relative bg-slate-950 text-white overflow-hidden border-b border-emerald-950/60"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background Decorative Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-slate-900 to-slate-950 opacity-95 z-0" />
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Background Decorative Gradient & Ambience */}
+      <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-slate-950 to-slate-900 opacity-95 z-0" />
+      <div className="absolute -top-32 -right-32 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Slide Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
@@ -35,16 +35,16 @@ export function HeroBanner({ content, onSelectNews }) {
           {/* Left Column: Headlines & Actions */}
           <div className="lg:col-span-7 space-y-6">
             
-            <div className="inline-flex items-center gap-2.5 bg-emerald-950/80 border border-emerald-600/70 px-4 py-1.5 rounded-full text-xs font-bold text-emerald-200 backdrop-blur-md shadow-lg">
-              <img src="/images/bgrs-official-flag.png" alt="BGRS Flag" className="w-5 h-3.5 object-cover rounded-xs shadow-xs" />
+            <div className="inline-flex items-center gap-2.5 bg-emerald-950/90 border border-emerald-500/60 px-4 py-1.5 rounded-full text-xs font-bold text-emerald-200 backdrop-blur-md shadow-lg">
+              <img src="/images/bgrs-flag-new.png" alt="BGRS Flag" className="w-5 h-3.5 object-cover rounded shadow-xs" />
               <span>{content.hero.badge}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white font-serif">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white font-serif transition-all duration-500">
               {slides[currentSlide].headline}
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-light">
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-light transition-all duration-500">
               {slides[currentSlide].subheadline}
             </p>
 
@@ -52,7 +52,7 @@ export function HeroBanner({ content, onSelectNews }) {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
                 href="#president"
-                className="bg-amber-500 hover:bg-amber-400 text-slate-950 px-6 py-3 rounded font-bold text-sm uppercase tracking-wider transition-all shadow-lg hover:shadow-amber-500/25 flex items-center gap-2"
+                className="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg hover:shadow-amber-500/25 flex items-center gap-2 ring-1 ring-amber-300/40"
               >
                 <span>{slides[currentSlide].actionPrimary}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -60,7 +60,7 @@ export function HeroBanner({ content, onSelectNews }) {
 
               <a
                 href="#initiatives"
-                className="bg-slate-800/80 hover:bg-slate-700 text-white border border-slate-600 px-6 py-3 rounded font-semibold text-sm transition-all backdrop-blur-xs flex items-center gap-2"
+                className="bg-slate-800/80 hover:bg-slate-700/80 text-white border border-slate-600 px-6 py-3 rounded-lg font-semibold text-xs sm:text-sm transition-all backdrop-blur-xs flex items-center gap-2"
               >
                 <span>{slides[currentSlide].actionSecondary}</span>
               </a>
@@ -71,90 +71,80 @@ export function HeroBanner({ content, onSelectNews }) {
               <div className="flex items-center gap-2">
                 <button
                   onClick={prevSlide}
-                  className="p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                  className="p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors cursor-pointer"
                   aria-label="Previous Slide"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                  className="p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors cursor-pointer"
                   aria-label="Next Slide"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
 
-              {/* Dots */}
+              {/* Slide Dots */}
               <div className="flex items-center gap-2">
                 {slides.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentSlide(idx)}
-                    className={`h-2 rounded-full transition-all ${
-                      currentSlide === idx ? 'w-8 bg-amber-400' : 'w-2 bg-slate-600 hover:bg-slate-400'
+                    className={`h-2 rounded-full transition-all cursor-pointer ${
+                      currentSlide === idx ? 'w-8 bg-amber-400 shadow-xs' : 'w-2 bg-slate-600 hover:bg-slate-400'
                     }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}
               </div>
 
-              <span className="text-xs text-slate-400 font-mono ml-auto">
+              <span className="text-xs text-slate-400 font-mono">
                 0{currentSlide + 1} / 0{slides.length}
               </span>
             </div>
-
           </div>
 
-          {/* Right Column: High Profile Visual Card */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md">
+          {/* Right Column: Hero Visual with Real Image & Border Frame */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative mx-auto max-w-md rounded-2xl overflow-hidden border-2 border-amber-500/40 shadow-2xl bg-slate-900 group">
+              <img
+                src={slides[currentSlide].image}
+                alt={slides[currentSlide].alt}
+                className="w-full h-80 sm:h-96 object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
               
-              {/* Outer Golden Glow Border */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-amber-500 to-emerald-600 rounded-2xl blur-xs opacity-50"></div>
-              
-              <div 
-                key={currentSlide}
-                className="relative bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-slate-700/80 animate-fade-in"
-              >
-                <img 
-                  src={slides[currentSlide].image} 
-                  alt={slides[currentSlide].alt}
-                  className="w-full h-80 sm:h-96 object-cover object-top transition-all duration-700 hover:scale-105"
-                />
-                
-                {/* Floating Caption Overlay */}
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent p-5">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span className="text-[11px] font-bold tracking-widest text-emerald-400 uppercase">
-                      Official Archive
-                    </span>
-                  </div>
-                  <h4 className="text-sm font-bold text-white font-serif line-clamp-2">
-                    {slides[currentSlide].alt}
-                  </h4>
+              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/80 backdrop-blur-md p-3.5 rounded-xl border border-slate-700/80">
+                <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>{content.hero.tag}</span>
+                </div>
+                <div className="text-xs text-slate-300 font-medium line-clamp-1">
+                  {slides[currentSlide].alt}
                 </div>
               </div>
-
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* Breaking News Ticker (Below Hero) */}
-      <div className="relative z-10 bg-[#082216] border-y border-emerald-800 text-slate-200 py-2.5 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center gap-3 text-xs sm:text-sm">
-          <div className="flex items-center gap-1.5 bg-amber-600 text-slate-950 font-black px-2.5 py-1 rounded text-[11px] uppercase tracking-wider flex-shrink-0">
-            <BellRing className="w-3.5 h-3.5 animate-bounce" />
+      {/* Live Official Briefing Ticker Bar */}
+      <div className="bg-slate-950 border-t border-slate-800 text-xs py-2.5 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex items-center gap-3">
+          <div className="flex-shrink-0 flex items-center gap-1.5 bg-red-600 text-white px-2.5 py-0.5 rounded font-black tracking-wider text-[10px] uppercase shadow-xs">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+            </span>
             <span>{content.hero.tickerLabel}</span>
           </div>
-
+          
           <div className="overflow-hidden whitespace-nowrap flex-1">
-            <p className="animate-marquee inline-block font-medium text-emerald-100">
+            <div className="inline-block animate-marquee text-slate-300 text-xs font-medium">
               {content.hero.tickerText}
-            </p>
+            </div>
           </div>
         </div>
       </div>
