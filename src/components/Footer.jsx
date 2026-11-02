@@ -1,200 +1,87 @@
-import React, { useState } from 'react';
-import { Shield, ExternalLink, ArrowRight, Check, Heart, Mail, Sparkles } from 'lucide-react';
+import React from 'react';
+import { Shield, ExternalLink } from 'lucide-react';
 
 export function Footer({ content }) {
   const f = content.footer;
-  const [emailSub, setEmailSub] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (!emailSub) return;
-    setSubscribed(true);
-    setTimeout(() => {
-      setEmailSub('');
-    }, 2000);
-  };
 
   return (
-    <footer className="bg-slate-950 text-slate-300 pt-16 border-t-4 border-amber-500">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+    <footer className="bg-slate-950 text-slate-400 border-t-2 border-emerald-800/80 transition-colors duration-300">
+      {/* Sleek, Non-Bulky Ministerial Footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-850">
           
-          {/* Col 1: Emblem + About (5 Cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
-              <img src="/images/bgrs-emblem-new.png" alt="BGRS Official Emblem" className="w-16 h-16 object-contain" />
-              <img src="/images/bgrs-flag-new.png" alt="BGRS Official Flag" className="w-12 h-8 object-cover rounded shadow-xs border border-slate-700 hidden sm:block" />
-              <div>
-                <h3 className="text-white font-bold font-serif text-lg leading-tight uppercase">
-                  {content.meta.region}
-                </h3>
-                <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider mt-0.5">
-                  {content.meta.office}
-                </p>
+          {/* Identity & Seal */}
+          <div className="flex items-center gap-3 text-center md:text-left">
+            <img 
+              src="/images/bgrs-emblem-new.png" 
+              alt="BGRS Emblem" 
+              className="w-11 h-11 object-contain drop-shadow-sm" 
+            />
+            <div>
+              <div className="text-white font-bold font-serif text-sm tracking-wide uppercase">
+                {content.meta.region}
               </div>
-            </div>
-
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed font-light">
-              {f.aboutText}
-            </p>
-
-            {/* Newsletter Subscription */}
-            <div className="pt-2">
-              <div className="text-xs font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-amber-400" />
-                <span>Subscribe to Executive Press Releases</span>
+              <div className="text-amber-400 text-xs font-medium">
+                {content.meta.office} • {content.meta.hq}
               </div>
-              {subscribed ? (
-                <div className="bg-emerald-950 border border-emerald-500 text-emerald-300 text-xs py-2 px-3 rounded-lg flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  <span>Subscribed to regional press dispatches!</span>
-                </div>
-              ) : (
-                <form onSubmit={handleSubscribe} className="flex gap-2">
-                  <input 
-                    type="email" 
-                    required
-                    value={emailSub}
-                    onChange={(e) => setEmailSub(e.target.value)}
-                    placeholder="Enter official email..."
-                    className="bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-xs text-white placeholder-slate-500 flex-1 focus:outline-hidden focus:border-amber-400"
-                  />
-                  <button 
-                    type="submit"
-                    className="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-xs px-4 py-2 rounded-lg transition-colors cursor-pointer uppercase tracking-wider"
-                  >
-                    Join
-                  </button>
-                </form>
-              )}
             </div>
           </div>
 
-          {/* Col 2: Quick Links (3 Cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-white font-bold text-xs uppercase tracking-wider font-serif border-b border-slate-800 pb-2">
-              {f.quickLinks}
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <a href="#president" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3 h-3 text-emerald-500" />
-                  <span>{content.nav.president}</span>
-                </a>
-              </li>
-              <li>
-                <a href="#initiatives" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3 h-3 text-emerald-500" />
-                  <span>{content.nav.initiatives}</span>
-                </a>
-              </li>
-              <li>
-                <a href="#news" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3 h-3 text-emerald-500" />
-                  <span>{content.nav.news}</span>
-                </a>
-              </li>
-              <li>
-                <a href="#administration" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3 h-3 text-emerald-500" />
-                  <span>{content.nav.administration}</span>
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3 h-3 text-emerald-500" />
-                  <span>{content.nav.services}</span>
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3 h-3 text-emerald-500" />
-                  <span>{content.nav.contact}</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Inline Navigation Links */}
+          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-slate-300">
+            <a href="#home" className="hover:text-amber-400 transition-colors">{content.nav.home}</a>
+            <a href="#president" className="hover:text-amber-400 transition-colors">{content.nav.president}</a>
+            <a href="#initiatives" className="hover:text-amber-400 transition-colors">{content.nav.initiatives}</a>
+            <a href="#news" className="hover:text-amber-400 transition-colors">{content.nav.news}</a>
+            <a href="#administration" className="hover:text-amber-400 transition-colors">{content.nav.administration}</a>
+            <a href="#services" className="hover:text-amber-400 transition-colors">{content.nav.services}</a>
+            <a href="#contact" className="hover:text-amber-400 transition-colors">{content.nav.contact}</a>
+          </nav>
 
-          {/* Col 3: Federal Governmental Links (4 Cols) */}
-          <div className="lg:col-span-4 space-y-3">
-            <h4 className="text-white font-bold text-xs uppercase tracking-wider font-serif border-b border-slate-800 pb-2">
-              {f.federalLinks}
-            </h4>
-            <ul className="space-y-2.5 text-xs">
-              <li>
-                <a 
-                  href="https://www.pmo.gov.et" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-amber-400 transition-colors flex items-center justify-between text-slate-400 hover:text-white group"
-                >
-                  <span>Prime Minister's Office (pmo.gov.et)</span>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400" />
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://www.ena.et" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-amber-400 transition-colors flex items-center justify-between text-slate-400 hover:text-white group"
-                >
-                  <span>Ethiopian News Agency (ENA)</span>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400" />
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://nbe.gov.et" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-amber-400 transition-colors flex items-center justify-between text-slate-400 hover:text-white group"
-                >
-                  <span>National Bank of Ethiopia (NBE)</span>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400" />
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://mowr.gov.et" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-amber-400 transition-colors flex items-center justify-between text-slate-400 hover:text-white group"
-                >
-                  <span>Ministry of Water & Energy (GERD Coordination)</span>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400" />
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://moa.gov.et" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-amber-400 transition-colors flex items-center justify-between text-slate-400 hover:text-white group"
-                >
-                  <span>Ministry of Agriculture</span>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400" />
-                </a>
-              </li>
-            </ul>
+          {/* Federal Portals Links */}
+          <div className="flex items-center gap-4 text-xs">
+            <a 
+              href="https://www.pmo.gov.et" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-white text-slate-400 transition-colors flex items-center gap-1 group"
+              title="Office of the Prime Minister of Ethiopia"
+            >
+              <span>PMO Ethiopia</span>
+              <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-amber-400" />
+            </a>
+            <span className="text-slate-700">•</span>
+            <a 
+              href="https://www.ena.et" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-white text-slate-400 transition-colors flex items-center gap-1 group"
+            >
+              <span>ENA</span>
+              <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-amber-400" />
+            </a>
+            <span className="text-slate-700">•</span>
+            <a 
+              href="https://nbe.gov.et" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-white text-slate-400 transition-colors flex items-center gap-1 group"
+            >
+              <span>NBE</span>
+              <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-amber-400" />
+            </a>
           </div>
 
         </div>
 
-      </div>
-
-      {/* Bottom Legal, Design & Copyright Ribbon */}
-      <div className="bg-black py-4 px-4 sm:px-6 lg:px-8 border-t border-slate-900 text-[11px] text-slate-500">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+        {/* Bottom Legal / Copyright Strip */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500 text-center sm:text-left">
           <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-emerald-500" />
-            <span>{f.copyright}</span>
+            <Shield className="w-3.5 h-3.5 text-emerald-500" />
+            <span>© 2026 Office of the President, Benishangul Gumuz Regional State. All rights reserved.</span>
           </div>
-
-          <div className="text-slate-400">
-            {f.designedNotice}
+          <div className="text-slate-500">
+            Official Portal • Assosa, Ethiopia
           </div>
         </div>
       </div>

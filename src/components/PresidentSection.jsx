@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Quote, FileText, Mic, Award, CheckCircle2, ChevronRight, ChevronLeft,
-  Mail, Calendar, Shield, Building2, Sparkles, BookOpen, Layers,
-  Maximize2, X, Camera, MapPin, Eye, Play, Pause
+  Quote, FileText, Mic, ChevronRight, ChevronLeft,
+  Mail, BookOpen, Layers, Maximize2, X, Camera, MapPin, Play, Pause, Sparkles
 } from 'lucide-react';
 
 export function PresidentSection({ content, onOpenSpeeches }) {
@@ -36,42 +35,34 @@ export function PresidentSection({ content, onOpenSpeeches }) {
   const currentPhoto = photos[activePhotoIdx] || photos[0];
 
   return (
-    <section id="president" className="py-20 sm:py-28 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-300">
-      {/* Background regional watermark */}
-      <div className="absolute -right-20 top-1/2 -translate-y-1/2 opacity-[0.03] dark:opacity-[0.05] pointer-events-none select-none">
-        <img src="/images/bgrs-emblem-new.png" alt="" className="w-[800px] h-[800px] object-contain" />
-      </div>
-
+    <section id="president" className="py-12 sm:py-16 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/80 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-3.5 shadow-xs">
-            <img src="/images/bgrs-emblem-new.png" alt="" className="w-4 h-4 object-contain" />
+        {/* Section Header - Crisp & Concise */}
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-1.5 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest mb-2.5">
+            <Sparkles className="w-3 h-3 text-amber-500" />
             <span>{p.subtitle}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
+          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
             {p.title}
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-4 rounded-full"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
         </div>
 
-        {/* Executive Profile Card Layout */}
-        <div className="bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden p-6 sm:p-10 lg:p-12 transition-colors duration-300">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        {/* Executive Profile Layout (Inspired by US Embassy & PMO Ethiopia) */}
+        <div className="bg-slate-50/80 dark:bg-slate-900/80 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 lg:p-10 transition-colors duration-300">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             
-            {/* Left Column: Animated Presidential Photo Showcase (5 cols) */}
+            {/* Left Column: Dignified Portrait & Compact Thumbnails (5 cols) */}
             <div 
               className="lg:col-span-5 flex flex-col items-center"
               onMouseEnter={() => setIsAutoPlaying(false)}
               onMouseLeave={() => setIsAutoPlaying(true)}
             >
-              
-              {/* Main Portrait Frame with Golden Border & Animations */}
-              <div className="relative group w-full max-w-sm rounded-2xl overflow-hidden border-2 border-amber-500/80 shadow-2xl bg-slate-950">
-                
-                {/* Active Photo Container with Smooth Fade & Scale Transition */}
-                <div className="relative h-[480px] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
+              {/* Portrait Frame */}
+              <div className="relative group w-full max-w-sm rounded-xl overflow-hidden border border-amber-500/60 shadow-xl bg-slate-950">
+                <div className="relative h-[420px] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
                   {currentPhoto && (
                     <img 
                       key={currentPhoto.id}
@@ -81,66 +72,64 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                     />
                   )}
 
-                  {/* Gradient shadow overlay at bottom of photo */}
-                  <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent pointer-events-none"></div>
+                  {/* Subtle bottom shadow overlay */}
+                  <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent pointer-events-none"></div>
 
-                  {/* Top Left: Regional Flag Badge */}
+                  {/* Top Badge */}
                   {currentPhoto && (
-                    <div className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-amber-500/40 flex items-center gap-2 shadow-lg">
-                      <img src="/images/bgrs-flag-new.png" alt="BGRS Flag" className="w-5 h-3.5 object-cover rounded-xs" />
+                    <div className="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-xs px-2.5 py-1 rounded-full border border-amber-500/40 flex items-center gap-1.5 shadow-sm">
+                      <img src="/images/bgrs-flag-new.png" alt="BGRS Flag" className="w-4 h-2.5 object-cover rounded-xs" />
                       <span className="text-[10px] font-bold text-amber-300 tracking-wider uppercase">
                         {currentPhoto.tag}
                       </span>
                     </div>
                   )}
 
-                  {/* Top Right: Fullscreen Expand & Auto-Play indicator */}
-                  <div className="absolute top-4 right-4 flex items-center gap-1.5">
+                  {/* Controls */}
+                  <div className="absolute top-3 right-3 flex items-center gap-1">
                     <button
                       onClick={() => setFullscreenPhoto(currentPhoto)}
-                      className="bg-slate-900/80 hover:bg-emerald-800 text-white p-2 rounded-full border border-slate-700 transition-colors shadow-lg cursor-pointer"
-                      title="View High-Resolution Photo"
-                      aria-label="View Fullscreen"
+                      className="bg-slate-900/80 hover:bg-emerald-800 text-white p-1.5 rounded-full border border-slate-700 transition-colors cursor-pointer"
+                      title="View High-Resolution"
                     >
                       <Maximize2 className="w-3.5 h-3.5" />
                     </button>
                     <button
                       onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                      className="bg-slate-900/80 hover:bg-slate-800 text-slate-300 p-2 rounded-full border border-slate-700 transition-colors shadow-lg cursor-pointer"
-                      title={isAutoPlaying ? "Pause Slideshow" : "Resume Slideshow"}
-                      aria-label="Toggle autoplay"
+                      className="bg-slate-900/80 hover:bg-slate-800 text-slate-300 p-1.5 rounded-full border border-slate-700 transition-colors cursor-pointer"
+                      title={isAutoPlaying ? "Pause" : "Play"}
                     >
                       {isAutoPlaying ? <Pause className="w-3.5 h-3.5 text-amber-400" /> : <Play className="w-3.5 h-3.5 text-emerald-400" />}
                     </button>
                   </div>
 
-                  {/* Manual Arrow Controls (Overlay) */}
+                  {/* Arrows */}
                   <button
                     onClick={prevPhoto}
-                    className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/70 hover:bg-amber-500 hover:text-slate-950 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-lg cursor-pointer"
-                    aria-label="Previous Photo"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-slate-900/70 hover:bg-amber-500 hover:text-slate-950 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-md cursor-pointer"
+                    aria-label="Previous"
                   >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="w-4 h-4" />
                   </button>
 
                   <button
                     onClick={nextPhoto}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/70 hover:bg-amber-500 hover:text-slate-950 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-lg cursor-pointer"
-                    aria-label="Next Photo"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-slate-900/70 hover:bg-amber-500 hover:text-slate-950 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-md cursor-pointer"
+                    aria-label="Next"
                   >
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-4 h-4" />
                   </button>
 
-                  {/* Dynamic Caption on Bottom */}
+                  {/* Caption on Photo */}
                   {currentPhoto && (
-                    <div className="absolute bottom-4 inset-x-4 text-center z-10">
-                      <h3 className="text-xl sm:text-2xl font-black text-white font-serif tracking-wide drop-shadow-md">
+                    <div className="absolute bottom-3 inset-x-3 text-center z-10">
+                      <h3 className="text-lg sm:text-xl font-bold text-white font-serif tracking-wide drop-shadow-sm">
                         {p.name}
                       </h3>
-                      <p className="text-xs text-amber-400 font-semibold tracking-wider mt-0.5 uppercase drop-shadow-sm">
+                      <p className="text-[11px] text-amber-400 font-semibold tracking-wider uppercase mt-0.5">
                         {p.role}
                       </p>
-                      <div className="mt-2 text-[11px] text-slate-300 line-clamp-1 bg-slate-950/80 backdrop-blur-xs py-1 px-3 rounded-full border border-slate-800 flex items-center justify-center gap-1.5 shadow-sm">
+                      <div className="mt-1.5 text-[10px] text-slate-300 truncate bg-slate-950/80 py-0.5 px-2.5 rounded-full border border-slate-800 inline-flex items-center gap-1 max-w-full">
                         <MapPin className="w-3 h-3 text-emerald-400 flex-shrink-0" />
                         <span className="truncate">{currentPhoto.caption}</span>
                       </div>
@@ -148,31 +137,20 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                   )}
                 </div>
 
-                {/* Animated Auto-Play Progress Bar */}
+                {/* Progress Line */}
                 {isAutoPlaying && (
-                  <div className="w-full bg-slate-800 h-1 overflow-hidden">
+                  <div className="w-full bg-slate-800 h-0.5 overflow-hidden">
                     <div 
                       key={activePhotoIdx}
-                      className="bg-gradient-to-r from-amber-400 to-emerald-500 h-full w-full"
-                      style={{
-                        animation: 'marquee 5s linear infinite'
-                      }}
+                      className="bg-amber-400 h-full w-full"
+                      style={{ animation: 'marquee 5s linear infinite' }}
                     />
                   </div>
                 )}
-
               </div>
 
-              {/* Thumbnails Navigation Row (Clean 4 Photos Grid) */}
-              <div className="w-full max-w-sm mt-4">
-                <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 font-medium mb-2 px-1">
-                  <span className="flex items-center gap-1.5 font-bold">
-                    <Camera className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
-                    <span>Real Media Archive</span>
-                  </span>
-                  <span className="font-mono text-slate-400 font-bold">0{activePhotoIdx + 1} / 0{photos.length}</span>
-                </div>
-
+              {/* 4 Clean Thumbnails */}
+              <div className="w-full max-w-sm mt-3">
                 <div className="grid grid-cols-4 gap-2">
                   {photos.map((item, idx) => {
                     const isSelected = activePhotoIdx === idx;
@@ -183,9 +161,9 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                           setActivePhotoIdx(idx);
                           setIsAutoPlaying(false);
                         }}
-                        className={`relative rounded-xl overflow-hidden border-2 transition-all cursor-pointer h-16 bg-slate-900 group/thumb ${
+                        className={`relative rounded-lg overflow-hidden border transition-all cursor-pointer h-14 bg-slate-900 ${
                           isSelected 
-                            ? 'border-amber-500 ring-2 ring-amber-400/50 scale-105 shadow-md' 
+                            ? 'border-amber-400 ring-2 ring-amber-400/40 scale-102 shadow-xs' 
                             : 'border-slate-300 dark:border-slate-700 opacity-75 hover:opacity-100 hover:border-emerald-600'
                         }`}
                         title={item.title}
@@ -195,144 +173,109 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                           alt={item.title} 
                           className="w-full h-full object-cover object-top"
                         />
-                        {isSelected && (
-                          <div className="absolute inset-0 bg-amber-500/20 pointer-events-none" />
-                        )}
                       </button>
                     );
                   })}
                 </div>
               </div>
-
             </div>
 
-            {/* Right Column: Tabbed Content, Vision, Biography, Key Pillars (7 cols) */}
-            <div className="lg:col-span-7 space-y-6">
+            {/* Right Column: Executive Overview & Tabs (7 cols) */}
+            <div className="lg:col-span-7 space-y-5">
               
-              {/* Navigation Tabs for President Page */}
-              <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
-                <button
-                  onClick={() => setActiveTab('vision')}
-                  className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold tracking-wide transition-all flex items-center gap-2 cursor-pointer ${
-                    activeTab === 'vision' 
-                      ? 'bg-gradient-to-r from-[#0d4a2c] to-[#146039] text-white shadow-sm' 
-                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
-                  }`}
-                >
-                  <Quote className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Executive Vision</span>
-                </button>
-
-                <button
-                  onClick={() => setActiveTab('pillars')}
-                  className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold tracking-wide transition-all flex items-center gap-2 cursor-pointer ${
-                    activeTab === 'pillars' 
-                      ? 'bg-gradient-to-r from-[#0d4a2c] to-[#146039] text-white shadow-sm' 
-                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
-                  }`}
-                >
-                  <Layers className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Key Priorities</span>
-                </button>
-
-                <button
-                  onClick={() => setActiveTab('gallery')}
-                  className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold tracking-wide transition-all flex items-center gap-2 cursor-pointer ${
-                    activeTab === 'gallery' 
-                      ? 'bg-gradient-to-r from-[#0d4a2c] to-[#146039] text-white shadow-sm' 
-                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
-                  }`}
-                >
-                  <Camera className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Photo Archive ({photos.length})</span>
-                </button>
-
-                <button
-                  onClick={() => setActiveTab('bio')}
-                  className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold tracking-wide transition-all flex items-center gap-2 cursor-pointer ${
-                    activeTab === 'bio' 
-                      ? 'bg-gradient-to-r from-[#0d4a2c] to-[#146039] text-white shadow-sm' 
-                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
-                  }`}
-                >
-                  <BookOpen className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Biography</span>
-                </button>
+              {/* Dignified Header Badge */}
+              <div className="border-b border-slate-200 dark:border-slate-800 pb-3 flex items-center justify-between">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-serif">
+                    {p.name}
+                  </h3>
+                  <p className="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase tracking-wide">
+                    {p.role}
+                  </p>
+                </div>
+                <img src="/images/bgrs-emblem-new.png" alt="" className="w-10 h-10 object-contain" />
               </div>
 
-              {/* Tab 1: Executive Vision */}
+              {/* Navigation Tabs - Clean & Non-Bulky */}
+              <div className="flex flex-wrap items-center gap-1.5">
+                {[
+                  { id: 'vision', label: 'Executive Vision', icon: Quote },
+                  { id: 'pillars', label: 'Key Priorities', icon: Layers },
+                  { id: 'gallery', label: `Photos (${photos.length})`, icon: Camera },
+                  { id: 'bio', label: 'Biography', icon: BookOpen },
+                ].map((tab) => {
+                  const Icon = tab.icon;
+                  const isActive = activeTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+                        isActive 
+                          ? 'bg-emerald-800 text-white shadow-xs' 
+                          : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
+                      }`}
+                    >
+                      <Icon className="w-3.5 h-3.5 text-amber-400" />
+                      <span>{tab.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Tab 1: Vision */}
               {activeTab === 'vision' && (
-                <div className="space-y-6 animate-fade-in">
-                  
-                  {/* President's Quote Callout */}
-                  <div className="relative bg-gradient-to-br from-amber-50/80 via-white to-emerald-50/50 dark:from-slate-800/80 dark:via-slate-800 dark:to-slate-800/60 border-l-4 border-amber-500 p-6 sm:p-8 rounded-r-2xl shadow-sm border-y border-r border-slate-200/80 dark:border-slate-700">
-                    <Quote className="w-12 h-12 text-amber-500/20 absolute top-4 right-4 pointer-events-none" />
-                    <p className="text-lg sm:text-xl italic font-serif text-slate-800 dark:text-slate-100 leading-relaxed">
+                <div className="space-y-4 animate-fade-in">
+                  <div className="relative bg-white dark:bg-slate-800/80 border-l-4 border-amber-500 p-5 rounded-r-xl shadow-xs border-y border-r border-slate-200 dark:border-slate-700">
+                    <p className="text-base sm:text-lg italic font-serif text-slate-800 dark:text-slate-100 leading-relaxed">
                       "{p.quote}"
                     </p>
-                    <div className="mt-5 pt-4 border-t border-slate-200/80 dark:border-slate-700 flex items-center justify-between">
-                      <div className="flex items-center gap-2.5">
-                        <img src="/images/bgrs-emblem-new.png" alt="" className="w-8 h-8 object-contain" />
-                        <div>
-                          <span className="font-bold text-sm text-slate-900 dark:text-white block">{p.name}</span>
-                          <span className="text-xs text-amber-700 dark:text-amber-400 font-semibold">{p.role}</span>
-                        </div>
-                      </div>
-                      <img src="/images/bgrs-flag-new.png" alt="" className="w-9 h-6 object-cover rounded shadow-xs border border-slate-200 dark:border-slate-700" />
-                    </div>
                   </div>
 
-                  {/* Bio Excerpt summary */}
-                  <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
                     {p.bioExcerpt}
                   </p>
 
-                  {/* 2 Achievement Badges */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 p-4 rounded-xl flex items-center gap-3.5 shadow-xs">
-                      <div className="w-11 h-11 rounded-full bg-emerald-800 dark:bg-emerald-700 text-amber-400 flex items-center justify-center flex-shrink-0 shadow-xs">
-                        <FileText className="w-5 h-5" />
+                  <div className="grid grid-cols-2 gap-3 pt-1">
+                    <div className="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 p-3 rounded-lg flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-emerald-800 text-amber-400 flex items-center justify-center flex-shrink-0">
+                        <FileText className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-base font-extrabold text-emerald-950 dark:text-emerald-300">{p.decreeCount}</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">Reforms & Executive Decrees</div>
+                        <div className="text-sm font-bold text-emerald-950 dark:text-emerald-300">{p.decreeCount}</div>
+                        <div className="text-[10px] text-slate-600 dark:text-slate-400">Executive Decrees</div>
                       </div>
                     </div>
 
-                    <div className="bg-amber-50/90 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 p-4 rounded-xl flex items-center gap-3.5 shadow-xs">
-                      <div className="w-11 h-11 rounded-full bg-amber-600 text-white flex items-center justify-center flex-shrink-0 shadow-xs">
-                        <Mic className="w-5 h-5" />
+                    <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 p-3 rounded-lg flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center flex-shrink-0">
+                        <Mic className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-base font-extrabold text-amber-950 dark:text-amber-300">{p.speechesCount}</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">Policy Addresses & Briefings</div>
+                        <div className="text-sm font-bold text-amber-950 dark:text-amber-300">{p.speechesCount}</div>
+                        <div className="text-[10px] text-slate-600 dark:text-slate-400">Policy Briefings</div>
                       </div>
                     </div>
                   </div>
-
                 </div>
               )}
 
               {/* Tab 2: Key Priorities */}
               {activeTab === 'pillars' && (
-                <div className="space-y-4 animate-fade-in">
-                  <p className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-bold">
-                    Strategic Execution Pillars Under President Ashadli Hassan
-                  </p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-3 animate-fade-in">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {p.keyPillars.map((pillar, idx) => (
                       <div 
                         key={idx}
-                        className="bg-white dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs hover:border-emerald-600 dark:hover:border-emerald-500 hover:shadow-md transition-all group"
+                        className="bg-white dark:bg-slate-800/80 p-3.5 rounded-lg border border-slate-200 dark:border-slate-700 shadow-xs"
                       >
-                        <div className="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 flex items-center justify-center font-bold text-xs mb-2 group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
-                          0{idx + 1}
+                        <div className="text-xs font-bold text-emerald-700 dark:text-emerald-400 mb-1 flex items-center gap-1.5">
+                          <span className="w-5 h-5 rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 flex items-center justify-center text-[10px] font-black">
+                            {idx + 1}
+                          </span>
+                          <span>{pillar.title}</span>
                         </div>
-                        <h4 className="font-bold text-sm text-slate-900 dark:text-white font-serif mb-1 group-hover:text-emerald-800 dark:group-hover:text-emerald-400 transition-colors">
-                          {pillar.title}
-                        </h4>
-                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
                           {pillar.desc}
                         </p>
                       </div>
@@ -341,15 +284,10 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                 </div>
               )}
 
-              {/* Tab 3: Photo Archive Grid */}
+              {/* Tab 3: Photo Archive */}
               {activeTab === 'gallery' && (
-                <div className="space-y-4 animate-fade-in">
-                  <p className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-bold flex items-center justify-between">
-                    <span>Executive Photographic Documentation</span>
-                    <span className="text-emerald-800 dark:text-emerald-400 font-bold">{photos.length} Verified Photos</span>
-                  </p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[380px] overflow-y-auto pr-1">
+                <div className="space-y-3 animate-fade-in">
+                  <div className="grid grid-cols-2 gap-2.5">
                     {photos.map((item, idx) => (
                       <div 
                         key={item.id}
@@ -357,28 +295,25 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                           setActivePhotoIdx(idx);
                           setFullscreenPhoto(item);
                         }}
-                        className="p-3 bg-white dark:bg-slate-800/90 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-amber-500 dark:hover:border-amber-400 hover:shadow-md transition-all cursor-pointer flex gap-3 group"
+                        className="p-2.5 bg-white dark:bg-slate-800/80 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-amber-500 transition-all cursor-pointer flex gap-2.5 items-center group"
                       >
-                        <div className="w-20 h-20 rounded-lg overflow-hidden bg-slate-900 flex-shrink-0">
+                        <div className="w-14 h-14 rounded-md overflow-hidden bg-slate-900 flex-shrink-0">
                           <img 
                             src={item.url} 
                             alt={item.title} 
-                            className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300"
+                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform"
                           />
                         </div>
-                        <div className="flex-1 flex flex-col justify-between">
-                          <div>
-                            <span className="text-[10px] font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
-                              {item.tag}
-                            </span>
-                            <h5 className="font-bold text-xs text-slate-900 dark:text-white font-serif mt-1 line-clamp-1 group-hover:text-emerald-800 dark:group-hover:text-emerald-400 transition-colors">
-                              {item.title}
-                            </h5>
-                          </div>
-                          <div className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                            <MapPin className="w-3 h-3 text-slate-400" />
-                            <span className="truncate">{item.location}</span>
-                          </div>
+                        <div className="min-w-0 flex-1">
+                          <span className="text-[9px] font-bold text-emerald-800 dark:text-emerald-300 uppercase block truncate">
+                            {item.tag}
+                          </span>
+                          <h5 className="font-bold text-xs text-slate-900 dark:text-white truncate">
+                            {item.title}
+                          </h5>
+                          <span className="text-[10px] text-slate-500 dark:text-slate-400 truncate block">
+                            {item.location}
+                          </span>
                         </div>
                       </div>
                     ))}
@@ -386,38 +321,33 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                 </div>
               )}
 
-              {/* Tab 4: Detailed Biography */}
+              {/* Tab 4: Biography */}
               {activeTab === 'bio' && (
-                <div className="space-y-4 animate-fade-in text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
-                  <div className="bg-slate-50 dark:bg-slate-800/80 p-5 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3">
-                    <h4 className="font-bold text-base text-slate-900 dark:text-white font-serif flex items-center gap-2">
-                      <BookOpen className="w-4 h-4 text-emerald-800 dark:text-emerald-400" />
-                      <span>Leadership Record & Public Service</span>
-                    </h4>
+                <div className="space-y-3 animate-fade-in text-slate-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  <div className="bg-white dark:bg-slate-800/80 p-4 rounded-lg border border-slate-200 dark:border-slate-700 space-y-2">
                     <p>{p.biographyDetails.intro}</p>
                     <p>{p.biographyDetails.career}</p>
-                    <p>{p.biographyDetails.education}</p>
                   </div>
                 </div>
               )}
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+              {/* Actions */}
+              <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <a
                   href="#news"
                   onClick={onOpenSpeeches}
-                  className="bg-gradient-to-r from-[#0d4a2c] to-[#146039] hover:from-[#125c38] hover:to-[#1a7a49] text-white px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:shadow-emerald-900/30 flex items-center gap-2 cursor-pointer"
+                  className="bg-emerald-800 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
-                  <Mic className="w-4 h-4 text-amber-400" />
+                  <Mic className="w-3.5 h-3.5 text-amber-400" />
                   <span>{p.viewSpeeches}</span>
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-3.5 h-3.5" />
                 </a>
 
                 <a
                   href="#services"
-                  className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer"
+                  className="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
-                  <Mail className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
+                  <Mail className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
                   <span>Message the President</span>
                 </a>
               </div>
@@ -429,20 +359,17 @@ export function PresidentSection({ content, onOpenSpeeches }) {
 
       </div>
 
-      {/* Fullscreen High-Resolution Lightbox Modal */}
+      {/* Fullscreen Lightbox */}
       {fullscreenPhoto && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md animate-fade-in">
-          <div className="relative max-w-4xl w-full bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl flex flex-col max-h-[92vh]">
-            <div className="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between text-white">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
-                  {fullscreenPhoto.tag}
-                </span>
-                <span className="text-xs text-slate-400">• {fullscreenPhoto.location}</span>
-              </div>
+          <div className="relative max-w-3xl w-full bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl flex flex-col max-h-[90vh]">
+            <div className="p-3.5 bg-slate-950 border-b border-slate-800 flex items-center justify-between text-white">
+              <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
+                {fullscreenPhoto.title} • {fullscreenPhoto.location}
+              </span>
               <button
                 onClick={() => setFullscreenPhoto(null)}
-                className="p-1.5 rounded-full hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                className="p-1 rounded-full hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -452,20 +379,17 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               <img 
                 src={fullscreenPhoto.url} 
                 alt={fullscreenPhoto.title} 
-                className="max-h-[68vh] w-auto max-w-full object-contain rounded-lg shadow-lg"
+                className="max-h-[65vh] w-auto max-w-full object-contain rounded-lg"
               />
             </div>
 
-            <div className="p-4 bg-slate-950 border-t border-slate-800 text-slate-300 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-              <div>
-                <h4 className="font-bold text-sm text-white font-serif">{fullscreenPhoto.title}</h4>
-                <p className="text-slate-400 text-xs mt-0.5">{fullscreenPhoto.caption}</p>
-              </div>
+            <div className="p-3 bg-slate-950 border-t border-slate-800 text-slate-300 text-xs flex justify-between items-center">
+              <span className="text-slate-400">{fullscreenPhoto.caption}</span>
               <button
                 onClick={() => setFullscreenPhoto(null)}
-                className="bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-md uppercase tracking-wider transition-colors cursor-pointer"
+                className="bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-1.5 rounded uppercase tracking-wider"
               >
-                Close Fullscreen
+                Close
               </button>
             </div>
           </div>

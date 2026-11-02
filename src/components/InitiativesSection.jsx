@@ -6,22 +6,22 @@ export function InitiativesSection({ content }) {
   const [selectedItem, setSelectedItem] = useState(null);
 
   return (
-    <section id="initiatives" className="py-20 sm:py-28 bg-slate-50 dark:bg-slate-900/60 relative transition-colors duration-300">
+    <section id="initiatives" className="py-12 sm:py-16 bg-slate-50 dark:bg-slate-900/60 relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-800/80 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-1.5 bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-800/80 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider mb-2">
             <Compass className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
             <span>{init.subtitle}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
+          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
             {init.title}
           </h2>
-          <p className="mt-4 text-slate-600 dark:text-slate-300 text-base leading-relaxed">
+          <p className="mt-2 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
             {init.description}
           </p>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-4 rounded-full"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
         </div>
 
         {/* 4 Cards Grid */}

@@ -22,17 +22,17 @@ export function NewsHub({ content, currentLang }) {
   const secondaryArticles = filteredArticles.slice(1);
 
   return (
-    <section id="news" className="py-20 sm:py-28 bg-white dark:bg-slate-950 relative transition-colors duration-300">
+    <section id="news" className="py-12 sm:py-16 bg-white dark:bg-slate-950 relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-slate-200 dark:border-slate-800 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
           <div>
-            <div className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-2.5 shadow-xs">
+            <div className="inline-flex items-center gap-1.5 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider mb-2">
               <Newspaper className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
               <span>{n.subtitle}</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
+            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
               {n.title}
             </h2>
           </div>
