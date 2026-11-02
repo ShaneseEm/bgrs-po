@@ -64,7 +64,7 @@ export function NewsModal({ article, onClose, currentLang }) {
           
           {/* Article Header */}
           <div className="space-y-3">
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white font-serif leading-tight">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white font-sans leading-tight">
               {article.title}
             </h2>
 

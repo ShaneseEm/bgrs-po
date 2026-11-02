@@ -73,7 +73,7 @@ export function HeroBanner({ content, onSelectNews }) {
               <span>{content.hero.badge}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-white font-serif transition-all duration-500">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-white font-sans transition-all duration-500">
               {slides[currentSlide].headline}
             </h2>
 

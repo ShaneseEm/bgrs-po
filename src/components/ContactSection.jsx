@@ -14,7 +14,7 @@ export function ContactSection({ content }) {
             <Phone className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
             <span>EXECUTIVE COMMUNICATIONS</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
+          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
             {content.nav.contact}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
@@ -29,7 +29,7 @@ export function ContactSection({ content }) {
               <img src="/images/bgrs-emblem-new.png" alt="Official BGRS Emblem" className="w-16 h-16 object-contain" />
               <img src="/images/bgrs-flag-new.png" alt="Official BGRS Flag" className="w-13 h-8.5 object-cover rounded shadow-sm border border-slate-200 dark:border-slate-700 hidden sm:block" />
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-serif">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-sans">
                   Executive Headquarters & Secretariat
                 </h3>
                 <p className="text-xs text-emerald-800 dark:text-emerald-400 font-semibold uppercase tracking-wider mt-0.5">
@@ -124,7 +124,7 @@ export function ContactSection({ content }) {
                 </span>
               </div>
 
-              <h4 className="text-xl sm:text-2xl font-bold font-serif mb-2">
+              <h4 className="text-xl sm:text-2xl font-bold font-sans mb-2">
                 Assosa Executive Complex
               </h4>
               <p className="text-xs text-slate-300 leading-relaxed mb-6 font-light">

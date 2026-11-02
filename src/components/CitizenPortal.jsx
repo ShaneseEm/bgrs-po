@@ -47,7 +47,7 @@ export function CitizenPortal({ content }) {
             <MessageSquare className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
             <span>{cp.subtitle}</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
+          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
             {cp.title}
           </h2>
           <p className="mt-2 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
@@ -67,7 +67,7 @@ export function CitizenPortal({ content }) {
                 <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 group-hover:bg-amber-400 group-hover:text-slate-950 flex items-center justify-center mb-4 transition-all">
                   <FileText className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-base text-slate-900 dark:text-white group-hover:text-white font-serif mb-2 transition-colors">
+                <h3 className="font-bold text-base text-slate-900 dark:text-white group-hover:text-white font-sans mb-2 transition-colors">
                   {service.title}
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-slate-400 group-hover:text-emerald-100 leading-relaxed transition-colors">
@@ -96,7 +96,7 @@ export function CitizenPortal({ content }) {
                   <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span>Direct Citizen Channel</span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-black font-serif text-white leading-tight">
+                <h3 className="text-2xl sm:text-3xl font-black font-sans text-white leading-tight">
                   {cp.formTitle}
                 </h3>
                 <p className="text-slate-300 text-sm leading-relaxed font-light">
@@ -134,7 +134,7 @@ export function CitizenPortal({ content }) {
                   <div className="w-16 h-16 bg-emerald-500 text-slate-950 rounded-full flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h4 className="text-2xl font-bold font-serif text-white">Submission Successful!</h4>
+                  <h4 className="text-2xl font-bold font-sans text-white">Submission Successful!</h4>
                   <p className="text-sm text-emerald-200">
                     {f.successMsg}
                   </p>

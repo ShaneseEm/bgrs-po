@@ -119,7 +119,7 @@ export function SearchModal({ isOpen, onClose, content, currentLang, onSelectNew
                           <span>•</span>
                           <span>{art.date}</span>
                         </div>
-                        <h5 className="font-bold text-sm text-slate-900 dark:text-white font-serif">{art.title}</h5>
+                        <h5 className="font-bold text-sm text-slate-900 dark:text-white font-sans">{art.title}</h5>
                         <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-1 mt-1">{art.summary}</p>
                       </div>
                     ))}
@@ -143,7 +143,7 @@ export function SearchModal({ isOpen, onClose, content, currentLang, onSelectNew
                         className="block p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 hover:bg-amber-50 dark:hover:bg-slate-800 hover:border-amber-300 transition-all"
                       >
                         <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400 uppercase">{item.category}</span>
-                        <h5 className="font-bold text-sm text-slate-900 dark:text-white font-serif">{item.title}</h5>
+                        <h5 className="font-bold text-sm text-slate-900 dark:text-white font-sans">{item.title}</h5>
                         <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-1 mt-0.5">{item.desc}</p>
                       </a>
                     ))}

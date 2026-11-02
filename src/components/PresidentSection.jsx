@@ -44,7 +44,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
             <Sparkles className="w-3 h-3 text-amber-500" />
             <span>{p.subtitle}</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
+          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
             {p.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
@@ -123,7 +123,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                   {/* Caption on Photo */}
                   {currentPhoto && (
                     <div className="absolute bottom-3 inset-x-3 text-center z-10">
-                      <h3 className="text-lg sm:text-xl font-bold text-white font-serif tracking-wide drop-shadow-sm">
+                      <h3 className="text-lg sm:text-xl font-bold text-white font-sans tracking-wide drop-shadow-sm">
                         {p.name}
                       </h3>
                       <p className="text-[11px] text-amber-400 font-semibold tracking-wider uppercase mt-0.5">
@@ -156,7 +156,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               {/* Dignified Header Badge */}
               <div className="border-b border-slate-200 dark:border-slate-800 pb-3 flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-serif">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-sans">
                     {p.name}
                   </h3>
                   <p className="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase tracking-wide">
@@ -197,7 +197,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               {activeTab === 'vision' && (
                 <div className="space-y-4 animate-fade-in">
                   <div className="relative bg-white dark:bg-slate-800/80 border-l-4 border-amber-500 p-5 rounded-r-xl shadow-xs border-y border-r border-slate-200 dark:border-slate-700">
-                    <p className="text-base sm:text-lg italic font-serif text-slate-800 dark:text-slate-100 leading-relaxed">
+                    <p className="text-base sm:text-lg italic font-sans text-slate-800 dark:text-slate-100 leading-relaxed">
                       "{p.quote}"
                     </p>
                   </div>

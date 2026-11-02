@@ -1,24 +1,35 @@
 import React from 'react';
 import { Shield, ExternalLink } from 'lucide-react';
 
-export function Footer({ content }) {
+export function Footer({ content, setActiveSection }) {
   const f = content.footer;
+
+  const navigateTo = (section) => {
+    if (setActiveSection) {
+      setActiveSection(section);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <footer className="bg-slate-950 text-slate-400 border-t-2 border-emerald-800/80 transition-colors duration-300">
       {/* Sleek, Non-Bulky Ministerial Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-850">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-800">
           
           {/* Identity & Seal */}
           <div className="flex items-center gap-3 text-center md:text-left">
             <img 
               src="/images/bgrs-emblem-new.png" 
               alt="BGRS Emblem" 
-              className="w-11 h-11 object-contain drop-shadow-sm" 
+              className="w-10 h-10 object-contain drop-shadow-sm cursor-pointer" 
+              onClick={() => navigateTo('home')}
             />
             <div>
-              <div className="text-white font-bold font-serif text-sm tracking-wide uppercase">
+              <div 
+                className="text-white font-bold text-sm tracking-wide uppercase cursor-pointer hover:text-amber-400 transition-colors"
+                onClick={() => navigateTo('home')}
+              >
                 {content.meta.region}
               </div>
               <div className="text-amber-400 text-xs font-medium">
@@ -28,18 +39,18 @@ export function Footer({ content }) {
           </div>
 
           {/* Inline Navigation Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-slate-300">
-            <a href="#home" className="hover:text-amber-400 transition-colors">{content.nav.home}</a>
-            <a href="#president" className="hover:text-amber-400 transition-colors">{content.nav.president}</a>
-            <a href="#initiatives" className="hover:text-amber-400 transition-colors">{content.nav.initiatives}</a>
-            <a href="#news" className="hover:text-amber-400 transition-colors">{content.nav.news}</a>
-            <a href="#administration" className="hover:text-amber-400 transition-colors">{content.nav.administration}</a>
-            <a href="#services" className="hover:text-amber-400 transition-colors">{content.nav.services}</a>
-            <a href="#contact" className="hover:text-amber-400 transition-colors">{content.nav.contact}</a>
+          <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-slate-300">
+            <button onClick={() => navigateTo('home')} className="hover:text-amber-400 transition-colors cursor-pointer">{content.nav.home}</button>
+            <button onClick={() => navigateTo('president')} className="hover:text-amber-400 transition-colors cursor-pointer">{content.nav.president}</button>
+            <button onClick={() => navigateTo('initiatives')} className="hover:text-amber-400 transition-colors cursor-pointer">{content.nav.initiatives}</button>
+            <button onClick={() => navigateTo('news')} className="hover:text-amber-400 transition-colors cursor-pointer">{content.nav.news}</button>
+            <button onClick={() => navigateTo('administration')} className="hover:text-amber-400 transition-colors cursor-pointer">{content.nav.administration}</button>
+            <button onClick={() => navigateTo('services')} className="hover:text-amber-400 transition-colors cursor-pointer">{content.nav.services}</button>
+            <button onClick={() => navigateTo('contact')} className="hover:text-amber-400 transition-colors cursor-pointer">{content.nav.contact}</button>
           </nav>
 
           {/* Federal Portals Links */}
-          <div className="flex items-center gap-4 text-xs">
+          <div className="flex items-center gap-3 text-xs">
             <a 
               href="https://www.pmo.gov.et" 
               target="_blank" 

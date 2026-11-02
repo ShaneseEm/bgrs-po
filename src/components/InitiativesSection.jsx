@@ -15,7 +15,7 @@ export function InitiativesSection({ content }) {
             <Compass className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
             <span>{init.subtitle}</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
+          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
             {init.title}
           </h2>
           <p className="mt-2 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
@@ -47,7 +47,7 @@ export function InitiativesSection({ content }) {
               {/* Card Body */}
               <div className="p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-bold text-base text-slate-900 dark:text-white mb-2 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors font-serif line-clamp-1">
+                  <h3 className="font-bold text-base text-slate-900 dark:text-white mb-2 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors font-sans line-clamp-1">
                     {item.title}
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4 line-clamp-3">
@@ -97,7 +97,7 @@ export function InitiativesSection({ content }) {
             </div>
 
             <div className="p-6 sm:p-8 space-y-4">
-              <h3 className="text-2xl font-black text-slate-900 dark:text-white font-serif">
+              <h3 className="text-2xl font-black text-slate-900 dark:text-white font-sans">
                 {selectedItem.title}
               </h3>
               

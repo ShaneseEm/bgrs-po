@@ -41,7 +41,7 @@ export function Header({
                 <Sparkles className="w-3 h-3 text-amber-500" />
                 <span>{content.meta.country}</span>
               </div>
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-tight uppercase font-serif">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-tight uppercase font-sans">
                 {content.meta.region}
               </h1>
               <div className="text-xs sm:text-sm font-semibold text-amber-700 dark:text-amber-400 flex items-center justify-center md:justify-start gap-2 mt-0.5">

@@ -15,7 +15,7 @@ export function AdministrationSection({ content }) {
             <Users className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
             <span>{admin.subtitle}</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
+          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
             {admin.title}
           </h2>
           <p className="mt-2 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
@@ -26,7 +26,7 @@ export function AdministrationSection({ content }) {
 
         {/* 1. Zonal Administrations Grid */}
         <div className="mb-16">
-          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-serif mb-6 flex items-center gap-2">
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-sans mb-6 flex items-center gap-2">
             <MapPin className="w-5 h-5 text-amber-500" />
             <span>Administrative Zones & Special Woredas</span>
           </h3>
@@ -53,7 +53,7 @@ export function AdministrationSection({ content }) {
                     <Layers className={`w-4 h-4 ${isSelected ? 'text-amber-400' : 'text-slate-400'}`} />
                   </div>
 
-                  <h4 className={`text-lg font-bold font-serif mb-2 ${isSelected ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
+                  <h4 className={`text-lg font-bold font-sans mb-2 ${isSelected ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
                     {zone.name}
                   </h4>
 
@@ -76,7 +76,7 @@ export function AdministrationSection({ content }) {
         <div className="bg-white dark:bg-slate-800/90 rounded-3xl border border-slate-200/90 dark:border-slate-700 p-6 sm:p-8 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200 dark:border-slate-700">
             <div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white font-sans">
                 Regional Sectoral Bureaus Directory
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -101,7 +101,7 @@ export function AdministrationSection({ content }) {
                       {bureau.head}
                     </span>
                   </div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white font-serif mb-2">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white font-sans mb-2">
                     {bureau.name}
                   </h4>
                 </div>

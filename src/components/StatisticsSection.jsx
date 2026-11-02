@@ -19,7 +19,7 @@ export function StatisticsSection({ content }) {
                 <div className="w-10 h-10 mx-auto rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center mb-2.5 border border-amber-500/30">
                   <Icon className="w-5 h-5" />
                 </div>
-                <div className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight font-serif mb-0.5">
+                <div className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight font-sans mb-0.5">
                   {stat.value}
                 </div>
                 <div className="text-xs font-bold text-white tracking-wide uppercase mb-1">

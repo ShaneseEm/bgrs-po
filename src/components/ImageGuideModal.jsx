@@ -74,7 +74,7 @@ export function ImageGuideModal({ isOpen, onClose, currentLang }) {
               <Sparkles className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold font-serif text-base text-white">
+              <h3 className="font-bold font-sans text-base text-white">
                 {currentLang === 'am' ? 'የምስሎች ማስተካከያ እና የመተኪያ መመሪያ' : 'Official Image Replacement Guide'}
               </h3>
               <p className="text-xs text-amber-300">
@@ -128,7 +128,7 @@ export function ImageGuideModal({ isOpen, onClose, currentLang }) {
                     <h4 className="font-mono text-xs font-bold text-slate-900 break-all">
                       {slot.filename}
                     </h4>
-                    <p className="text-xs text-slate-600 font-serif mt-1 font-semibold">
+                    <p className="text-xs text-slate-600 font-sans mt-1 font-semibold">
                       {slot.purpose}
                     </p>
                   </div>

@@ -32,7 +32,7 @@ export function NewsHub({ content, currentLang }) {
               <Newspaper className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
               <span>{n.subtitle}</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-serif uppercase">
+            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
               {n.title}
             </h2>
           </div>
@@ -83,7 +83,7 @@ export function NewsHub({ content, currentLang }) {
                 </div>
 
                 <div className="p-6 sm:p-8 space-y-4">
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-serif leading-snug group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-sans leading-snug group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
                     {featuredArticle.title}
                   </h3>
                   <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed line-clamp-3">
@@ -124,7 +124,7 @@ export function NewsHub({ content, currentLang }) {
                     <span className="text-[10px] font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
                       {article.category}
                     </span>
-                    <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white font-serif mt-1 line-clamp-2 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
+                    <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white font-sans mt-1 line-clamp-2 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
                       {article.title}
                     </h4>
                   </div>
