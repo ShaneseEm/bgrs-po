@@ -9,57 +9,57 @@ export function ImageGuideModal({ isOpen, onClose, currentLang }) {
   const imageSlots = [
     {
       id: 'president',
-      filename: 'president-portrait.svg (or .jpg / .png)',
-      path: 'public/images/president-portrait.svg',
+      filename: 'president-portrait.jpg',
+      path: 'public/images/president-portrait.jpg',
       purpose: 'Official Portrait of the President (H.E. Ashadli Hassan)',
-      dimensions: '600 x 750 px (Portrait 4:5 ratio)',
-      currentPreview: '/images/president-portrait.svg',
-      tip: 'High-resolution official formal attire portrait.'
+      dimensions: 'Real Official ENA Photograph (272 KB)',
+      currentPreview: '/images/president-portrait.jpg',
+      tip: 'Real photo from Ethiopian News Agency (ENA) archives.'
     },
     {
       id: 'emblem',
-      filename: 'emblem.svg (or .png)',
-      path: 'public/images/emblem.svg',
+      filename: 'emblem.png',
+      path: 'public/images/emblem.png',
       purpose: 'Benishangul Gumuz Regional State Official Seal / Emblem',
-      dimensions: '500 x 500 px (Square 1:1, transparent background)',
-      currentPreview: '/images/emblem.svg',
-      tip: 'Official government shield and eagle crest.'
+      dimensions: 'Official Government Crest (104 KB)',
+      currentPreview: '/images/emblem.png',
+      tip: 'Official regional state shield and emblem.'
     },
     {
       id: 'gerd',
-      filename: 'gerd-banner.svg (or .jpg / .png)',
-      path: 'public/images/gerd-banner.svg',
+      filename: 'gerd-dam.jpg',
+      path: 'public/images/gerd-dam.jpg',
       purpose: 'Grand Ethiopian Renaissance Dam (GERD - Guba Woreda)',
-      dimensions: '1200 x 600 px (Landscape 2:1 or 16:9)',
-      currentPreview: '/images/gerd-banner.svg',
-      tip: 'Panoramic shot of the dam wall, reservoir, or spillways.'
+      dimensions: 'Aerial Photograph (Office of the Prime Minister)',
+      currentPreview: '/images/gerd-dam.jpg',
+      tip: 'Official aerial view of the main dam and reservoir in Guba.'
     },
     {
       id: 'hq',
-      filename: 'assosa-hq.svg (or .jpg / .png)',
-      path: 'public/images/assosa-hq.svg',
-      purpose: "President's Executive Office Headquarters in Assosa",
-      dimensions: '1200 x 800 px (3:2 ratio)',
-      currentPreview: '/images/assosa-hq.svg',
-      tip: 'Exterior or grand entrance of the Assosa state house.'
+      filename: 'assosa-city.jpg',
+      path: 'public/images/assosa-city.jpg',
+      purpose: 'Assosa City - Regional State Capital',
+      dimensions: 'Real Urban Photograph (251 KB)',
+      currentPreview: '/images/assosa-city.jpg',
+      tip: 'Real photograph of Assosa capital city and plateau.'
     },
     {
       id: 'agriculture',
-      filename: 'agriculture.svg (or .jpg / .png)',
-      path: 'public/images/agriculture.svg',
-      purpose: 'Regional Agriculture, Bamboo, Green Legacy & Farmland',
-      dimensions: '800 x 500 px',
-      currentPreview: '/images/agriculture.svg',
-      tip: 'Commercial farming in Metekel or bamboo forestry in Kamashi.'
+      filename: 'agriculture-real.jpg',
+      path: 'public/images/agriculture-real.jpg',
+      purpose: '1.2 Million Hectare Agricultural Expansion & Tractors',
+      dimensions: 'Real Field Photograph (3.2 MB)',
+      currentPreview: '/images/agriculture-real.jpg',
+      tip: 'Real commercial farming in western Ethiopia.'
     },
     {
       id: 'mining',
-      filename: 'mining.svg (or .jpg / .png)',
-      path: 'public/images/mining.svg',
-      purpose: 'Gold Reserves, Artisanal Cooperatives & Mineral Wealth',
-      dimensions: '800 x 500 px',
-      currentPreview: '/images/mining.svg',
-      tip: 'Gold extraction, mining sites, or mineral laboratories.'
+      filename: 'mining-gold.jpg',
+      path: 'public/images/mining-gold.jpg',
+      purpose: 'Gold Reserves & Mineral Deposit Stewardship',
+      dimensions: 'Real Geological Documentation (1.8 MB)',
+      currentPreview: '/images/mining-gold.jpg',
+      tip: 'Gold deposit and mineral reserve registry.'
     }
   ];
 

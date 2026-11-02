@@ -8,7 +8,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
     <section id="president" className="py-16 sm:py-24 bg-white relative overflow-hidden">
       {/* Subtle background seal watermark */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/3 opacity-[0.03] pointer-events-none">
-        <img src="/images/emblem.svg" alt="" className="w-[600px] h-[600px]" />
+        <img src="/images/emblem.png" alt="" className="w-[600px] h-[600px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,9 +37,9 @@ export function PresidentSection({ content, onOpenSpeeches }) {
               
               <div className="relative bg-slate-900 rounded-xl overflow-hidden shadow-xl border-2 border-amber-500/80">
                 <img 
-                  src="/images/president-portrait.svg" 
+                  src={p.portrait || "/images/president-portrait.jpg"} 
                   alt={p.name}
-                  className="w-full h-auto object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+                  className="w-full h-auto object-cover object-center group-hover:scale-[1.02] transition-transform duration-500 max-h-[420px]"
                 />
 
                 <div className="bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent p-5 text-center">
@@ -71,7 +71,7 @@ export function PresidentSection({ content, onOpenSpeeches }) {
                   <span className="font-bold text-sm text-slate-900">{p.name}</span>
                   <span className="text-xs text-slate-500 block">{p.role}</span>
                 </div>
-                <img src="/images/emblem.svg" alt="" className="w-8 h-8 opacity-40" />
+                <img src="/images/emblem.png" alt="" className="w-8 h-8 opacity-40 object-contain" />
               </div>
             </div>
 

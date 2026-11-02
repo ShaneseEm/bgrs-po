@@ -144,11 +144,17 @@ export function Header({
           
           {/* Seal + Bilingual Titles */}
           <div className="flex items-center gap-4 text-center md:text-left">
-            <div className="relative group flex-shrink-0">
+            <div className="relative group flex-shrink-0 flex items-center gap-2">
               <img 
-                src="/images/emblem.svg" 
+                src={content.meta.emblem || "/images/emblem.png"} 
                 alt="Emblem of Benishangul Gumuz Regional State" 
                 className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-md hover:scale-105 transition-transform duration-300"
+              />
+              <img 
+                src="/images/flag.svg" 
+                alt="Flag of Benishangul Gumuz Regional State" 
+                className="w-10 h-7 sm:w-12 sm:h-8 object-cover rounded shadow-sm border border-slate-200 hidden sm:block" 
+                title="Flag of Benishangul Gumuz Regional State"
               />
             </div>
             

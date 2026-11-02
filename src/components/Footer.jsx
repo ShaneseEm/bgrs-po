@@ -24,7 +24,7 @@ export function Footer({ content }) {
           {/* Col 1: Emblem + About (5 Cols) */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <img src="/images/emblem.svg" alt="BGRS Emblem" className="w-14 h-14" />
+              <img src={content.meta.emblem || "/images/emblem.png"} alt="BGRS Emblem" className="w-14 h-14 object-contain" />
               <div>
                 <h3 className="text-white font-bold font-serif text-lg leading-tight uppercase">
                   {content.meta.region}

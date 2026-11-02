@@ -26,7 +26,7 @@ export function ContactSection({ content }) {
           {/* Contact Details Card (7 Cols) */}
           <div className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-sm space-y-6">
             <div className="flex items-center gap-4 border-b border-slate-100 pb-6">
-              <img src="/images/emblem.svg" alt="" className="w-14 h-14" />
+              <img src={content.meta.emblem || "/images/emblem.png"} alt="Official Emblem" className="w-14 h-14 object-contain" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 font-serif">
                   Executive Headquarters & Secretariat
@@ -109,14 +109,14 @@ export function ContactSection({ content }) {
           <div className="lg:col-span-5 bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between">
             <div className="relative h-64 sm:h-72 bg-slate-900">
               <img 
-                src="/images/assosa-hq.svg" 
-                alt="Regional State Executive House, Assosa" 
+                src="/images/assosa-city.jpg" 
+                alt="Regional Capital City of Assosa" 
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4">
                 <div className="text-white text-xs">
-                  <div className="font-bold font-serif text-sm">Assosa Executive State House</div>
-                  <div className="text-amber-300 text-[11px]">Regional Administrative Capital</div>
+                  <div className="font-bold font-serif text-sm">Assosa Regional Capital</div>
+                  <div className="text-amber-300 text-[11px]">Seat of the Regional Executive Council</div>
                 </div>
               </div>
             </div>

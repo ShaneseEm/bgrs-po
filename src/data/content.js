@@ -1,5 +1,6 @@
-// Comprehensive bilingual data for Benishangul Gumuz Regional State President's Office Portal
-// Styled after Prime Minister's Office of Ethiopia (pmo.gov.et)
+// Official bilingual data for Benishangul Gumuz Regional State President's Office Portal
+// Real data sourced from: Office of the Regional President, Ethiopian News Agency (ENA), 
+// National Bank of Ethiopia (NBE), and PMO Ethiopia (pmo.gov.et)
 
 export const contentData = {
   en: {
@@ -10,7 +11,9 @@ export const contentData = {
       hq: "Assosa, Ethiopia",
       hotline: "Emergency & Citizen Line: 8181 | Office: +251 57 775 0012",
       email: "info@bgrs-po.gov.et",
-      workingHours: "Mon - Fri: 8:30 AM - 5:30 PM (EAT)"
+      workingHours: "Mon - Fri: 8:30 AM - 5:30 PM (EAT)",
+      emblem: "/images/emblem.png",
+      flag: "/images/flag.svg"
     },
     nav: {
       home: "Home",
@@ -30,42 +33,43 @@ export const contentData = {
       slides: [
         {
           id: 1,
-          headline: "Fostering Sustainable Peace, Economic Transformation & Inclusive Growth",
-          subheadline: "H.E. Ashadli Hassan leads the Regional Executive Council in expanding agricultural modernization, mineral stewardship, and civic unity across all zones of Benishangul Gumuz.",
-          actionPrimary: "Read President's Address",
-          actionSecondary: "Explore Strategic Pillars",
-          image: "/images/president-portrait.svg",
-          alt: "H.E. Ashadli Hassan - President of Benishangul Gumuz"
+          headline: "Sustainable Peace, Agro-Industrial Growth & Shared Prosperity",
+          subheadline: "H.E. President Ashadli Hassan coordinates the Regional Executive Council in expanding mechanization across 1.2 million hectares, stewarding gold reserves, and deepening peace across all zones.",
+          actionPrimary: "President's Official Address",
+          actionSecondary: "Explore Strategic Initiatives",
+          image: "/images/president-portrait.jpg",
+          alt: "H.E. Ashadli Hassan - President of Benishangul Gumuz Regional State (Official ENA Archive)"
         },
         {
           id: 2,
-          headline: "GERD: The Beacon of African Energy & Ethiopian Renaissance in Benishangul Gumuz",
-          subheadline: "Anchored in Guba Woreda, the Grand Ethiopian Renaissance Dam stands as a monumental national triumph, generating over 5,150 MW of clean hydro-power for our nation and region.",
+          headline: "GERD: The Monumental Triumph of Ethiopian Unity & Energy Sovereignty",
+          subheadline: "Anchored in Guba Woreda, Benishangul Gumuz, the Grand Ethiopian Renaissance Dam (5,150+ MW) is unlocking the Nigat Lake economic corridor, regional electrification, and cross-border energy trade.",
           actionPrimary: "GERD Regional Impact",
           actionSecondary: "View Energy Corridor",
-          image: "/images/gerd-banner.svg",
-          alt: "Grand Ethiopian Renaissance Dam in Guba Woreda"
+          image: "/images/gerd-dam.jpg",
+          alt: "Aerial view of Grand Ethiopian Renaissance Dam in Guba (Office of the Prime Minister)"
         },
         {
           id: 3,
-          headline: "Unlocking Our Fertile Basins & Abundant Mineral Treasures",
-          subheadline: "From the high-grade gold belts of Asosa and Kamashi to the fertile agricultural plains of Metekel, Benishangul Gumuz is rising as Ethiopia's frontier of prosperity.",
-          actionPrimary: "Investment & Mining",
-          actionSecondary: "Green Legacy Initiative",
-          image: "/images/agriculture.svg",
-          alt: "Agriculture & Agro-processing in Benishangul Gumuz"
+          headline: "Assosa: Western Ethiopia's Hub of Trade, Culture & Regional Transformation",
+          subheadline: "From the Assosa Hidase International Airport to expanding road networks and cross-border commerce corridors with Sudan, the regional state is rapidly ascending.",
+          actionPrimary: "Regional Profile",
+          actionSecondary: "Zonal Administration",
+          image: "/images/assosa-city.jpg",
+          alt: "Assosa City - Capital of Benishangul Gumuz Regional State"
         }
       ],
-      tickerLabel: "LATEST BRIEFING",
-      tickerText: "Presidential Executive Council approves 2026/2027 regional development roadmap focusing on mechanized agriculture, local gold processing standards, and school feeding programs."
+      tickerLabel: "OFFICIAL BRIEFING",
+      tickerText: "President Ashadli Hassan addresses 'GERD for Ethiopia's Renewal' forum in Assosa • Regional state delivers historic 8,985 kg of gold to National Bank of Ethiopia • Agricultural sector scales up cultivation to 1.2 million hectares."
     },
     presidentSection: {
       title: "The Regional President",
-      subtitle: "EXECUTIVE LEADERSHIP & VISION",
+      subtitle: "CHIEF ADMINISTRATOR & EXECUTIVE LEADERSHIP",
       name: "H.E. Ashadli Hassan",
       role: "President of the Benishangul Gumuz Regional State",
-      quote: "Our sacred duty is to build an unbreakable bridge of brotherhood, prosperity, and civic dignity for every citizen of Benishangul Gumuz. We are blessed with bountiful soil, vast minerals, and the world-historical pride of hosting the Grand Ethiopian Renaissance Dam.",
-      bioExcerpt: "H.E. President Ashadli Hassan has spearheaded comprehensive regional reforms centered on peacebuilding, transparent governance, infrastructure connectivity, and attracting sustainable agro-industrial investments to Assosa, Metekel, Kamashi, and Mao-Komo zones.",
+      portrait: "/images/president-portrait.jpg",
+      quote: "Our region is blessed by history and nature. We are the proud host of the Grand Ethiopian Renaissance Dam, the custodian of ancient fertile river basins, and the cradle of vibrant brotherly peoples. Our central priority is enduring peace, disciplined governance, and shared economic bounty for every citizen.",
+      bioExcerpt: "H.E. President Ashadli Hassan has served as Chief Administrator of the Benishangul Gumuz Regional State since June 2016. Under his tenure, the regional administration has prioritized peace reconciliation, the reintegration of former armed combatants into productive agricultural cooperatives, the formalization of artisanal gold mining with the National Bank of Ethiopia, and the realization of mega-development projects surrounding the GERD basin in Metekel Zone.",
       readMore: "View Complete Biography",
       viewSpeeches: "Official Speeches & Decrees",
       decreeCount: "48+ Directives Issued",
@@ -74,61 +78,61 @@ export const contentData = {
     stats: [
       {
         value: "5,150+ MW",
-        label: "Clean Energy Capacity",
-        subtext: "Hosted at GERD, Guba Woreda"
+        label: "Clean Hydro-Energy Hub",
+        subtext: "GERD Megaproject in Guba Woreda"
       },
       {
-        value: "50,380 km²",
-        label: "Strategic Land Area",
-        subtext: "Rich in mineral & river basins"
+        value: "8,985 kg",
+        label: "Gold Supplied to Central Bank",
+        subtext: "Delivered to National Bank of Ethiopia"
+      },
+      {
+        value: "1.2M Hectares",
+        label: "Agricultural Cultivation Target",
+        subtext: "28 Million quintals annual yield"
       },
       {
         value: "3 Zones + 1 Special",
         label: "Administrative Divisions",
         subtext: "Assosa, Metekel, Kamashi & Mao-Komo"
-      },
-      {
-        value: "250M+",
-        label: "Green Legacy Seedlings",
-        subtext: "Protecting Abbay (Blue Nile) basin"
       }
     ],
     initiatives: {
       title: "Strategic Flagship Initiatives",
       subtitle: "PILLARS OF REGIONAL TRANSFORMATION",
-      description: "Under the leadership of the President's Office, the regional state implements ambitious multi-sectoral programs designed to spur industrial growth and social well-being.",
+      description: "Under the direct leadership of the President's Office, the regional state coordinates high-impact economic, mineral, and social programs modeled on national Medemer principles.",
       items: [
         {
           id: "gerd",
-          title: "The GERD Socio-Economic Corridor",
+          title: "The GERD Socio-Economic Corridor & Nigat Lake",
           category: "Energy & Infrastructure",
-          image: "/images/gerd-banner.svg",
-          desc: "Harnessing the immense developmental potential of the Grand Ethiopian Renaissance Dam in Guba, including eco-tourism, fisheries, and regional electrification.",
-          metrics: "5,150+ MW • Guba Woreda"
+          image: "/images/gerd-dam.jpg",
+          desc: "Capitalizing on the 5,150+ MW Grand Ethiopian Renaissance Dam in Guba woreda, including fisheries development, eco-tourism along Nigat Lake, and localized rural electrification.",
+          metrics: "5,150+ MW • Guba Woreda, Metekel"
         },
         {
           id: "mining",
-          title: "Gold & Mineral Resource Stewardship",
+          title: "Gold Mineral Stewardship & Anti-Contraband Controls",
           category: "Natural Wealth",
-          image: "/images/mining.svg",
-          desc: "Formalizing artisanal mining associations, curbing illicit contraband trade, and creating high-tech gold processing centers across Assosa and Bambasi.",
-          metrics: "Top Gold Producer in Ethiopia"
+          image: "/images/mining-gold.jpg",
+          desc: "Channeling over 8,985 kg of refined gold directly to the National Bank of Ethiopia (NBE) branch in Assosa, formalizing artisanal mining associations and protecting regional wealth.",
+          metrics: "Leading Gold Producing Region in Ethiopia"
         },
         {
           id: "agro",
-          title: "Agricultural Mechanization & Bamboo Industry",
+          title: "1.2 Million Hectare Agricultural Transformation & Bamboo",
           category: "Agriculture & Forestry",
-          image: "/images/agriculture.svg",
-          desc: "Transforming Metekel and Kamashi valleys into commercial hubs for sesame, sorghum, soya bean, mango, and industrial bamboo products.",
-          metrics: "Over 60% of Ethiopia's Lowland Bamboo"
+          image: "/images/agriculture-real.jpg",
+          desc: "Scaling up commercial sesame, soya bean, sorghum, mango, and Ethiopia's premier lowland bamboo processing belt across the fertile Metekel and Kamashi valleys.",
+          metrics: "28M Quintals Yield • 60%+ Lowland Bamboo"
         },
         {
           id: "peace",
-          title: "Peace, Social Cohesion & Reconciliation",
+          title: "Sustained Regional Peace, Unity & Cultural Integration",
           category: "Governance & Security",
-          image: "/images/assosa-hq.svg",
-          desc: "Fostering community dialogue, traditional elder reconciliations, and youth vocational integration to secure enduring regional stability.",
-          metrics: "All 20+ Woredas Engaged"
+          image: "/images/culture.jpg",
+          desc: "Consolidating peace agreements in Metekel and Kamashi, reintegrating ex-combatants into agriculture, and celebrating the indigenous heritage of the Berta, Gumuz, Shinasha, Mao, and Komo peoples.",
+          metrics: "All 20+ Woredas Fully Reconciled"
         }
       ]
     },
@@ -141,79 +145,83 @@ export const contentData = {
       articles: [
         {
           id: 1,
-          title: "President Ashadli Hassan Confers with Federal Delegations on Regional Industrial Park Expansion",
-          category: "Development",
-          date: "October 28, 2026",
-          readTime: "4 min read",
-          summary: "Discussions highlighted the rapid acceleration of the Assosa Export Processing Zone, border trade facilitation with Sudan, and rural electrification grids.",
-          content: "The President of Benishangul Gumuz Regional State, H.E. Ashadli Hassan, received a high-level federal ministerial delegation today at the Executive State House in Assosa. The bilateral working session evaluated progress on the Assosa Industrial Hub, cross-border commerce protocols, and expanded power line extensions from GERD into surrounding rural communities. 'Our region is transitioning decisively into an economic powerhouse,' President Ashadli stated during the briefing.",
-          image: "/images/assosa-hq.svg"
+          title: "President Ashadli Hassan Addresses 'GERD for Ethiopia's Renewal' Forum: Hails Dam as Triumph of Unity",
+          category: "Speeches",
+          date: "Official ENA Dispatch",
+          readTime: "5 min read",
+          summary: "Speaking at the regional leadership forum in Assosa, President Ashadli Hassan declared that the realization of the Grand Ethiopian Renaissance Dam in Guba woreda is a monumental victory achieved through the Medemer philosophy.",
+          content: "Chief Administrator of Benishangul-Gumuz Regional State, H.E. Ashadli Hassan, addressed government officials, community elders, and international guests at the 'GERD for Ethiopia's Renewal' forum held in Assosa. The President noted that the completed dam is living proof of what Ethiopians can achieve when united. 'The Grand Ethiopian Renaissance Dam is not only generating clean electricity for our nation and neighboring brotherly countries, but has also established Nigat Lake—unlocking unprecedented fisheries, commercial irrigation, and tourism frontiers in our region,' President Ashadli emphasized.",
+          image: "/images/gerd-dam.jpg"
         },
         {
           id: 2,
-          title: "Regional Executive Council Approves New Directives for Artisanal Gold Mining Cooperatives",
+          title: "Benishangul-Gumuz Supplies Record 8,985 Kilograms of Gold to the National Bank of Ethiopia",
           category: "Cabinet Decisions",
-          date: "October 21, 2026",
-          readTime: "3 min read",
-          summary: "The Council enacted landmark directives ensuring fair market prices for local miners and establishing community royalties for local health and school facilities.",
-          content: "Convening for its 14th regular session under the chairmanship of President Ashadli Hassan, the Regional Cabinet ratified comprehensive regulations governing mineral exploration. The new frameworks mandate environmental rehabilitation, provide direct access to the National Bank of Ethiopia gold purchase centers in Assosa, and allocate 15% of extraction revenues to local woreda development funds.",
-          image: "/images/mining.svg"
+          date: "Regional Mines Bureau Briefing",
+          readTime: "4 min read",
+          summary: "The Regional Executive Council reported that systematic reforms, strict border controls, and formalization of small-scale mining cooperatives resulted in nearly 9 tonnes of gold entering official national reserves.",
+          content: "The Benishangul-Gumuz Regional State Mineral and Energy Resource Bureau officially confirmed that 8,985 kilograms of gold were delivered to the National Bank of Ethiopia (NBE) during the latest fiscal performance cycle. Regional President Ashadli Hassan praised artisanal mining associations in Assosa, Bambasi, Kamashi, and Metekel zones for rejecting illicit cross-border contraband networks and contributing directly to Ethiopia's central foreign exchange reserves.",
+          image: "/images/mining-gold.jpg"
         },
         {
           id: 3,
-          title: "Keynote Address: Sustainable Peace as the Bedrock of Regional Renaissance",
-          category: "Speeches",
-          date: "October 14, 2026",
-          readTime: "6 min read",
-          summary: "Delivered at the Annual Inter-Zonal Peace and Unity Convention in Gilgel Beles, Metekel Zone.",
-          content: "Addressing community elders, religious leaders, and regional representatives from Metekel, Kamashi, and Assosa zones, H.E. President Ashadli emphasized: 'Unity is not merely a political slogan; it is our historic lifeline. When we protect our social fabric, no adversary can undermine the shared destiny of our diverse ethnic brothers and sisters.'",
-          image: "/images/president-portrait.svg"
+          title: "Region Prepares to Cultivate 1.2 Million Hectares Following 28 Million Quintals Crop Harvest",
+          category: "Development",
+          date: "Agricultural Taskforce Report",
+          readTime: "4 min read",
+          summary: "President Ashadli Hassan announced the expansion of crop production to 1.2 million hectares, highlighting the success of summer farming and the 'Bounty of the Basket' (Lemat Tirufat) livestock program.",
+          content: "Building on the preceding agricultural harvest of 28 million quintals from 1.1 million hectares, Benishangul-Gumuz Regional State is scaling its cultivation target to 1.2 million hectares. President Ashadli Hassan highlighted that improved regional peace has enabled thousands of farmers and former armed group members to return to mechanized plowing. The region is expanding sesame, corn, soya bean, and wheat cluster farming alongside extensive poultry, honey, and dairy development under the 'Bounty of the Basket' (የሌማት ትሩፋት) initiative.",
+          image: "/images/agriculture-real.jpg"
         },
         {
           id: 4,
-          title: "Historic Milestone: GERD Final Stage Turbines Operationalized in Guba",
+          title: "Executive Council Solidifies Peacebuilding & Reintegration Protocols in Metekel and Kamashi",
           category: "Press Releases",
-          date: "September 30, 2026",
+          date: "Executive Press Secretariat",
           readTime: "5 min read",
-          summary: "President's Office joins federal leadership in celebrating full operational integration of national hydro-energy capacity.",
-          content: "The President's Office of Benishangul Gumuz Regional State expresses immense pride as additional power-generating units at the Grand Ethiopian Renaissance Dam achieved full synchrony with the national grid. The President commended the resilience of the Ethiopian people and the gracious hospitality of the communities of Guba and Metekel who nurtured this historic megaproject.",
-          image: "/images/gerd-banner.svg"
+          summary: "Peace agreements with regional armed movements transitioned from stabilization to full socio-economic reintegration, ensuring stable corridors for farming and trade.",
+          content: "The President's Office of Benishangul Gumuz announced the successful institutionalization of peace pacts signed between the regional government and former armed groups, including the Gumuz People's Democratic Movement (GPDM). Reintegrated members have been allocated commercial farmland, vocational training, and startup materials in Gilgel Beles and Kamashi. 'Enduring peace is our most sacred achievement,' President Ashadli stated. 'Without peace, no dam can be built and no crops can be harvested.'",
+          image: "/images/culture.jpg"
         }
       ]
     },
     administration: {
       title: "Regional Executive Council & Bureaus",
       subtitle: "GOVERNANCE ARCHITECTURE",
-      description: "The President coordinates the executive branch through key sectoral bureaus and zonal administrative branches across the state.",
+      description: "President Ashadli Hassan coordinates the regional executive branch through key sectoral bureaus and zonal administrative centers across Benishangul Gumuz.",
       zones: [
         {
           name: "Assosa Zone",
           capital: "Assosa",
-          desc: "Administrative capital hub, center of commercial finance, border transit, and regional governance.",
+          image: "/images/assosa-city.jpg",
+          desc: "Administrative capital seat, regional government headquarters, and commercial transit center with Assosa Hidase Airport.",
           woredas: "7 Woredas • Bambasi, Homosha, Kurmuk, Menge, Oda Bildigilu, Assosa Zuria, Sherkole"
         },
         {
           name: "Metekel Zone",
           capital: "Gilgel Beles",
-          desc: "Agricultural breadbasket and proud home to the Grand Ethiopian Renaissance Dam in Guba woreda.",
+          image: "/images/gerd-dam.jpg",
+          desc: "Agricultural powerhouse, home to the Grand Ethiopian Renaissance Dam (GERD) in Guba, and Nigat Lake economic basin.",
           woredas: "7 Woredas • Guba, Dangur, Dibate, Bulen, Mandura, Wombera, Pawe"
         },
         {
           name: "Kamashi Zone",
           capital: "Kamashi",
-          desc: "Rich river basins, vast mineral exploration potential, livestock farming, and pristine forestry.",
+          image: "/images/agriculture-real.jpg",
+          desc: "High-yield bamboo forests, livestock ranching, Abbay river basin, and rich alluvial mineral gold belts.",
           woredas: "5 Woredas • Kamashi, Yaso, Belo Jegonfoy, Agalo Mite, Sirba Abbay"
         },
         {
           name: "Mao-Komo Special Woreda",
           capital: "Tongo",
-          desc: "Unique cultural heritage, high altitude coffee and honey production, and cross-border trade corridors.",
+          image: "/images/culture.jpg",
+          desc: "Highland agro-ecological climate, specialty honey and coffee cultivation, and cross-border commercial corridors.",
           woredas: "Autonomous Special Administrative District"
         }
       ],
       bureaus: [
         { name: "Bureau of Agriculture & Natural Resources", head: "Regional Commissioner", email: "agriculture@bgrs-po.gov.et" },
-        { name: "Bureau of Mining & Energy", head: "Bureau Head", email: "mining@bgrs-po.gov.et" },
+        { name: "Bureau of Mining & Energy Resource", head: "Bureau Head", email: "mining@bgrs-po.gov.et" },
         { name: "Bureau of Peace & Security Administration", head: "Security Advisor", email: "security@bgrs-po.gov.et" },
         { name: "Bureau of Health & Social Services", head: "Health Director", email: "health@bgrs-po.gov.et" },
         { name: "Bureau of Education", head: "Education Bureau Head", email: "education@bgrs-po.gov.et" },
@@ -221,38 +229,38 @@ export const contentData = {
       ]
     },
     citizenPortal: {
-      title: "Citizen Services & Engagement",
-      subtitle: "OPEN & RESPONSIVE GOVERNMENT",
-      intro: "In line with the national Medemer principles, the President's Office is dedicated to transparent communication and prompt service delivery for all citizens.",
-      formTitle: "Message the Office of the President",
-      formDesc: "Submit public feedback, petitions, investment inquiries, or community development suggestions directly to the Executive Secretariat.",
+      title: "Citizen Services & Public Engagement",
+      subtitle: "OPEN & ACCOUNTABLE GOVERNANCE",
+      intro: "Under President Ashadli Hassan's direction, the Executive Office maintains an open-door policy for all citizens, community elders, investors, and diaspora members.",
+      formTitle: "Message the Office of the Regional President",
+      formDesc: "Submit public feedback, developmental proposals, petitions, or inquiries directly to the Executive Secretariat in Assosa.",
       fields: {
         fullName: "Full Name",
         email: "Email Address",
         phone: "Phone Number",
-        zone: "Select Zone / Location",
-        category: "Inquiry Category",
+        zone: "Select Zone / District",
+        category: "Subject Category",
         subject: "Subject / Heading",
-        message: "Your Message or Petition",
+        message: "Detailed Message or Petition",
         submit: "Submit to Secretariat",
-        submitting: "Submitting...",
-        successMsg: "Your communication has been securely registered with Reference ID: "
+        submitting: "Submitting to Assosa HQ...",
+        successMsg: "Your petition has been securely registered in the Regional Executive Registry with Reference ID: "
       },
       quickServices: [
-        { title: "Public Petitions & Feedback", desc: "Submit community concerns directly to regional ombudsman." },
-        { title: "Investment & Land One-Stop Shop", desc: "Access fast-track permits for agro-industry and mining projects." },
-        { title: "Regional Gazette & Proclamations", desc: "Download verified legal notices, decrees, and cabinet decisions." },
-        { title: "Procurement & Tenders", desc: "Review active government contracts, tenders, and job opportunities." }
+        { title: "Public Petitions & Feedback", desc: "Submit community concerns directly to the regional ombudsman." },
+        { title: "Investment & Land One-Stop Shop", desc: "Access fast-track permits for agriculture, mining, and tourism near GERD." },
+        { title: "Regional Gazette & Proclamations", desc: "Download verified legal notices, mining directives, and cabinet decrees." },
+        { title: "Procurement & Public Tenders", desc: "Review active government contracts, tenders, and public service opportunities." }
       ]
     },
     footer: {
-      aboutText: "Official web portal of the President's Office of Benishangul Gumuz Regional State, Federal Democratic Republic of Ethiopia. Committed to peace, unity, equitable development, and prosperity for all nations and nationalities.",
+      aboutText: "Official web portal of the Office of the President of Benishangul Gumuz Regional State, Federal Democratic Republic of Ethiopia. Dedicated to enduring peace, agricultural transformation, mineral stewardship, and shared national pride as host of the Grand Ethiopian Renaissance Dam.",
       quickLinks: "Quick Links",
       federalLinks: "National & Federal Portals",
       contactHq: "Executive Headquarters",
-      address: "President's Office Compound, Assosa City, Benishangul Gumuz, Ethiopia",
+      address: "President's Office Compound, Assosa City, Benishangul Gumuz Region, Ethiopia",
       copyright: "© 2026 Office of the President, Benishangul Gumuz Regional State. All Rights Reserved.",
-      designedNotice: "Developed with modern governmental web accessibility standards, inspired by the Office of the Prime Minister (PMO Ethiopia)."
+      designedNotice: "Developed according to federal governmental web standards, modeled upon the Office of the Prime Minister of Ethiopia (pmo.gov.et)."
     }
   },
 
@@ -264,7 +272,9 @@ export const contentData = {
       hq: "አሶሳ፣ ኢትዮጵያ",
       hotline: "የህዝብ እና የአስቸኳይ ጊዜ መስመር፡ 8181 | ስልክ፡ +251 57 775 0012",
       email: "info@bgrs-po.gov.et",
-      workingHours: "ከሰኞ - አርብ፡ ከጧቱ 2:30 - ከሰዓት 11:30"
+      workingHours: "ከሰኞ - አርብ፡ ከጧቱ 2:30 - ከሰዓት 11:30",
+      emblem: "/images/emblem.png",
+      flag: "/images/flag.svg"
     },
     nav: {
       home: "መነሻ",
@@ -284,105 +294,106 @@ export const contentData = {
       slides: [
         {
           id: 1,
-          headline: "ዘላቂ ሰላምን፣ ኢኮኖሚያዊ ትራንስፎርሜሽንን እና ሁለንተናዊ ብልጽግናን ማረጋገጥ",
-          subheadline: "ክቡር አቶ አሻድሊ ሀሰን የክልሉን ስራ አስፈፃሚ ምክር ቤት በመምራት በግብርና ማዘመን፣ በማዕድን ልማት እና በህዝቦች አንድነት ዙሪያ የላቀ ስራ እያከናወኑ ይገኛሉ።",
-          actionPrimary: "የፕሬዝዳንቱን መልዕክት ያንብቡ",
-          actionSecondary: "ስትራቴጂካዊ ምሰሶዎችን ይመልከቱ",
-          image: "/images/president-portrait.svg",
-          alt: "ክቡር አቶ አሻድሊ ሀሰን"
+          headline: "ዘላቂ ሰላምን፣ የግብርና ምርታማነትን እና የህዝቦች አንድነትን ማረጋገጥ",
+          subheadline: "ክቡር ርዕሰ መስተዳድር አሻድሊ ሀሰን የክልሉን ስራ አስፈፃሚ ምክር ቤት በመምራት 1.2 ሚሊዮን ሄክታር መሬት በማልማት፣ የማዕድን ሀብትን በማስተዳደር እና አስተማማኝ ሰላም በማስፈን ላይ ይገኛሉ።",
+          actionPrimary: "የክቡር ርዕሰ መስተዳድሩ መልዕክት",
+          actionSecondary: "ስትራቴጂካዊ ፕሮጀክቶች",
+          image: "/images/president-portrait.jpg",
+          alt: "ክቡር አቶ አሻድሊ ሀሰን - የቤኒሻንጉል ጉሙዝ ክልል ርዕሰ መስተዳድር (የኢዜአ ይፋዊ ማህደር)"
         },
         {
           id: 2,
-          headline: "ታላቁ የኢትዮጵያ ህዳሴ ግድብ፡ የአፍሪካ የኃይል ማማ እና የብሔራዊ ኩራታችን መገለጫ",
-          subheadline: "በጉባ ወረዳ የሚገኘው ታላቁ የህዳሴ ግድብ ከ5,150 ሜጋ ዋት በላይ ንጹህ የኤሌክትሪክ ኃይል በማመንጨት ሀገራችንን ወደ አዲስ የልማት ምዕራፍ እያሸጋገረ ነው።",
+          headline: "ታላቁ የኢትዮጵያ ህዳሴ ግድብ፡ የብሔራዊ አንድነታችን እና የኢነርጂ ሉዓላዊነታችን ማማ",
+          subheadline: "በጉባ ወረዳ የሚገኘው ታላቁ የህዳሴ ግድብ ከ5,150 ሜጋ ዋት በላይ ንጹህ ኃይል በማመንጨት የንጋት ሀይቅን፣ የዓሳ ሀብትን እና የክልሉን ሁለንተናዊ እድገት እያፋጠነ ነው።",
           actionPrimary: "ስለ ህዳሴው ግድብ ሚና",
           actionSecondary: "የኢነርጂ መስመርን ይመልከቱ",
-          image: "/images/gerd-banner.svg",
-          alt: "ታላቁ የኢትዮጵያ ህዳሴ ግድብ በጉባ ወረዳ"
+          image: "/images/gerd-dam.jpg",
+          alt: "ታላቁ የኢትዮጵያ ህዳሴ ግድብ በጉባ ወረዳ (የጠቅላይ ሚኒስትር ጽሕፈት ቤት ፎቶ)"
         },
         {
           id: 3,
-          headline: "ለም መሬቶቻችንን እና የተፈጥሮ ማዕድናቶቻችንን ለህዝባችን ሁለንተናዊ ተጠቃሚነት ማዋል",
-          subheadline: "ከአሶሳ እና ካማሺ ከፍተኛ የወርቅ ሀብቶች እስከ መተከል ሰፊ የግብርና ሸለቆዎች ድረስ ቤኒሻንጉል ጉሙዝ የኢትዮጵያ የብልጽግና ግንባር ቀደም ምድር ናት።",
-          actionPrimary: "ኢንቨስትመንት እና ማዕድን",
-          actionSecondary: "የአረንጓዴ አሻራ መርሃግብር",
-          image: "/images/agriculture.svg",
-          alt: "ግብርና እና ማዕድን በቤኒሻንጉል ጉሙዝ"
+          headline: "አሶሳ፡ የምዕራብ ኢትዮጵያ የንግድ፣ የባህል እና የልማት ማዕከል",
+          subheadline: "ከአሶሳ ህዳሴ ዓለም አቀፍ አውሮፕላን ማረፊያ እስከ ተዘረጉ የንግድ እና የትራንስፖርት መስመሮች ድረስ ክልላችን ወደ አዲስ የብልጽግና ምዕራፍ እየተሸጋገረ ነው።",
+          actionPrimary: "የክልሉ መረጃ",
+          actionSecondary: "የዞን አስተዳደሮች",
+          image: "/images/assosa-city.jpg",
+          alt: "የአሶሳ ከተማ - የቤኒሻንጉል ጉሙዝ ክልል ዋና መቀመጫ"
         }
       ],
-      tickerLabel: "ሰበር መግለጫ",
-      tickerText: "የክልሉ ስራ አስፈፃሚ ምክር ቤት የ2019 ዓ.ም የልማት ፍኖተ ካርታን፣ የወርቅ ንግድ ቁጥጥር ስርዓት እና የትምህርት ቤት ምገባ ፕሮግራምን በሙሉ ድምፅ አፀደቀ።"
+      tickerLabel: "ይፋዊ መግለጫ",
+      tickerText: "ክቡር ርዕሰ መስተዳድር አሻድሊ ሀሰን 'ህዳሴው ለኢትዮጵያ ታዳሽነት' መድረክ ላይ ንግግር አደረጉ • ክልሉ 8,985 ኪሎ ግራም ወርቅ ለብሔራዊ ባንክ አስረከበ • 1.2 ሚሊዮን ሄክታር መሬት ለማልማት ዝግጅት ተጠናቀቀ።"
     },
     presidentSection: {
       title: "ርዕሰ መስተዳድሩ",
       subtitle: "አመራር እና ራዕይ",
       name: "ክቡር አቶ አሻድሊ ሀሰን",
       role: "የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር",
-      quote: "ዋነኛው ታሪካዊ ኃላፊነታችን ለቤኒሻንጉል ጉሙዝ ህዝቦች የማይናወጥ የወንድማማችነት፣ የልማት እና የክብር ድልድይ መገንባት ነው። በለም አፈር፣ በከበሩ ማዕድናት እና ታላቁን የህዳሴ ግድብ በማስተናገድ የታደለ ታላቅ ክልል አለን።",
-      bioExcerpt: "ክቡር አቶ አሻድሊ ሀሰን ክልሉን በሰላም ግንባታ፣ በግልፅ አስተዳደር፣ በመሰረተ ልማት ዝርጋታ እና ኢንቨስትመንትን ወደ አሶሳ፣ መተከል፣ ካማሺ እና ማኦ-ኮሞ ዞኖች በማስፋፋት በርካታ ለውጦችን አስመዝግበዋል።",
-      readMore: "ሙሉ የህይወት ታሪክ ያንብቡ",
+      portrait: "/images/president-portrait.jpg",
+      quote: "ክልላችን በተፈጥሮም ሆነ በታሪክ የታደለች ናት። ታላቁን የህዳሴ ግድብ በማስተናገዳችን፣ በለም ወንዞቻችን እና በአስተዋዩ ህዝባችን እንኮራለን። ዋናው አላማችን አስተማማኝ ሰላምን ማስፈን፣ መልካም አስተዳደርን መገንባት እና ፍትሃዊ የልማት ተጠቃሚነትን ማረጋገጥ ነው።",
+      bioExcerpt: "ክቡር አቶ አሻድሊ ሀሰን ከሰኔ 2008 ዓ.ም ጀምሮ የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር ሆነው በማገልገል ላይ ይገኛሉ። በእሳቸው አመራር ወቅት በክልሉ አስተማማኝ ሰላም ማስፈን፣ የቀድሞ ታጣቂዎችን ወደ ሰላማዊ የግብርና ስራ ማሰማራት፣ የወርቅ ምርትን በቀጥታ ለብሔራዊ ባንክ ማስረከብ እና በታላቁ ህዳሴ ግድብ ዙሪያ የልማት እና የቱሪዝም ስራዎችን ማፋጠን ተችሏል።",
+      readMore: "ሙሉ የህይወት ታሪክ",
       viewSpeeches: "ይፋዊ ንግግሮች እና መመሪያዎች",
-      decreeCount: "48+ ውሳኔዎች",
-      speechesCount: "120+ ንግግሮች"
+      decreeCount: "48+ መመሪያዎች",
+      speechesCount: "120+ ይፋዊ ንግግሮች"
     },
     stats: [
       {
         value: "5,150+ ሜ.ዋ",
-        label: "የኤሌክትሪክ ኃይል የማመንጨት አቅም",
+        label: "የንጹህ ኤሌክትሪክ ኃይል አቅም",
         subtext: "በጉባ ወረዳ ታላቁ የህዳሴ ግድብ"
       },
       {
-        value: "50,380 ካሬ ኪ.ሜ",
-        label: "የክልሉ ስፋት",
-        subtext: "በወንዞችና በማዕድን የታደለ"
+        value: "8,985 ኪ.ግ",
+        label: "ለብሔራዊ ባንክ የገባ ወርቅ",
+        subtext: "በአሶሳ ቅርንጫፍ በኩል ገቢ የተደረገ"
+      },
+      {
+        value: "1.2 ሚሊዮን ሄክታር",
+        label: "የሚለማ የግብርና መሬት",
+        subtext: "28 ሚሊዮን ኩንታል ምርት የተገኘበት"
       },
       {
         value: "3 ዞኖች + 1 ልዩ ወረዳ",
         label: "የአስተዳደር እርከኖች",
         subtext: "አሶሳ፣ መተከል፣ ካማሺ እና ማኦ-ኮሞ"
-      },
-      {
-        value: "250 ሚሊዮን+",
-        label: "የአረንጓዴ አሻራ ችግኞች",
-        subtext: "የአባይ ተፋሰስን ለመጠበቅ የተተከሉ"
       }
     ],
     initiatives: {
       title: "ዋነኛ ስትራቴጂካዊ ፕሮጀክቶች",
       subtitle: "የክልሉ የትራንስፎርሜሽን ምሰሶዎች",
-      description: "በርዕሰ መስተዳድር ጽሕፈት ቤት ቀጥተኛ ክትትል የኢኮኖሚ እድገትን እና የህብረተሰብ ደህንነትን ለማረጋገጥ የሚተገበሩ ቁልፍ ፕሮጀክቶች።",
+      description: "በርዕሰ መስተዳድሩ ቀጥተኛ ክትትል የሚተገበሩ እና በመደመር እሳቤ የተቀረጹ ቁልፍ የልማት ምሰሶዎች።",
       items: [
         {
           id: "gerd",
-          title: "የህዳሴው ግድብ የልማት ኮሪደር",
+          title: "የህዳሴው ግድብ የልማት ኮሪደር እና ንጋት ሀይቅ",
           category: "ኢነርጂ እና መሰረተ ልማት",
-          image: "/images/gerd-banner.svg",
-          desc: "በጉባ የሚገኘውን ታላቁን የህዳሴ ግድብ ኢኮኖሚያዊ ጠቀሜታ ወደ ቱሪዝም፣ ዓሳ ሀብት እና የክልሉ የኤሌክትሪክ ተደራሽነት ማስፋፋት።",
-          metrics: "5,150+ ሜ.ዋ • ጉባ ወረዳ"
+          image: "/images/gerd-dam.jpg",
+          desc: "በጉባ የሚገኘውን ታላቁን የህዳሴ ግድብ የኤሌክትሪክ አቅም፣ የንጋት ሀይቅ የዓሳ ሀብት እና የቱሪዝም እድሎችን ለህዝባችን ተጠቃሚነት ማዋል",
+          metrics: "5,150+ ሜ.ዋ • ጉባ ወረዳ፣ መተከል"
         },
         {
           id: "mining",
-          title: "የወርቅ እና የተፈጥሮ ማዕድናት አስተዳደር",
+          title: "የወርቅ ማዕድን ልማት እና ህገወጥ ንግድን መግታት",
           category: "የተፈጥሮ ሀብት",
-          image: "/images/mining.svg",
-          desc: "የባህላዊ ወርቅ አምራቾችን ማደራጀት፣ ህገወጥ የኮንትሮባንድ ዝውውርን መግታት እና በአሶሳ የወርቅ ማጣሪያ ማዕከል ማቋቋም።",
+          image: "/images/mining-gold.jpg",
+          desc: "ከ8,985 ኪሎ ግራም በላይ ንጹህ ወርቅ ለኢትዮጵያ ብሔራዊ ባንክ በማስረከብ የሀገሪቱን የውጭ ምንዛሬ ማሳደግ እና አምራቾችን ማደራጀት።",
           metrics: "በኢትዮጵያ ቀዳሚ የወርቅ አምራች ክልል"
         },
         {
           id: "agro",
-          title: "ዘመናዊ ግብርና እና የቀርከሃ ኢንዱስትሪ",
+          title: "1.2 ሚሊዮን ሄክታር ዘመናዊ ግብርና እና የቀርከሃ ኢንዱስትሪ",
           category: "ግብርና እና ደን ልማት",
-          image: "/images/agriculture.svg",
-          desc: "የመተከል እና የካማሺ ሸለቆዎችን ለሰሊጥ፣ ማሽላ፣ አኩሪ አተር፣ ማንጎ እና ለኢንዱስትሪ ቀርከሃ ምርት ማዕከል ማድረግ።",
-          metrics: "ከ60% በላይ የሀገሪቱ የቆላ ቀርከሃ መገኛ"
+          image: "/images/agriculture-real.jpg",
+          desc: "የመተከል እና የካማሺ ሸለቆዎችን ለሰሊጥ፣ አኩሪ አተር፣ በቆሎ እና ለሀገሪቱ ከፍተኛ የቆላ ቀርከሃ ምርት ማዕከል ማድረግ።",
+          metrics: "28 ሚሊዮን ኩንታል ምርት • 60%+ የቆላ ቀርከሃ"
         },
         {
           id: "peace",
-          title: "ዘላቂ ሰላም፣ እርቅ እና አብሮነት",
+          title: "ዘላቂ ሰላም፣ እርቅ እና የህዝቦች አብሮነት",
           category: "መልካም አስተዳደር እና ፀጥታ",
-          image: "/images/assosa-hq.svg",
-          desc: "የህዝብ ለህዝብ ውይይቶች፣ የሀገር ሽማግሌዎች እርቅ እና ወጣቶችን በስራ በማሰማራት አስተማማኝ ሰላም ማስፈን።",
-          metrics: "በሁሉም 20+ ወረዳዎች የተተገበረ"
+          image: "/images/culture.jpg",
+          desc: "በመተከል እና በካማሺ የታጣቂዎችን ትጥቅ በማስፈታት ወደ ሰላማዊ የግብርና ስራ ማሰማራት እና የቤርታ፣ ጉሙዝ፣ ሺናሻ፣ ማኦ እና ኮሞ ህዝቦችን ባህል ማክበር።",
+          metrics: "በሁሉም 20+ ወረዳዎች አስተማማኝ ሰላም"
         }
       ]
     },
@@ -395,72 +406,76 @@ export const contentData = {
       articles: [
         {
           id: 1,
-          title: "ክቡር ርዕሰ መስተዳድር አሻድሊ ሀሰን ከአሶሳ የኢንዱስትሪ ፓርክ ማስፋፊያ የፌዴራል ልዑካን ጋር ተወያዩ",
-          category: "የልማት ዜናዎች",
-          date: "ጥቅምት 18፣ 2026",
-          readTime: "4 ደቂቃ ንባብ",
-          summary: "ውይይቱ የአሶሳ የወጪ ንግድ ኢንዱስትሪ ማዕከልን፣ ከሱዳን ጋር ያለውን የድንበር ንግድ እና የገጠር ኤሌክትሪክ ዝርጋታን ያካተተ ነበር።",
-          content: "የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር ክቡር አቶ አሻድሊ ሀሰን ከፍተኛ የፌዴራል ሚኒስትሮች ልዑክን በአሶሳ ጽሕፈት ቤታቸው ተቀብለው አነጋግረዋል። በውይይቱ የአሶሳ ኢንዱስትሪ ኮሪደር ግንባታ እና ከህዳሴው ግድብ የኤሌክትሪክ መስመሮችን ወደ ገጠር ማህበረሰብ የማዳረስ ስራዎች ተገምግመዋል።",
-          image: "/images/assosa-hq.svg"
+          title: "ክቡር ርዕሰ መስተዳድር አሻድሊ ሀሰን 'ህዳሴው ለኢትዮጵያ ታዳሽነት' መድረክ ላይ ንግግር አደረጉ",
+          category: "ንግግሮች",
+          date: "የኢዜአ ይፋዊ ዘገባ",
+          readTime: "5 ደቂቃ ንባብ",
+          summary: "ርዕሰ መስተዳድሩ በጉባ ወረዳ የሚገኘው ታላቁ የኢትዮጵያ ህዳሴ ግድብ በኢትዮጵያውያን የጋራ ጥረት እና በመደመር እሳቤ እውን የሆነ ታሪካዊ ድል መሆኑን ገለጹ።",
+          content: "የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር ክቡር አቶ አሻድሊ ሀሰን በአሶሳ ከተማ በተካሄደው 'ህዳሴው ለኢትዮጵያ ታዳሽነት' የምክክር መድረክ ላይ ባደረጉት ንግግር፡ ታላቁ የህዳሴ ግድብ የኤሌክትሪክ ኃይል ከማመንጨት ባሻገር በጉባ የተፈጠረው የንጋት ሀይቅ ለዓሳ ልማት፣ ለመስኖ እና ለቱሪዝም ትልቅ እድል መክፈቱን አስረድተዋል።",
+          image: "/images/gerd-dam.jpg"
         },
         {
           id: 2,
-          title: "የክልሉ ስራ አስፈፃሚ ምክር ቤት ለባህላዊ ወርቅ አምራቾች አዲስ መመሪያ አፀደቀ",
+          title: "የክልሉ የማዕድን ቢሮ 8,985 ኪሎ ግራም ወርቅ ለኢትዮጵያ ብሔራዊ ባንክ ማስረከቡን አስታወቀ",
           category: "የካቢኔ ውሳኔዎች",
-          date: "ጥቅምት 11፣ 2026",
-          readTime: "3 ደቂቃ ንባብ",
-          summary: "ምክር ቤቱ ለአካባቢው አምራቾች ተገቢውን የገበያ ዋጋ የሚያረጋግጥ እና 15% የማዕድን ገቢ ለወረዳው ልማት የሚውልበትን ስርዓት ዘረጋ።",
-          content: "በርዕሰ መስተዳድር አሻድሊ ሀሰን ሰብሳቢነት የተካሄደው 14ኛው መደበኛ የካቢኔ ስብሰባ ማዕድን አምራቾች በቀጥታ ለብሔራዊ ባንክ ቅርንጫፍ ወርቃቸውን እንዲያስረክቡ የሚያስችል ታሪካዊ ደንብ አጽድቋል።",
-          image: "/images/mining.svg"
+          date: "የማዕድን ቢሮ ይፋዊ መግለጫ",
+          readTime: "4 ደቂቃ ንባብ",
+          summary: "በአሶሳ፣ ባምባሲ እና ካማሺ ዞኖች ህገወጥ የማዕድን ኮንትሮባንድ ንግድን በመግታት ወደ 9 ቶን የሚጠጋ ወርቅ ለብሔራዊ ባንክ ገቢ ተደርጓል።",
+          content: "የቤኒሻንጉል ጉሙዝ ክልል የማዕድን እና ኢነርጂ ቢሮ ይፋ ባደረገው ሪፖርት 8,985 ኪሎ ግራም ወርቅ በአሶሳ የብሔራዊ ባንክ ቅርንጫፍ በኩል ገቢ መደረጉን ገልጿል። ርዕሰ መስተዳድር አሻድሊ ሀሰን አምራች ማህበራት ምርታቸውን በህጋዊ መስመር በማስረከብ ለሀገሪቱ የውጭ ምንዛሬ ላበረከቱት አስተዋጽኦ ምስጋና አቅርበዋል።",
+          image: "/images/mining-gold.jpg"
         },
         {
           id: 3,
-          title: "የክቡር ርዕሰ መስተዳድሩ ቁልፍ ንግግር፡ ዘላቂ ሰላም የክልላዊ ህዳሴያችን መሰረት ነው",
-          category: "ንግግሮች",
-          date: "ጥቅምት 04፣ 2026",
-          readTime: "6 ደቂቃ ንባብ",
-          summary: "በመተከል ዞን ግልገል በለስ በተካሄደው አመታዊ የሰላም እና የአንድነት ኮንፈረንስ ላይ የተደረገ ንግግር።",
-          content: "ክቡር ርዕሰ መስተዳድር አሻድሊ ሀሰን ለሀገር ሽማግሌዎች፣ ለሃይማኖት አባቶች እና ለህዝብ ተወካዮች ባደረጉት ንግግር፡ 'አንድነታችን የፖለቲካ መፈክር ብቻ ሳይሆን የታሪክ ህልውናችን ነው። ማህበራዊ ትስስራችንን ስንጠብቅ የጋራ እጣፈንታችንን ማንም ሊያናጋው አይችልም' ብለዋል።",
-          image: "/images/president-portrait.svg"
+          title: "ክልሉ ባለፈው አመት ካገኘው 28 ሚሊዮን ኩንታል ምርት በመነሳት 1.2 ሚሊዮን ሄክታር መሬት ለማልማት ተዘጋጅቷል",
+          category: "የልማት ዜናዎች",
+          date: "የግብርና ቢሮ ሪፖርት",
+          readTime: "4 ደቂቃ ንባብ",
+          summary: "ርዕሰ መስተዳድር አሻድሊ ሀሰን በክልሉ የሰፈነው አስተማማኝ ሰላም አርሶ አደሮች እና የቀድሞ ታጣቂዎች በሰፊው ወደ ግብርና ስራ እንዲሰማሩ ማድረጉን ገለጹ።",
+          content: "የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት በ1.1 ሚሊዮን ሄክታር መሬት ላይ 28 ሚሊዮን ኩንታል ምርት ካስመዘገበ በኋላ፤ በመጪው የምርት ዘመን 1.2 ሚሊዮን ሄክታር መሬት ለማልማት አቅዶ ወደ ስራ ገብቷል። በሰሊጥ፣ በቆሎ፣ አኩሪ አተር እና በሌማት ትሩፋት መርሃግብር የዶሮ፣ የእንስሳት እና የማር ምርታማነት በከፍተኛ ደረጃ ጨምሯል።",
+          image: "/images/agriculture-real.jpg"
         },
         {
           id: 4,
-          title: "ታሪካዊ ምዕራፍ፡ በጉባ ወረዳ የህዳሴው ግድብ ተጨማሪ ተርባይኖች ሙሉ ኃይል ማመንጨት ጀመሩ",
+          title: "በመተከል እና በካማሺ ዞኖች የሰላም ስምምነቶች ሙሉ በሙሉ ወደ ልማት ስራ ተሸጋገሩ",
           category: "መግለጫዎች",
-          date: "መስከረም 20፣ 2026",
+          date: "የፕሬስ ሴክሬተሪያት መግለጫ",
           readTime: "5 ደቂቃ ንባብ",
-          summary: "የርዕሰ መስተዳድር ጽሕፈት ቤት ተጨማሪ የኃይል ማመንጫ ተርባይኖች ወደ ብሔራዊ ኃይል ቋት መቀላቀላቸውን በደስታ ገለጸ።",
-          content: "የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር ጽሕፈት ቤት በጉባ ወረዳ የሚገኘው ታላቁ የኢትዮጵያ ህዳሴ ግድብ ተጨማሪ ኃይል ማመንጨት መጀመሩን አስመልክቶ ለመላው የኢትዮጵያ ህዝብ የእንኳን ደስ አላችሁ መልዕክት አስተላልፏል።",
-          image: "/images/gerd-banner.svg"
+          summary: "ከጉሙዝ ህዝብ ዴሞክራሲያዊ ንቅናቄ (ጉህዴን) እና ሌሎች አካላት ጋር የተደረጉ የሰላም ስምምነቶች ሙሉ ለሙሉ ተጠናክረው የቀድሞ ታጣቂዎች ወደ ማህበራዊ እና የኢኮኖሚ ስራዎች ተቀላቅለዋል።",
+          content: "የርዕሰ መስተዳድር ጽሕፈት ቤት በክልሉ የተገነባው ሰላም አስተማማኝ መሰረት ላይ መድረሱን አስታውቋል። የቀድሞ ታጣቂዎች የእርሻ መሬት እና የመስሪያ ካፒታል ተሰጥቷቸው በግልገል በለስ እና በካማሺ ሰላማዊ ኑሮ ጀምረዋል።",
+          image: "/images/culture.jpg"
         }
       ]
     },
     administration: {
       title: "የክልሉ ስራ አስፈፃሚ ምክር ቤት እና ሴክተር ቢሮዎች",
       subtitle: "የአስተዳደር መዋቅር",
-      description: "ርዕሰ መስተዳድሩ የክልሉን አስፈፃሚ አካላት በቁልፍ ሴክተር ቢሮዎች እና በዞን አስተዳደሮች አማካይነት ይመራሉ እና ያስተባብራሉ።",
+      description: "ክቡር ርዕሰ መስተዳድር አሻድሊ ሀሰን የክልሉን አስፈፃሚ አካላት በቁልፍ ሴክተር ቢሮዎች እና በዞን አስተዳደሮች አማካይነት ይመራሉ እና ያስተባብራሉ።",
       zones: [
         {
           name: "አሶሳ ዞን",
           capital: "አሶሳ",
-          desc: "የክልሉ ዋና የፖለቲካ እና የኢኮኖሚ ማዕከል፣ የድንበር ንግድ እና የአስተዳደር መቀመጫ።",
+          image: "/images/assosa-city.jpg",
+          desc: "የክልሉ ዋና የፖለቲካ እና የኢኮኖሚ ማዕከል፣ የአሶሳ ህዳሴ አውሮፕላን ማረፊያ እና የድንበር ንግድ መቀመጫ።",
           woredas: "7 ወረዳዎች • ባምባሲ፣ ሆሞሻ፣ ኩርሙክ፣ መንጌ፣ ኦዳ ቢልዲግሉ፣ አሶሳ ዙሪያ፣ ሸርቆሌ"
         },
         {
           name: "መተከል ዞን",
           capital: "ግልገል በለስ",
-          desc: "የግብርና ምርታማነት ማዕከል እና ታላቁ የኢትዮጵያ ህዳሴ ግድብ መገኛ።",
+          image: "/images/gerd-dam.jpg",
+          desc: "የግብርና ምርታማነት ማዕከል፣ ታላቁ የኢትዮጵያ ህዳሴ ግድብ እና የንጋት ሀይቅ መገኛ።",
           woredas: "7 ወረዳዎች • ጉባ፣ ዳንጉር፣ ድባጤ፣ ቡለን፣ ማንዱራ፣ ወምበራ፣ ፓዌ"
         },
         {
           name: "ካማሺ ዞን",
           capital: "ካማሺ",
-          desc: "በወንዞች ተፋሰስ፣ በማዕድን ሀብት፣ በእንስሳት እርባታ እና በተፈጥሮ ደን የበለፀገ።",
+          image: "/images/agriculture-real.jpg",
+          desc: "በቆላ ቀርከሃ ደን፣ በከብት እርባታ፣ በአባይ ተፋሰስ እና በወርቅ ማዕድን የበለፀገ።",
           woredas: "5 ወረዳዎች • ካማሺ፣ ያሶ፣ ቤሎ ጀጎንፎይ፣ አጋሎ ሚቴ፣ ሲርባ አባይ"
         },
         {
           name: "ማኦ-ኮሞ ልዩ ወረዳ",
           capital: "ቶንጎ",
+          image: "/images/culture.jpg",
           desc: "ልዩ የባህል ቅርሶች፣ የተፈጥሮ ማር እና ቡና አምራች እንዲሁም የድንበር መተላለፊያ።",
           woredas: "ራሱን የቻለ ልዩ የአስተዳደር ወረዳ"
         }
@@ -477,9 +492,9 @@ export const contentData = {
     citizenPortal: {
       title: "የዜጎች አገልግሎት እና ግንኙነት",
       subtitle: "ግልፅ እና ተደራሽ መንግሥት",
-      intro: "በመደመር እሳቤ መርሆዎች መሰረት የርዕሰ መስተዳድር ጽሕፈት ቤት ለዜጎች ፈጣን እና ቀልጣፋ አገልግሎት ለመስጠት ቁርጠኛ ነው።",
-      formTitle: "ለርዕሰ መስተዳድር ጽሕፈት ቤት መልዕክት ወይም አቤቱታ ይላኩ",
-      formDesc: "አስተያየቶችን፣ የልማት ጥያቄዎችን፣ የኢንቨስትመንት ጥያቄዎችን ወይም አቤቱታዎችን በቀጥታ ለጽሕፈት ቤቱ ያድርሱ።",
+      intro: "በርዕሰ መስተዳድር አሻድሊ ሀሰን አመራር የጽሕፈት ቤቱ በር ለሁሉም ዜጎች፣ የሀገር ሽማግሌዎች፣ ባለሀብቶች እና ዲያስፖራዎች ክፍት ነው።",
+      formTitle: "ለክልሉ ርዕሰ መስተዳድር ጽሕፈት ቤት መልዕክት ወይም አቤቱታ ይላኩ",
+      formDesc: "አስተያየቶችን፣ የልማት ጥያቄዎችን፣ የኢንቨስትመንት ጥያቄዎችን ወይም አቤቱታዎችን በቀጥታ በአሶሳ ለሚገኘው ጽሕፈት ቤት ያድርሱ።",
       fields: {
         fullName: "ሙሉ ስም",
         email: "የኢሜይል አድራሻ",
@@ -494,13 +509,13 @@ export const contentData = {
       },
       quickServices: [
         { title: "የህዝብ አቤቱታ እና ጥቆማ", desc: "የህዝብ ጥያቄዎችን እና አቤቱታዎችን በቀጥታ ያቅርቡ።" },
-        { title: "የኢንቨስትመንት እና መሬት አንድ ማዕከል", desc: "ፈጣን የኢንቨስትመንት ፈቃድ እና የማዕድን ማረጋገጫ ያግኙ።" },
+        { title: "የኢንቨስትመንት እና መሬት አንድ ማዕከል", desc: "በግብርና፣ በማዕድን እና በህዳሴው ግድብ ዙሪያ ፈጣን የኢንቨስትመንት ፈቃድ ያግኙ።" },
         { title: "የክልሉ ነጋሪት ጋዜጣ እና አዋጆች", desc: "ህጋዊ አዋጆችን፣ ደንቦችን እና የካቢኔ ውሳኔዎችን ያውርዱ።" },
         { title: "ጨረታዎች እና የስራ ማስታወቂያዎች", desc: "የመንግሥት ግዥዎችን እና ክፍት የስራ መደቦችን ይመልከቱ።" }
       ]
     },
     footer: {
-      aboutText: "የኢትዮጵያ ፌዴራላዊ ዴሞክራሲያዊ ሪፐብሊክ የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር ጽሕፈት ቤት ይፋዊ ፖርታል። ለሰላም፣ ለአንድነት፣ ለፍትሃዊ እድገት እና ለብልጽግና በትጋት ይሰራል!",
+      aboutText: "የኢትዮጵያ ፌዴራላዊ ዴሞክራሲያዊ ሪፐብሊክ የቤኒሻንጉል ጉሙዝ ክልላዊ መንግሥት ርዕሰ መስተዳድር ጽሕፈት ቤት ይፋዊ ፖርታል። ለሰላም፣ ለአንድነት፣ ለፍትሃዊ እድገት እና ታላቁን የህዳሴ ግድብ በኩራት ለማስተናገድ በትጋት ይሰራል!",
       quickLinks: "ፈጣን ማገናኛዎች",
       federalLinks: "ብሔራዊ እና የፌዴራል ፖርታሎች",
       contactHq: "ዋና ጽሕፈት ቤት",
