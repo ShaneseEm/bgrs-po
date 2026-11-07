@@ -48,9 +48,45 @@ function OutlineButton({ children, onClick }) {
   );
 }
 
+const SECTIONS = ['home', 'president', 'initiatives', 'news', 'administration', 'services', 'contact'];
+
+const sectionFromHash = () => {
+  const h = window.location.hash.replace(/^#\/?/, '');
+  return SECTIONS.includes(h) ? h : 'home';
+};
+
+const ui = {
+  en: {
+    mediaEyebrow: 'Media Secretariat',
+    viewAllNews: 'View all news',
+    exploreTitle: 'Explore the Office',
+    learnMore: 'Learn more',
+    explore: {
+      initiatives: 'GERD, gold & agro-mechanization',
+      administration: 'Assosa, Metekel & Kamashi zones',
+      services: 'Online inquiries & petitions',
+      contact: 'Executive Secretariat, Assosa',
+    },
+  },
+  am: {
+    mediaEyebrow: 'የሚዲያ ጽሕፈት ቤት',
+    viewAllNews: 'ሁሉንም ዜናዎች ይመልከቱ',
+    exploreTitle: 'ጽሕፈት ቤቱን ይጎብኙ',
+    learnMore: 'ተጨማሪ ያንብቡ',
+    explore: {
+      initiatives: 'ህዳሴ ግድብ፣ ወርቅ እና የግብርና ሜካናይዜሽን',
+      administration: 'አሶሳ፣ መተከል እና ካማሺ ዞኖች',
+      services: 'የመስመር ላይ ጥያቄዎች እና አቤቱታዎች',
+      contact: 'ዋና ጽሕፈት ቤት፣ አሶሳ',
+    },
+  },
+};
+
 export default function App() {
-  const [currentLang, setCurrentLang] = useState('en');
-  const [activeSection, setActiveSection] = useState('home');
+  const [currentLang, setCurrentLang] = useState(() => {
+    try { return localStorage.getItem('bgrs-lang') === 'am' ? 'am' : 'en'; } catch { return 'en'; }
+  });
+  const [activeSection, setActiveSection] = useState(sectionFromHash);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [isDark, setIsDark] = useState(() => {
@@ -69,8 +105,42 @@ export default function App() {
     try { localStorage.setItem('bgrs-theme', isDark ? 'dark' : 'light'); } catch {}
   }, [isDark]);
 
+  const t = ui[currentLang] || ui.en;
+
+  // Persist language and expose it to assistive tech / search engines
+  useEffect(() => {
+    document.documentElement.lang = currentLang;
+    try { localStorage.setItem('bgrs-lang', currentLang); } catch {}
+  }, [currentLang]);
+
+  // Browser back/forward and deep links (#/president, #/news, ...)
+  useEffect(() => {
+    const sync = () => {
+      setActiveSection(sectionFromHash());
+      window.scrollTo({ top: 0 });
+    };
+    window.addEventListener('popstate', sync);
+    window.addEventListener('hashchange', sync);
+    return () => {
+      window.removeEventListener('popstate', sync);
+      window.removeEventListener('hashchange', sync);
+    };
+  }, []);
+
+  // Per-page document title
+  useEffect(() => {
+    const office = content.meta.office.toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase());
+    document.title = activeSection === 'home'
+      ? `${office} | ${content.meta.region.toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase())}`
+      : `${content.nav[activeSection]} | ${office}`;
+  }, [activeSection, content]);
+
   const navigateTo = (section) => {
-    setActiveSection(section);
+    if (section !== activeSection) {
+      const url = section === 'home' ? window.location.pathname : `#/${section}`;
+      window.history.pushState(null, '', url);
+      setActiveSection(section);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -148,8 +218,8 @@ export default function App() {
             <section className="py-16 sm:py-24 bg-[#f8fafc] dark:bg-[#0c1f2e] border-y border-slate-200 dark:border-slate-800">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-                  <SectionHeading eyebrow="Media Secretariat" title={content.news.title} className="!mb-0" />
-                  <OutlineButton onClick={() => navigateTo('news')}>View all news</OutlineButton>
+                  <SectionHeading eyebrow={t.mediaEyebrow} title={content.news.title} className="mb-0!" />
+                  <OutlineButton onClick={() => navigateTo('news')}>{t.viewAllNews}</OutlineButton>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
@@ -157,6 +227,9 @@ export default function App() {
                     <article
                       key={article.id}
                       onClick={() => setSelectedArticle(article)}
+                      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelectedArticle(article); } }}
+                      role="button"
+                      tabIndex={0}
                       className="group bg-white dark:bg-[#0a1a26] border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col"
                     >
                       <div className="relative aspect-[16/10] overflow-hidden bg-slate-200">
@@ -166,7 +239,7 @@ export default function App() {
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute top-0 left-0 w-full h-0 bg-[#004750]/30 backdrop-blur-[2px] transition-all duration-500 ease-in-out group-hover:h-full" />
-                        <span className="absolute top-4 left-4 bg-[#1a4f6d] text-white eyebrow !text-[9px] px-3 py-1.5">
+                        <span className="absolute top-4 left-4 bg-[#1a4f6d] text-white eyebrow text-[9px]! px-3 py-1.5">
                           {article.category}
                         </span>
                       </div>
@@ -193,13 +266,13 @@ export default function App() {
             {/* Explore the office */}
             <section className="py-16 sm:py-24 bg-white dark:bg-[#0a1a26]">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <SectionHeading eyebrow={content.meta.office} title="Explore the Office" />
+                <SectionHeading eyebrow={content.meta.office} title={t.exploreTitle} />
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                   {[
-                    { id: 'initiatives', label: content.nav.initiatives, desc: 'GERD, gold & agro-mechanization', image: '/images/gerd-dam.jpg' },
-                    { id: 'administration', label: content.nav.administration, desc: 'Assosa, Metekel & Kamashi zones', image: '/images/assosa-city.jpg' },
-                    { id: 'services', label: content.nav.services, desc: 'Online inquiries & petitions', image: '/images/culture.jpg' },
-                    { id: 'contact', label: content.nav.contact, desc: 'Executive Secretariat, Assosa', image: '/images/assosa-airport.jpg' },
+                    { id: 'initiatives', label: content.nav.initiatives, desc: t.explore.initiatives, image: '/images/gerd-dam.jpg' },
+                    { id: 'administration', label: content.nav.administration, desc: t.explore.administration, image: '/images/assosa-city.jpg' },
+                    { id: 'services', label: content.nav.services, desc: t.explore.services, image: '/images/culture.jpg' },
+                    { id: 'contact', label: content.nav.contact, desc: t.explore.contact, image: '/images/assosa-airport.jpg' },
                   ].map((card) => (
                     <button
                       key={card.id}
@@ -213,8 +286,8 @@ export default function App() {
                         <span className="block w-8 h-[2px] bg-[#dab26a] mb-4 transition-all duration-500 group-hover:w-16" />
                         <div className="font-serif text-white text-xl leading-snug mb-2">{card.label}</div>
                         <div className="text-xs text-slate-200/90 mb-4">{card.desc}</div>
-                        <span className="inline-flex items-center gap-2 eyebrow !text-[10px] text-[#dab26a]">
-                          Learn more <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                        <span className="inline-flex items-center gap-2 eyebrow text-[10px]! text-[#dab26a]">
+                          {t.learnMore} <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                         </span>
                       </div>
                     </button>
@@ -228,7 +301,9 @@ export default function App() {
         {/* ================= THE PRESIDENT PAGE ================= */}
         {activeSection === 'president' && (
           <div className="animate-fade-in">
-            <PresidentSection 
+            <PresidentSection
+              currentLang={currentLang}
+              onNavigate={navigateTo}
               content={content}
               onOpenSpeeches={() => {
                 const speech = content.news.articles.find(a => a.category.toLowerCase().includes('speech') || a.category.includes('ንግግር'));

@@ -43,7 +43,7 @@ export function Navigation({ content, activeSection, setActiveSection }) {
         <span className={`block font-serif text-[#1a4f6d] dark:text-white leading-tight truncate ${compact ? 'text-sm' : 'text-base sm:text-xl'}`}>
           {content.meta.office}
         </span>
-        <span className="block eyebrow !text-[9px] sm:!text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+        <span className="block eyebrow text-[9px]! sm:text-[10px]! text-slate-500 dark:text-slate-400 mt-0.5 truncate">
           {content.meta.region}
         </span>
       </span>

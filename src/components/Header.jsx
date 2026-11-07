@@ -8,7 +8,7 @@ export function Header({ currentLang, setLang, content, onOpenSearch, isDark, se
       <div className="ethiopian-tricolor-bar w-full" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 text-[11px]">
         <div className="flex items-center gap-5 min-w-0">
-          <span className="eyebrow !text-[10px] text-[#dab26a] truncate">{content.meta.country}</span>
+          <span className="eyebrow text-[10px]! text-[#dab26a] truncate">{content.meta.country}</span>
           <a href={`mailto:${content.meta.email}`} className="hidden md:flex items-center gap-1.5 hover:text-white transition-colors">
             <Mail className="w-3.5 h-3.5 text-[#dab26a]" />
             {content.meta.email}

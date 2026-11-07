@@ -108,7 +108,7 @@ export function HeroBanner({ content, onNavigate }) {
       {/* Briefing ticker */}
       <div className="bg-white dark:bg-[#0a1a26] border-b border-slate-200 dark:border-slate-800 text-xs">
         <div className="max-w-7xl mx-auto flex items-stretch">
-          <div className="flex-shrink-0 flex items-center bg-[#1a4f6d] text-white px-4 sm:px-6 py-3 eyebrow !text-[10px]">
+          <div className="flex-shrink-0 flex items-center bg-[#1a4f6d] text-white px-4 sm:px-6 py-3 eyebrow text-[10px]!">
             {content.hero.tickerLabel}
           </div>
           <div className="overflow-hidden whitespace-nowrap flex-1 min-w-0 flex items-center px-4">
