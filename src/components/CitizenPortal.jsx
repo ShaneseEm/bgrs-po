@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Send, CheckCircle2, Phone, Mail, Clock, MessageSquare, Briefcase, ScrollText, FileSignature, ArrowLeft, ArrowRight } from 'lucide-react';
-import { Breadcrumb, Reveal, PrimaryButton } from './ui';
+import { Reveal, PrimaryButton } from './ui';
 import { ui } from '../data/ui';
 
 const SERVICE_ICONS = [MessageSquare, Briefcase, ScrollText, FileSignature];
@@ -20,7 +20,7 @@ function Field({ id, label, required, requiredLabel, children }) {
   );
 }
 
-export function CitizenPortal({ content, currentLang, onNavigate }) {
+export function CitizenPortal({ content, currentLang }) {
   const cp = content.citizenPortal;
   const f = cp.fields;
   const m = content.meta;
@@ -88,9 +88,8 @@ export function CitizenPortal({ content, currentLang, onNavigate }) {
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#dab26a]/15 blur-3xl animate-float" />
         <div className="absolute -bottom-32 -left-24 w-96 h-96 rounded-full bg-[#1a4f6d]/10 blur-3xl animate-float" style={{ animationDelay: '2s' }} />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 lg:pb-24">
-          <Breadcrumb content={content} onNavigate={onNavigate} current={content.nav.services} />
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mt-12">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-20 pb-16 lg:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 animate-rise">
               <div className="eyebrow text-[#3a6d8c] dark:text-[#dab26a] mb-5">{cp.subtitle}</div>
               <h1 className="font-serif text-4xl lg:text-5xl text-[#0e2f45] dark:text-white leading-tight mb-6">{t.heroTitle}</h1>

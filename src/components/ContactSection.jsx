@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MapPin, Phone, Mail, Navigation as NavIcon, ExternalLink, ArrowRight } from 'lucide-react';
-import { Breadcrumb, Reveal, SectionHeading } from './ui';
+import { Reveal, SectionHeading } from './ui';
 import { ui } from '../data/ui';
 
 // Assosa, Benishangul Gumuz
@@ -65,8 +65,7 @@ export function ContactSection({ content, currentLang, onNavigate }) {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[300px] lg:pt-16 pb-10 lg:pb-16 min-h-[620px] flex items-end lg:items-center pointer-events-none">
           <div className="pointer-events-auto w-full max-w-lg bg-white dark:bg-[#0a1a26] shadow-2xl animate-rise">
             <div className="p-8 sm:p-10">
-              <Breadcrumb content={content} onNavigate={onNavigate} current={content.nav.contact} />
-              <h1 className="font-serif text-4xl lg:text-5xl text-[#0e2f45] dark:text-white leading-tight mt-8 mb-4">{content.nav.contact}</h1>
+              <h1 className="font-serif text-4xl lg:text-5xl text-[#0e2f45] dark:text-white leading-tight mb-4">{content.nav.contact}</h1>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">{t.lead}</p>
 
               <div

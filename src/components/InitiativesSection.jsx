@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { TrendingUp, ChevronDown } from 'lucide-react';
-import { Breadcrumb, Reveal } from './ui';
+import { Reveal } from './ui';
 import { ui } from '../data/ui';
 
-export function InitiativesSection({ content, currentLang, onNavigate }) {
+export function InitiativesSection({ content, currentLang }) {
   const init = content.initiatives;
   const items = init.items;
   const t = (ui[currentLang] || ui.en).initiatives;
@@ -32,7 +32,6 @@ export function InitiativesSection({ content, currentLang, onNavigate }) {
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#0a2233]/80 to-transparent" />
 
         <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-8 pb-10">
-          <Breadcrumb content={content} onNavigate={onNavigate} current={content.nav.initiatives} light />
           <div className="mt-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-7 animate-rise">
               <div className="eyebrow text-[#dab26a] mb-5">{init.subtitle}</div>

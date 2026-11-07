@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -70,25 +70,6 @@ export function CountUp({ value, duration = 1600 }) {
   if (target === null) return <span ref={ref}>{value}</span>;
   const formatted = n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
   return <span ref={ref}>{String(value).replace(match[0], formatted)}</span>;
-}
-
-export function Breadcrumb({ content, onNavigate, current, light = false }) {
-  return (
-    <nav aria-label="Breadcrumb">
-      <ol className={`flex flex-wrap items-center gap-2 text-sm ${light ? 'text-slate-300' : 'text-slate-500 dark:text-slate-400'}`}>
-        <li>
-          <button
-            onClick={() => onNavigate('home')}
-            className={`hover:underline underline-offset-4 transition-colors cursor-pointer ${light ? 'hover:text-white' : 'hover:text-[#1a4f6d] dark:hover:text-white'}`}
-          >
-            {content.nav.home}
-          </button>
-        </li>
-        <li aria-hidden><ChevronRight className="w-4 h-4 opacity-60" /></li>
-        <li aria-current="page" className={light ? 'text-white' : 'text-[#1a4f6d] dark:text-white font-medium'}>{current}</li>
-      </ol>
-    </nav>
-  );
 }
 
 export function SectionHeading({ eyebrow, title, className = '', light = false }) {

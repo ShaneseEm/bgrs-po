@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Mail, ArrowUpRight, Users, Building2, Landmark } from 'lucide-react';
-import { Breadcrumb, Reveal, SectionHeading } from './ui';
+import { Reveal, SectionHeading } from './ui';
 import { ui } from '../data/ui';
 
 function Node({ children, className = '', wrapClass = '', delay = 0, onClick }) {
@@ -19,7 +19,7 @@ function Node({ children, className = '', wrapClass = '', delay = 0, onClick }) 
   );
 }
 
-export function AdministrationSection({ content, currentLang, onNavigate }) {
+export function AdministrationSection({ content, currentLang }) {
   const admin = content.administration;
   const p = content.presidentSection;
   const t = (ui[currentLang] || ui.en).admin;
@@ -42,10 +42,9 @@ export function AdministrationSection({ content, currentLang, onNavigate }) {
       {/* ===== Hero with governance chart ===== */}
       <section className="relative bg-[#0e2f45] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-[0.07] [background-image:radial-gradient(#dab26a_1px,transparent_1px)] [background-size:22px_22px]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 lg:pb-24">
-          <Breadcrumb content={content} onNavigate={onNavigate} current={content.nav.administration} light />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-20 pb-16 lg:pb-24">
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mt-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5 animate-rise">
               <div className="eyebrow text-[#dab26a] mb-5">{admin.subtitle}</div>
               <h1 className="font-serif text-4xl lg:text-5xl leading-tight mb-6">{admin.title}</h1>

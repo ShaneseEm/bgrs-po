@@ -3,7 +3,6 @@ import { ArrowRight, ChevronLeft, ChevronRight, X, Maximize2, Mic, MapPin, Build
 
 const labels = {
   en: {
-    home: 'Home',
     message: 'Message from the President',
     priorities: 'Key Priorities',
     prioritiesLead: 'Four pillars guiding the regional executive agenda.',
@@ -22,7 +21,6 @@ const labels = {
     next: 'Next photo',
   },
   am: {
-    home: 'መነሻ',
     message: 'የርዕሰ መስተዳድሩ መልዕክት',
     priorities: 'ቁልፍ ቅድሚያዎች',
     prioritiesLead: 'የክልሉን የአስፈፃሚ አጀንዳ የሚመሩ አራት ምሰሶዎች።',
@@ -95,13 +93,7 @@ export function PresidentSection({ content, currentLang = 'en', onOpenSpeeches, 
         <img src={p.portraitPress || photos[1]?.url} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-15" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a2233] via-[#0e2f45]/95 to-[#0e2f45]/80" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 lg:pb-24">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-slate-300 mb-8 lg:mb-12">
-            <button onClick={() => onNavigate?.('home')} className="hover:text-white transition-colors cursor-pointer">{t.home}</button>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-[#dab26a]">{content.nav.president}</span>
-          </nav>
-
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-20 pb-16 lg:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="lg:col-span-5 order-2 lg:order-1">
               <div className="relative max-w-md mx-auto lg:mx-0">

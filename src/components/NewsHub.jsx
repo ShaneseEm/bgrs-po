@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, ArrowUpRight, Clock } from 'lucide-react';
-import { Breadcrumb } from './ui';
+
 import { ui } from '../data/ui';
 
 // Tab index → category keywords (English and Amharic); index 0 = all
@@ -40,7 +40,7 @@ export function NewsCard({ article, onSelect, readLabel, style, className = '' }
   );
 }
 
-export function NewsHub({ content, currentLang, onNavigate, onSelectNews }) {
+export function NewsHub({ content, currentLang, onSelectNews }) {
   const n = content.news;
   const t = (ui[currentLang] || ui.en).news;
   const [tab, setTab] = useState(0);
@@ -54,9 +54,8 @@ export function NewsHub({ content, currentLang, onNavigate, onSelectNews }) {
   return (
     <div id="news" className="bg-white dark:bg-[#0a1a26]">
       {/* ===== Masthead ===== */}
-      <header className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        <Breadcrumb content={content} onNavigate={onNavigate} current={content.nav.news} />
-        <div className="mt-10 pb-6 border-b-4 border-[#1a4f6d] dark:border-[#dab26a] flex flex-col md:flex-row md:items-end justify-between gap-6 animate-rise">
+      <header className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-16">
+        <div className="pb-6 border-b-4 border-[#1a4f6d] dark:border-[#dab26a] flex flex-col md:flex-row md:items-end justify-between gap-6 animate-rise">
           <div>
             <div className="eyebrow text-[#3a6d8c] dark:text-[#dab26a] mb-3">{n.subtitle}</div>
             <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-[#0e2f45] dark:text-white leading-none tracking-tight">{n.title}</h1>
