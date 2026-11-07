@@ -15,7 +15,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { SearchModal } from './components/SearchModal';
 import { NewsModal } from './components/NewsModal';
-import { SectionHeading, PrimaryButton, OutlineButton, titleCase } from './components/ui';
+import { SectionHeading, PrimaryButton, OutlineButton, Reveal, titleCase } from './components/ui';
 
 const SECTIONS = ['home', 'president', 'initiatives', 'news', 'administration', 'services', 'contact'];
 
@@ -129,7 +129,7 @@ export default function App() {
               {/* President's message */}
               <section className="py-16 sm:py-24 bg-white dark:bg-[#0a1a26]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                  <div className="lg:col-span-5 relative">
+                  <Reveal variant="left" className="lg:col-span-5 relative">
                     <div className="absolute -top-4 -left-4 w-2/3 h-2/3 border-2 border-[#dab26a]/60 hidden sm:block" />
                     <div className="relative overflow-hidden bg-slate-200 group">
                       <img
@@ -144,9 +144,9 @@ export default function App() {
                         <div className="text-[#dab26a] text-xs font-semibold mt-1">{content.presidentSection.role}</div>
                       </div>
                     </div>
-                  </div>
+                  </Reveal>
 
-                  <div className="lg:col-span-7">
+                  <Reveal variant="right" delay={150} className="lg:col-span-7">
                     <SectionHeading eyebrow={content.presidentSection.subtitle} title={content.presidentSection.title} />
                     <blockquote className="flex gap-5 mb-8">
                       <span className="self-stretch w-[4px] bg-[#1a4f6d] dark:bg-[#dab26a] flex-shrink-0" />
@@ -161,7 +161,7 @@ export default function App() {
                       <PrimaryButton onClick={() => navigateTo('president')}>{content.nav.president}</PrimaryButton>
                       <OutlineButton onClick={() => navigateTo('services')}>{content.nav.services}</OutlineButton>
                     </div>
-                  </div>
+                  </Reveal>
                 </div>
               </section>
 
@@ -173,8 +173,10 @@ export default function App() {
                     <OutlineButton onClick={() => navigateTo('news')}>{t.viewAllNews}</OutlineButton>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                    {content.news.articles.slice(0, 3).map((a) => (
-                      <NewsCard key={a.id} article={a} onSelect={setSelectedArticle} readLabel={content.news.readArticle} />
+                    {content.news.articles.slice(0, 3).map((a, i) => (
+                      <Reveal key={a.id} delay={i * 120} className="flex">
+                        <NewsCard article={a} onSelect={setSelectedArticle} readLabel={content.news.readArticle} className="w-full" />
+                      </Reveal>
                     ))}
                   </div>
                 </div>
@@ -190,11 +192,11 @@ export default function App() {
                       { id: 'administration', image: '/images/assosa-city.jpg' },
                       { id: 'services', image: '/images/culture.jpg' },
                       { id: 'contact', image: '/images/assosa-airport.jpg' },
-                    ].map((card) => (
+                    ].map((card, i) => (
+                      <Reveal key={card.id} variant="zoom" delay={i * 100}>
                       <button
-                        key={card.id}
                         onClick={() => navigateTo(card.id)}
-                        className="group relative aspect-[4/5] overflow-hidden bg-slate-200 text-left cursor-pointer focus-visible:outline-3 focus-visible:outline-[#dab26a]"
+                        className="group relative w-full aspect-[4/5] overflow-hidden bg-slate-200 text-left cursor-pointer focus-visible:outline-3 focus-visible:outline-[#dab26a]"
                       >
                         <img src={card.image} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0e2f45] via-[#0e2f45]/40 to-transparent" />
@@ -208,6 +210,7 @@ export default function App() {
                           </span>
                         </div>
                       </button>
+                      </Reveal>
                     ))}
                   </div>
                 </div>

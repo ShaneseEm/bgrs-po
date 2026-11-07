@@ -100,7 +100,7 @@ export function Navigation({ content, activeSection, setActiveSection }) {
                 <li key={item.id}>
                   <button
                     onClick={() => go(item.id)}
-                    className={`relative whitespace-nowrap px-2.5 xl:px-4 py-4 text-sm xl:text-[15px] font-medium transition-colors cursor-pointer ${
+                    className={`group relative whitespace-nowrap px-2.5 xl:px-4 py-4 text-sm xl:text-[15px] font-medium transition-colors cursor-pointer ${
                       isActive
                         ? 'text-[#1a4f6d] dark:text-[#dab26a]'
                         : 'text-slate-500 dark:text-slate-400 hover:text-[#1a4f6d] dark:hover:text-white'
@@ -109,7 +109,7 @@ export function Navigation({ content, activeSection, setActiveSection }) {
                     {item.label}
                     <span
                       className={`absolute left-2.5 right-2.5 xl:left-4 xl:right-4 bottom-0 h-[3px] bg-[#dab26a] origin-left transition-transform duration-300 ${
-                        isActive ? 'scale-x-100' : 'scale-x-0'
+                        isActive ? 'scale-x-100' : 'scale-x-0 opacity-50 group-hover:scale-x-100'
                       }`}
                     />
                   </button>

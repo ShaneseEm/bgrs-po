@@ -127,7 +127,7 @@
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.animate-fade-in { animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-fade-in { animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
 
 /* Slow Ken Burns zoom for hero imagery */
 @keyframes kenburns {
@@ -141,6 +141,44 @@
 .gold-glow-hover:hover { box-shadow: 0 15px 35px -10px rgba(14, 47, 69, 0.45); }
 .transition-standard { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
+
+/* ===== Motion system ===== */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up { transform: translateY(32px); }
+.reveal-left { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+.reveal-zoom { transform: scale(0.94); }
+.reveal.is-visible, .is-visible .reveal { opacity: 1; transform: none; }
+
+.reveal .gold-rule-grow { transform: scaleX(0); transform-origin: left; transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s; }
+.reveal.is-visible .gold-rule-grow { transform: scaleX(1); }
+
+/* Org-chart connectors draw themselves */
+.draw-y { transform: scaleY(0); transform-origin: top; transition: transform 0.7s ease-out; }
+.draw-x { transform: scaleX(0); transform-origin: center; transition: transform 0.8s ease-out; }
+.is-visible .draw-y, .is-visible .draw-x { transform: none; }
+
+@keyframes slideInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: none; } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: none; } }
+.animate-step-next { animation: slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+.animate-step-back { animation: slideInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+
+@keyframes riseIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.animate-rise { animation: riseIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+
+@keyframes scrollCue { 0%, 100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(8px); opacity: 0.5; } }
+.animate-scroll-cue { animation: scrollCue 1.8s ease-in-out infinite; }
+
+@keyframes pulseRing { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); } 70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+.animate-pulse-ring { animation: pulseRing 2s infinite; }
+
+@keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.animate-float { animation: floatY 5s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-kenburns, .animate-marquee, .animate-fade-in { animation: none; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .reveal, .reveal .gold-rule-grow, .draw-x, .draw-y { opacity: 1; transform: none; }
 }

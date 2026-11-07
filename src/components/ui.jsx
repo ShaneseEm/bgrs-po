@@ -1,41 +1,103 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 
-/* Navy page banner used at the top of every inner page */
-export function PageHeader({ content, onNavigate, title, crumb, description, image }) {
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+/* Fires once when the element scrolls into view */
+export function useInView({ threshold = 0.15, once = true, rootMargin = '0px 0px -40px 0px' } = {}) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (!('IntersectionObserver' in window) || prefersReducedMotion()) {
+      setInView(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          if (once) io.disconnect();
+        } else if (!once) setInView(false);
+      },
+      { threshold, rootMargin }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [threshold, once, rootMargin]);
+  return [ref, inView];
+}
+
+/* Scroll-reveal wrapper: variant = up | left | right | zoom */
+export function Reveal({ as: Tag = 'div', variant = 'up', delay = 0, className = '', children, ...rest }) {
+  const [ref, inView] = useInView();
   return (
-    <section className="relative bg-[#0e2f45] text-white overflow-hidden">
-      {image && <img src={image} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-20" />}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0a2233] via-[#0e2f45]/95 to-[#0e2f45]/75" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 lg:pb-16">
-        <nav aria-label="Breadcrumb" className="mb-10">
-          <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-300">
-            <li>
-              <button onClick={() => onNavigate('home')} className="hover:text-white hover:underline underline-offset-4 transition-colors cursor-pointer">
-                {content.nav.home}
-              </button>
-            </li>
-            <li aria-hidden><ChevronRight className="w-4 h-4 text-slate-500" /></li>
-            <li className="text-white" aria-current="page">{crumb || title}</li>
-          </ol>
-        </nav>
-        <div className="max-w-3xl">
-          <h1 className="font-serif text-4xl lg:text-5xl leading-tight text-white mb-4">{title}</h1>
-          <span className="block w-16 h-1 bg-[#dab26a] rounded-full mb-6" />
-          {description && <p className="text-lg text-slate-300 leading-relaxed">{description}</p>}
-        </div>
-      </div>
-    </section>
+    <Tag
+      ref={ref}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`reveal reveal-${variant} ${inView ? 'is-visible' : ''} ${className}`}
+      {...rest}
+    >
+      {children}
+    </Tag>
   );
 }
 
-export function SectionHeading({ eyebrow, title, className = '' }) {
+/* Counts the leading number of a string up from 0, e.g. "5,150+ MW" */
+export function CountUp({ value, duration = 1600 }) {
+  const [ref, inView] = useInView({ threshold: 0.4 });
+  const match = String(value).match(/[\d,.]+/);
+  const target = match ? parseFloat(match[0].replace(/,/g, '')) : null;
+  const decimals = match && match[0].includes('.') ? match[0].split('.')[1].length : 0;
+  const [n, setN] = useState(target === null ? null : 0);
+
+  useEffect(() => {
+    if (!inView || target === null) return;
+    if (prefersReducedMotion()) return setN(target);
+    let raf;
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min(1, (now - start) / duration);
+      setN(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, target, duration]);
+
+  if (target === null) return <span ref={ref}>{value}</span>;
+  const formatted = n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  return <span ref={ref}>{String(value).replace(match[0], formatted)}</span>;
+}
+
+export function Breadcrumb({ content, onNavigate, current, light = false }) {
   return (
-    <div className={`mb-10 ${className}`}>
-      {eyebrow && <div className="eyebrow text-[#3a6d8c] dark:text-[#dab26a] mb-3">{eyebrow}</div>}
-      <h2 className="font-serif text-3xl lg:text-4xl text-[#1a4f6d] dark:text-white leading-tight tracking-tight mb-5">{title}</h2>
-      <span className="block w-16 md:w-24 h-1 bg-[#dab26a] rounded-full" />
-    </div>
+    <nav aria-label="Breadcrumb">
+      <ol className={`flex flex-wrap items-center gap-2 text-sm ${light ? 'text-slate-300' : 'text-slate-500 dark:text-slate-400'}`}>
+        <li>
+          <button
+            onClick={() => onNavigate('home')}
+            className={`hover:underline underline-offset-4 transition-colors cursor-pointer ${light ? 'hover:text-white' : 'hover:text-[#1a4f6d] dark:hover:text-white'}`}
+          >
+            {content.nav.home}
+          </button>
+        </li>
+        <li aria-hidden><ChevronRight className="w-4 h-4 opacity-60" /></li>
+        <li aria-current="page" className={light ? 'text-white' : 'text-[#1a4f6d] dark:text-white font-medium'}>{current}</li>
+      </ol>
+    </nav>
+  );
+}
+
+export function SectionHeading({ eyebrow, title, className = '', light = false }) {
+  return (
+    <Reveal className={`mb-10 ${className}`}>
+      {eyebrow && <div className={`eyebrow mb-3 ${light ? 'text-[#dab26a]' : 'text-[#3a6d8c] dark:text-[#dab26a]'}`}>{eyebrow}</div>}
+      <h2 className={`font-serif text-3xl lg:text-4xl leading-tight tracking-tight mb-5 ${light ? 'text-white' : 'text-[#1a4f6d] dark:text-white'}`}>{title}</h2>
+      <span className="gold-rule-grow block w-16 md:w-24 h-1 bg-[#dab26a] rounded-full" />
+    </Reveal>
   );
 }
 
@@ -45,10 +107,10 @@ export function PrimaryButton({ children, onClick, type = 'button', disabled, ic
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`min-h-11 inline-flex items-center justify-center gap-2 bg-[#1a4f6d] hover:bg-[#0e2f45] text-white px-7 py-3.5 text-[15px] font-semibold shadow-lg hover:shadow-2xl transition-all active:scale-95 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed ${className}`}
+      className={`group min-h-11 inline-flex items-center justify-center gap-2 bg-[#1a4f6d] hover:bg-[#0e2f45] text-white px-7 py-3.5 text-[15px] font-semibold shadow-lg hover:shadow-2xl hover:-translate-y-0.5 transition-all active:scale-95 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed ${className}`}
     >
       {children}
-      {icon && <ArrowRight className="w-4 h-4" />}
+      {icon && <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />}
     </button>
   );
 }

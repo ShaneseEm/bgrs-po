@@ -10,7 +10,7 @@ export function Footer({ content, setActiveSection }) {
   return (
     <footer className="bg-[#0e2f45] text-slate-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-        <button onClick={() => setActiveSection('home')} className="flex items-center gap-3 text-left cursor-pointer">
+        <button onClick={() => setActiveSection('home')} className="flex items-center gap-3 text-left cursor-pointer shrink-0">
           <img src={m.emblem} alt="" className="w-11 h-11 object-contain" />
           <span>
             <span className="block font-serif text-white text-[15px] leading-tight">{titleCase(m.office)}</span>
@@ -19,7 +19,7 @@ export function Footer({ content, setActiveSection }) {
         </button>
 
         <nav aria-label="Footer">
-          <ul className="flex flex-wrap gap-x-6 gap-y-3 text-[15px]">
+          <ul className="flex flex-wrap lg:justify-end gap-x-5 gap-y-3 text-[15px]">
             {links.map((id) => (
               <li key={id}>
                 <button onClick={() => setActiveSection(id)} className="hover:text-[#dab26a] transition-colors cursor-pointer">
