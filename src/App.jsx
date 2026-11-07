@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { contentData } from './data/content';
 import { ui } from './data/ui';
+import { usePublishedNews } from './lib/news';
 import { Header } from './components/Header';
 import { Navigation } from './components/Navigation';
 import { HeroBanner } from './components/HeroBanner';
@@ -46,7 +47,13 @@ export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
 
-  const content = contentData[currentLang] || contentData.en;
+  const baseContent = contentData[currentLang] || contentData.en;
+  const liveArticles = usePublishedNews(currentLang, baseContent.news.tabs);
+  // Posts from the admin (Supabase) replace the bundled sample articles once available
+  const content = useMemo(
+    () => (liveArticles ? { ...baseContent, news: { ...baseContent.news, articles: liveArticles } } : baseContent),
+    [baseContent, liveArticles]
+  );
   const t = (ui[currentLang] || ui.en).home;
 
   useEffect(() => {
