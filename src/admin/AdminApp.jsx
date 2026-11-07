@@ -164,8 +164,12 @@ function PostList({ onEdit, onNew, flash }) {
 
   const remove = async (p) => {
     if (!window.confirm(`Delete "${p.title_en}"? This cannot be undone.`)) return;
-    const { error: err } = await supabase.from('news').delete().eq('id', p.id);
+    // .select() returns the rows actually deleted — the database silently deletes
+    // nothing (no error) when a security rule blocks it, so an empty result means failure
+    const { data, error: err } = await supabase.from('news').delete().eq('id', p.id).select('id');
     if (err) return setError(err.message);
+    if (!data?.length) return setError('The post could not be deleted. Your account may not have permission, or it was already removed.');
+    setError('');
     setPosts((list) => list.filter((x) => x.id !== p.id));
   };
 
