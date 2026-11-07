@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { MapPin, Phone, Mail, Navigation as NavIcon, ExternalLink, ArrowRight } from 'lucide-react';
-import { Reveal, SectionHeading } from './ui';
+import { Reveal, SectionHeading, PhoneLink } from './ui';
 import { ui } from '../data/ui';
 
 // Assosa, Benishangul Gumuz
 const LAT = 10.0667;
 const LON = 34.5333;
-const MAP_EMBED = `https://www.openstreetmap.org/export/embed.html?bbox=${LON - 0.06}%2C${LAT - 0.03}%2C${LON + 0.06}%2C${LAT + 0.03}&layer=mapnik&marker=${LAT}%2C${LON}`;
-const MAP_LINK = `https://www.openstreetmap.org/?mlat=${LAT}&mlon=${LON}#map=14/${LAT}/${LON}`;
-const DIRECTIONS = `https://www.openstreetmap.org/directions?to=${LAT}%2C${LON}`;
+// Google Maps: keyless embed + official "Maps URLs" (open the Maps app on phones).
+// OpenStreetMap's free tile servers rate-limit (HTTP 429) and are not meant for production embeds.
+const MAP_EMBED = `https://maps.google.com/maps?q=${LAT},${LON}&z=14&output=embed`;
+const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${LAT},${LON}`;
+const DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${LAT},${LON}`;
+const HOTLINE = '8181';
 
 // Office hours: Mon–Fri 08:30–17:30, East Africa Time (UTC+3)
 const OPEN_MIN = 8 * 60 + 30;
@@ -38,7 +41,7 @@ export function ContactSection({ content, currentLang, onNavigate }) {
     {
       icon: Phone,
       title: t.phone,
-      lines: t.phones.map((text) => ({ text, href: `tel:${text.split(/[:：፦]\s*/).pop().replace(/\s/g, '')}` })),
+      lines: t.phones.map((text) => ({ text, tel: text.split(/[:：፦፡]\s*/).pop().replace(/\s/g, '') })),
     },
     {
       icon: Mail,
@@ -47,18 +50,34 @@ export function ContactSection({ content, currentLang, onNavigate }) {
     },
   ];
 
+  const actionClass =
+    'group flex flex-col items-center gap-2 py-4 px-2 border border-slate-200 dark:border-slate-700 hover:bg-[#1a4f6d] hover:border-[#1a4f6d] hover:-translate-y-1 transition-all duration-300 text-center';
   const actions = [
-    { icon: Phone, label: t.call, href: 'tel:8181' },
     { icon: Mail, label: t.emailUs, href: `mailto:${m.email}` },
     { icon: NavIcon, label: t.directions, href: DIRECTIONS, external: true },
   ];
+  const ActionInner = ({ icon: Icon, label }) => (
+    <>
+      <Icon className="w-5 h-5 text-[#1a4f6d] dark:text-[#dab26a] group-hover:text-[#dab26a] group-hover:scale-110 transition-all" />
+      <span className="text-sm font-medium text-slate-700 dark:text-slate-200 group-hover:text-white leading-tight">{label}</span>
+    </>
+  );
 
   return (
     <div id="contact">
       {/* ===== Map hero ===== */}
-      <section className="relative bg-slate-200 dark:bg-slate-900">
+      <section className="relative bg-[#0e2f45]">
         <div className="absolute inset-0">
-          <iframe title={`${t.location}: ${m.hq}`} src={MAP_EMBED} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full" />
+          {/* Fallback behind the map, so a slow or blocked map never shows an empty box */}
+          <img src="/images/assosa-city.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-60" />
+          <iframe
+            title={`${t.location}: ${m.hq}`}
+            src={MAP_EMBED}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+            className="relative w-full h-full border-0"
+          />
         </div>
         <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#0e2f45]/70 via-[#0e2f45]/20 to-transparent hidden lg:block" />
 
@@ -82,15 +101,12 @@ export function ContactSection({ content, currentLang, onNavigate }) {
               </div>
 
               <div className="grid grid-cols-3 gap-2">
-                {actions.map(({ icon: Icon, label, href, external }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                    className="group flex flex-col items-center gap-2 py-4 px-2 border border-slate-200 dark:border-slate-700 hover:bg-[#1a4f6d] hover:border-[#1a4f6d] hover:-translate-y-1 transition-all duration-300 text-center"
-                  >
-                    <Icon className="w-5 h-5 text-[#1a4f6d] dark:text-[#dab26a] group-hover:text-[#dab26a] group-hover:scale-110 transition-all" />
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-200 group-hover:text-white leading-tight">{label}</span>
+                <PhoneLink number={HOTLINE} copiedLabel={t.copied} className={`${actionClass} relative`} title={`${t.call}: ${HOTLINE}`}>
+                  <ActionInner icon={Phone} label={t.call} />
+                </PhoneLink>
+                {actions.map((a) => (
+                  <a key={a.label} href={a.href} {...(a.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className={actionClass}>
+                    <ActionInner icon={a.icon} label={a.label} />
                   </a>
                 ))}
               </div>
@@ -117,9 +133,11 @@ export function ContactSection({ content, currentLang, onNavigate }) {
                   <div>
                     <h3 className="eyebrow font-sans text-slate-800 dark:text-slate-100 mb-3">{title}</h3>
                     <ul className="space-y-1.5 text-slate-600 dark:text-slate-300">
-                      {lines.map(({ text, href }) => (
+                      {lines.map(({ text, href, tel }) => (
                         <li key={text}>
-                          {href ? (
+                          {tel ? (
+                            <PhoneLink number={tel} copiedLabel={t.copied} className="hover:text-[#1a4f6d] dark:hover:text-white hover:underline underline-offset-4">{text}</PhoneLink>
+                          ) : href ? (
                             <a href={href} className="hover:text-[#1a4f6d] dark:hover:text-white hover:underline underline-offset-4 break-all">{text}</a>
                           ) : (
                             text

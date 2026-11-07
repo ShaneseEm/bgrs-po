@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUp, ArrowUpRight, Mail, MapPin, Phone, Clock } from 'lucide-react';
-import { titleCase } from './ui';
+import { titleCase, PhoneLink } from './ui';
 import { ui } from '../data/ui';
 
 const federalPortals = [
@@ -45,11 +45,18 @@ export function Footer({ content, currentLang, setActiveSection }) {
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-0.5 text-slate-400 shrink-0" />
-                <a href="tel:8181" className="hover:text-white transition-colors">
+                <span>
                   {m.hotline.split('|').map((part) => (
-                    <span key={part} className="block">{part.trim()}</span>
+                    <PhoneLink
+                      key={part}
+                      number={part.split(/[:：፦፡]\s*/).pop().replace(/\s/g, '')}
+                      copiedLabel={t.copied}
+                      className="block hover:text-white transition-colors"
+                    >
+                      {part.trim()}
+                    </PhoneLink>
                   ))}
-                </a>
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 mt-0.5 text-slate-400 shrink-0" />

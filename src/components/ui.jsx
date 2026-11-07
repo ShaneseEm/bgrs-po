@@ -72,6 +72,34 @@ export function CountUp({ value, duration = 1600 }) {
   return <span ref={ref}>{String(value).replace(match[0], formatted)}</span>;
 }
 
+/*
+  Phone link: dials on phones/tablets; on desktop (no dialer, Windows shows an
+  "Open Pick an app?" prompt) it copies the number instead and confirms inline.
+*/
+export function PhoneLink({ number, children, className = '', copiedLabel = 'Copied', ...rest }) {
+  const [copied, setCopied] = useState(false);
+  const onClick = async (e) => {
+    const canDial = window.matchMedia?.('(pointer: coarse)').matches;
+    if (canDial) return; // let the tel: link open the dialer
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText(number);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard unavailable — number is still visible on the page */
+    }
+  };
+  return (
+    <a href={`tel:${number}`} onClick={onClick} className={className} {...rest}>
+      {children}
+      <span aria-live="polite" className={`ml-2 text-xs font-semibold text-emerald-500 transition-opacity ${copied ? 'opacity-100' : 'opacity-0'}`}>
+        {copied ? `✓ ${copiedLabel}` : ''}
+      </span>
+    </a>
+  );
+}
+
 export function SectionHeading({ eyebrow, title, className = '', light = false }) {
   return (
     <Reveal className={`mb-10 ${className}`}>

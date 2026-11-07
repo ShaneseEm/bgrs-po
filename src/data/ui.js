@@ -83,6 +83,7 @@ export const ui = {
       days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       today: 'Today',
       closedDay: 'Closed',
+      copied: 'Copied',
     },
     search: {
       hint: 'Search news, initiatives and bureaus — try "GERD", "gold" or "agriculture".',
@@ -175,6 +176,7 @@ export const ui = {
       days: ['ሰኞ', 'ማክሰኞ', 'ረቡዕ', 'ሐሙስ', 'ዓርብ', 'ቅዳሜ', 'እሁድ'],
       today: 'ዛሬ',
       closedDay: 'ዝግ',
+      copied: 'ተገልብጧል',
     },
     search: {
       hint: 'ዜናዎችን፣ ፕሮጀክቶችን እና ቢሮዎችን ይፈልጉ።',
