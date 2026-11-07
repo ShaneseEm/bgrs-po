@@ -1,183 +1,106 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, X, FileText, ArrowRight, Compass, Building, Calendar } from 'lucide-react';
+import { Search, X, ArrowRight } from 'lucide-react';
+import { useDialog } from './ui';
+import { ui } from '../data/ui';
 
-export function SearchModal({ isOpen, onClose, content, currentLang, onSelectNews }) {
+const match = (q, ...fields) => fields.some((f) => String(f || '').toLowerCase().includes(q));
+
+export function SearchModal({ isOpen, onClose, content, currentLang, onSelectNews, onNavigate }) {
+  const t = ui[currentLang] || ui.en;
   const [query, setQuery] = useState('');
   const inputRef = useRef(null);
+  useDialog(isOpen, onClose);
 
   useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 100);
-    } else {
-      setQuery('');
-    }
+    if (isOpen) inputRef.current?.focus();
+    else setQuery('');
   }, [isOpen]);
 
   if (!isOpen) return null;
 
   const q = query.trim().toLowerCase();
-
-  // Search through articles
-  const matchingArticles = q
-    ? content.news.articles.filter(
-        (a) =>
-          a.title.toLowerCase().includes(q) ||
-          a.summary.toLowerCase().includes(q) ||
-          a.content.toLowerCase().includes(q) ||
-          a.category.toLowerCase().includes(q)
-      )
+  const groups = q
+    ? [
+        {
+          label: t.search.news,
+          items: content.news.articles
+            .filter((a) => match(q, a.title, a.summary, a.content, a.category))
+            .map((a) => ({ key: `n${a.id}`, eyebrow: a.category, title: a.title, sub: a.summary, go: () => onSelectNews(a) })),
+        },
+        {
+          label: t.search.initiatives,
+          items: content.initiatives.items
+            .filter((i) => match(q, i.title, i.desc, i.category))
+            .map((i) => ({ key: `i${i.id}`, eyebrow: i.category, title: i.title, sub: i.desc, go: () => onNavigate('initiatives') })),
+        },
+        {
+          label: t.search.bureaus,
+          items: content.administration.bureaus
+            .filter((b) => match(q, b.name, b.head, b.email))
+            .map((b) => ({ key: `b${b.email}`, eyebrow: b.head, title: b.name, sub: b.email, go: () => onNavigate('administration') })),
+        },
+      ].filter((g) => g.items.length)
     : [];
-
-  // Search through initiatives
-  const matchingInitiatives = q
-    ? content.initiatives.items.filter(
-        (i) =>
-          i.title.toLowerCase().includes(q) ||
-          i.desc.toLowerCase().includes(q) ||
-          i.category.toLowerCase().includes(q)
-      )
-    : [];
-
-  // Search through bureaus
-  const matchingBureaus = q
-    ? content.administration.bureaus.filter(
-        (b) =>
-          b.name.toLowerCase().includes(q) ||
-          b.head.toLowerCase().includes(q) ||
-          b.email.toLowerCase().includes(q)
-      )
-    : [];
-
-  const totalResults = matchingArticles.length + matchingInitiatives.length + matchingBureaus.length;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-      <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-2xl w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col max-h-[80vh]">
-        
-        {/* Search Input Bar */}
-        <div className="p-4 sm:p-5 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3 bg-slate-50 dark:bg-slate-950">
-          <Search className="w-5 h-5 text-emerald-700 dark:text-emerald-400 flex-shrink-0" />
+    <div className="fixed inset-0 z-[120] flex items-start justify-center p-0 sm:p-6 sm:pt-24 bg-[#0a2233]/80 backdrop-blur-sm animate-fade-in" onClick={onClose}>
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={content.nav.searchPlaceholder}
+        className="bg-white dark:bg-[#0a1a26] w-full max-w-2xl h-full sm:h-auto sm:max-h-[75vh] shadow-2xl flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center gap-3 px-5 border-b border-slate-200 dark:border-slate-800">
+          <Search className="w-5 h-5 text-[#1a4f6d] dark:text-[#dab26a] flex-shrink-0" />
           <input
             ref={inputRef}
-            type="text"
+            type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={content.nav.searchPlaceholder}
-            className="w-full bg-transparent text-base text-slate-900 dark:text-white placeholder-slate-400 focus:outline-hidden font-medium"
+            aria-label={content.nav.searchPlaceholder}
+            className="w-full bg-transparent py-5 text-base text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none"
           />
-          {query && (
-            <button 
-              onClick={() => setQuery('')}
-              className="text-xs font-bold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 px-2 py-1 cursor-pointer"
-            >
-              Clear
-            </button>
-          )}
-          <button
-            onClick={onClose}
-            className="p-1 rounded-md text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-          >
+          <button onClick={onClose} aria-label={t.close} className="w-10 h-10 inline-flex items-center justify-center rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-white cursor-pointer flex-shrink-0">
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Search Results Container */}
-        <div className="p-6 overflow-y-auto space-y-6 flex-1">
-          {q === '' ? (
-            <div className="text-center py-8 text-slate-400 dark:text-slate-500 text-xs space-y-2">
-              <Search className="w-8 h-8 mx-auto opacity-30 text-emerald-800 dark:text-emerald-400" />
-              <p>Type keywords like "GERD", "Gold", "Agriculture", "Speech", or "Cabinet" to find documents.</p>
-            </div>
-          ) : totalResults === 0 ? (
-            <div className="text-center py-10 text-slate-500 dark:text-slate-400 text-xs">
-              No government records or news found matching "{query}".
-            </div>
+        <div className="overflow-y-auto flex-1 p-5 sm:p-6">
+          {!q ? (
+            <p className="text-center text-sm text-slate-400 py-10">{t.search.hint}</p>
+          ) : groups.length === 0 ? (
+            <p className="text-center text-sm text-slate-500 dark:text-slate-400 py-10">
+              {t.search.none} &ldquo;{query}&rdquo;
+            </p>
           ) : (
-            <div className="space-y-6">
-              
-              {/* Articles & Speeches */}
-              {matchingArticles.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                    <FileText className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
-                    <span>News & Speeches ({matchingArticles.length})</span>
-                  </h4>
-                  <div className="space-y-2">
-                    {matchingArticles.map((art) => (
-                      <div
-                        key={art.id}
-                        onClick={() => {
-                          onSelectNews(art);
-                          onClose();
-                        }}
-                        className="p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all cursor-pointer"
-                      >
-                        <div className="flex items-center gap-2 text-[10px] text-slate-400 mb-1">
-                          <span className="font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 px-2 py-0.5 rounded">
-                            {art.category}
+            <div className="space-y-8">
+              {groups.map((g) => (
+                <div key={g.label}>
+                  <div className="eyebrow text-[10px]! text-slate-400 mb-3">{g.label} ({g.items.length})</div>
+                  <ul className="divide-y divide-slate-100 dark:divide-slate-800 border-y border-slate-100 dark:border-slate-800">
+                    {g.items.map((it) => (
+                      <li key={it.key}>
+                        <button
+                          onClick={() => { it.go(); onClose(); }}
+                          className="group w-full text-left py-4 flex items-start justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/40 px-2 transition-colors cursor-pointer"
+                        >
+                          <span className="min-w-0">
+                            <span className="block eyebrow text-[9px]! text-[#3a6d8c] dark:text-[#dab26a] mb-1">{it.eyebrow}</span>
+                            <span className="block font-serif text-[#1a4f6d] dark:text-white leading-snug">{it.title}</span>
+                            <span className="block text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">{it.sub}</span>
                           </span>
-                          <span>•</span>
-                          <span>{art.date}</span>
-                        </div>
-                        <h5 className="font-bold text-sm text-slate-900 dark:text-white font-sans">{art.title}</h5>
-                        <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-1 mt-1">{art.summary}</p>
-                      </div>
+                          <ArrowRight className="w-4 h-4 mt-5 text-slate-300 group-hover:text-[#1a4f6d] dark:group-hover:text-[#dab26a] flex-shrink-0" />
+                        </button>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
-              )}
-
-              {/* Initiatives */}
-              {matchingInitiatives.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                    <Compass className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                    <span>Flagship Initiatives ({matchingInitiatives.length})</span>
-                  </h4>
-                  <div className="space-y-2">
-                    {matchingInitiatives.map((item) => (
-                      <a
-                        key={item.id}
-                        href="#initiatives"
-                        onClick={onClose}
-                        className="block p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 hover:bg-amber-50 dark:hover:bg-slate-800 hover:border-amber-300 transition-all"
-                      >
-                        <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400 uppercase">{item.category}</span>
-                        <h5 className="font-bold text-sm text-slate-900 dark:text-white font-sans">{item.title}</h5>
-                        <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-1 mt-0.5">{item.desc}</p>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Bureaus */}
-              {matchingBureaus.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                    <Building className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
-                    <span>Executive Bureaus ({matchingBureaus.length})</span>
-                  </h4>
-                  <div className="space-y-2">
-                    {matchingBureaus.map((bureau, idx) => (
-                      <a
-                        key={idx}
-                        href="#administration"
-                        onClick={onClose}
-                        className="block p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
-                      >
-                        <h5 className="font-bold text-sm text-slate-900 dark:text-white">{bureau.name}</h5>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">{bureau.head} • {bureau.email}</p>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-
+              ))}
             </div>
           )}
         </div>
-
       </div>
     </div>
   );

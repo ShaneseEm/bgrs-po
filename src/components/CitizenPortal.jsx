@@ -1,261 +1,166 @@
 import React, { useState } from 'react';
-import { MessageSquare, Send, CheckCircle2, FileText, Briefcase, Download, ShieldAlert, Sparkles, ArrowRight } from 'lucide-react';
+import { Send, CheckCircle2, Phone, Mail, Clock } from 'lucide-react';
+import { PageHeader, SectionHeading, PrimaryButton } from './ui';
+import { ui } from '../data/ui';
 
-export function CitizenPortal({ content }) {
+const inputClass =
+  'w-full bg-white dark:bg-[#0a1a26] border border-slate-300 dark:border-slate-700 px-4 py-3 text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-[#1a4f6d] focus:ring-2 focus:ring-[#1a4f6d]/15 dark:focus:border-[#dab26a] transition-colors';
+
+function Field({ id, label, required, requiredLabel, children }) {
+  return (
+    <div>
+      <label htmlFor={id} className="block text-xs font-semibold text-[#1a4f6d] dark:text-slate-200 mb-2">
+        {label}
+        {required && <span className="text-[#b0823a] ml-1" aria-label={requiredLabel}>*</span>}
+      </label>
+      {children}
+    </div>
+  );
+}
+
+export function CitizenPortal({ content, currentLang, onNavigate }) {
   const cp = content.citizenPortal;
   const f = cp.fields;
+  const m = content.meta;
+  const t = (ui[currentLang] || ui.en).portal;
 
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    zone: 'Assosa Zone',
-    category: 'Public Feedback',
-    subject: '',
-    message: ''
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submittedRef, setSubmittedRef] = useState(null);
+  const empty = { fullName: '', email: '', phone: '', zone: t.zones[0], category: t.categories[0], subject: '', message: '' };
+  const [form, setForm] = useState(empty);
+  const [sent, setSent] = useState(false);
+  const set = (key) => (e) => setForm({ ...form, [key]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      const randomRef = 'BGRS-' + Math.floor(100000 + Math.random() * 900000);
-      setSubmittedRef(randomRef);
-      setIsSubmitting(false);
-      setFormData({
-        fullName: '',
-        email: '',
-        phone: '',
-        zone: 'Assosa Zone',
-        category: 'Public Feedback',
-        subject: '',
-        message: ''
-      });
-    }, 1200);
+    const body = [
+      `${f.fullName}: ${form.fullName}`,
+      `${f.email}: ${form.email}`,
+      form.phone && `${f.phone}: ${form.phone}`,
+      `${f.zone}: ${form.zone}`,
+      `${f.category}: ${form.category}`,
+      '',
+      form.message,
+    ].filter((line) => line !== false && line !== undefined && line !== null).join('\n');
+    window.location.href = `mailto:${m.email}?subject=${encodeURIComponent(`[${form.category}] ${form.subject}`)}&body=${encodeURIComponent(body)}`;
+    setSent(true);
   };
 
   return (
-    <section id="services" className="py-12 sm:py-16 bg-white dark:bg-slate-950 relative transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider mb-2">
-            <MessageSquare className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-            <span>{cp.subtitle}</span>
+    <div id="services">
+      <PageHeader
+        content={content}
+        onNavigate={onNavigate}
+        eyebrow={cp.subtitle}
+        title={cp.title}
+        description={cp.intro}
+        image="/images/culture.jpg"
+      />
+
+      {/* Services */}
+      <section className="py-16 sm:py-24 bg-white dark:bg-[#0a1a26]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading eyebrow={cp.subtitle} title={t.servicesTitle} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
+            {cp.quickServices.map((s, idx) => (
+              <article key={s.title} className="group bg-white dark:bg-[#0a1a26] p-8 hover:bg-[#0e2f45] transition-colors duration-500">
+                <div className="font-serif text-4xl text-[#dab26a] leading-none mb-6">0{idx + 1}</div>
+                <h3 className="font-serif text-xl text-[#1a4f6d] dark:text-white group-hover:text-white leading-snug mb-4 transition-colors">{s.title}</h3>
+                <span className="block w-8 h-[2px] bg-[#dab26a] mb-4 transition-all duration-500 group-hover:w-16" />
+                <p className="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-300 leading-relaxed transition-colors">{s.desc}</p>
+              </article>
+            ))}
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
-            {cp.title}
-          </h2>
-          <p className="mt-2 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
-            {cp.intro}
-          </p>
-          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
         </div>
+      </section>
 
-        {/* 4 Quick Citizen Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {cp.quickServices.map((service, idx) => (
-            <div 
-              key={idx}
-              className="p-6 rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-emerald-900 dark:hover:bg-emerald-950 hover:text-white hover:border-amber-400 group transition-all duration-300 shadow-xs hover:shadow-xl flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 group-hover:bg-amber-400 group-hover:text-slate-950 flex items-center justify-center mb-4 transition-all">
-                  <FileText className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-lg text-slate-900 dark:text-white group-hover:text-white font-sans mb-2 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 group-hover:text-emerald-100 leading-relaxed transition-colors">
-                  {service.desc}
-                </p>
-              </div>
+      {/* Message form */}
+      <section className="py-16 sm:py-24 bg-[#f8fafc] dark:bg-[#0c1f2e] border-t border-slate-200 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <SectionHeading eyebrow={t.formEyebrow} title={cp.formTitle} />
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-10">{cp.formDesc}</p>
 
-              <div className="pt-4 mt-4 border-t border-slate-200 dark:border-slate-800 group-hover:border-emerald-800">
-                <span className="text-[11px] font-bold text-amber-700 dark:text-amber-400 group-hover:text-amber-300 flex items-center gap-1.5">
-                  <span>Access Service Online</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </span>
+            <div className="bg-white dark:bg-[#0a1a26] border border-slate-200 dark:border-slate-800">
+              <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 eyebrow text-[10px]! text-[#3a6d8c] dark:text-[#dab26a]">
+                {t.directContact}
               </div>
+              <ul className="divide-y divide-slate-200 dark:divide-slate-800 text-sm">
+                <li className="px-6 py-4 flex items-start gap-3">
+                  <Phone className="w-4 h-4 mt-0.5 text-[#1a4f6d] dark:text-[#dab26a] flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-200">{m.hotline}</span>
+                </li>
+                <li className="px-6 py-4 flex items-start gap-3">
+                  <Mail className="w-4 h-4 mt-0.5 text-[#1a4f6d] dark:text-[#dab26a] flex-shrink-0" />
+                  <a href={`mailto:${m.email}`} className="text-[#1a4f6d] dark:text-slate-200 hover:underline underline-offset-4">{m.email}</a>
+                </li>
+                <li className="px-6 py-4 flex items-start gap-3">
+                  <Clock className="w-4 h-4 mt-0.5 text-[#1a4f6d] dark:text-[#dab26a] flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-200">{m.workingHours}</span>
+                </li>
+              </ul>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Interactive Feedback & Petition Form */}
-        <div className="bg-slate-900 text-white rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12">
-            
-            {/* Form Intro Sidebar */}
-            <div className="lg:col-span-5 p-8 sm:p-12 bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800">
-              <div className="space-y-5">
-                <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/40 px-3.5 py-1 rounded-full text-xs font-bold text-amber-300 uppercase tracking-widest">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Direct Citizen Channel</span>
-                </div>
-                <h3 className="text-3xl sm:text-4xl font-black font-sans text-white leading-tight">
-                  {cp.formTitle}
-                </h3>
-                <p className="text-slate-300 text-base leading-relaxed font-light">
-                  {cp.formDesc}
-                </p>
-
-                <div className="space-y-3 pt-6 border-t border-emerald-900/60 text-xs text-slate-300">
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                    <span>Every submission is reviewed by the Secretariat.</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                    <span>Receive official tracking reference number immediately.</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                    <span>Responses routed within 5 business working days.</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-8">
-                <div className="bg-emerald-900/40 border border-emerald-700/50 p-4 rounded-xl text-xs">
-                  <span className="font-bold text-amber-300 block mb-1">Confidentiality Guarantee:</span>
-                  Public petitions and grievance submissions are handled under strict confidentiality protocols by the Regional Ombudsman.
-                </div>
-              </div>
-            </div>
-
-            {/* Form Controls Column */}
-            <div className="lg:col-span-7 p-8 sm:p-12 bg-slate-900/90">
-              {submittedRef ? (
-                <div className="bg-emerald-900/40 border-2 border-emerald-500 rounded-2xl p-8 text-center space-y-4 my-8">
-                  <div className="w-16 h-16 bg-emerald-500 text-slate-950 rounded-full flex items-center justify-center mx-auto">
+          <div className="lg:col-span-7">
+            <div className="bg-white dark:bg-[#0a1a26] border border-slate-200 dark:border-slate-800 shadow-sm p-6 sm:p-10">
+              {sent ? (
+                <div className="text-center py-10" role="status">
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#1a4f6d]/10 text-[#1a4f6d] dark:text-[#dab26a] flex items-center justify-center">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h4 className="text-2xl font-bold font-sans text-white">Submission Successful!</h4>
-                  <p className="text-sm text-emerald-200">
-                    {f.successMsg}
-                  </p>
-                  <div className="font-mono text-xl font-bold bg-slate-950 text-amber-400 py-3 px-6 rounded-xl inline-block border border-amber-500/40 tracking-wider">
-                    {submittedRef}
-                  </div>
-                  <p className="text-xs text-slate-400">
-                    Please retain this official tracking code for inquiries with the Regional Cabinet Office.
+                  <h3 className="font-serif text-2xl text-[#1a4f6d] dark:text-white mb-4">{t.sentTitle}</h3>
+                  <p className="text-slate-600 dark:text-slate-300 max-w-md mx-auto mb-8">
+                    {t.sentBody}{' '}
+                    <a href={`mailto:${m.email}`} className="text-[#1a4f6d] dark:text-[#dab26a] font-semibold underline underline-offset-4">{m.email}</a>
                   </p>
                   <button
-                    onClick={() => setSubmittedRef(null)}
-                    className="mt-4 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold px-6 py-2.5 rounded-lg uppercase tracking-wider transition-colors cursor-pointer"
+                    onClick={() => { setForm(empty); setSent(false); }}
+                    className="min-h-11 inline-flex items-center justify-center border-2 border-[#1a4f6d] dark:border-slate-500 text-[#1a4f6d] dark:text-slate-100 px-7 py-3 text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-[#1a4f6d] hover:text-white transition-all cursor-pointer"
                   >
-                    Submit Another Inquiry
+                    {t.another}
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                        {f.fullName} *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.fullName}
-                        onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-                        className="w-full bg-slate-950/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-hidden focus:border-amber-400 transition-colors"
-                        placeholder="Abebe Kebede / H.E. / Citizen"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                        {f.email} *
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="w-full bg-slate-950/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-hidden focus:border-amber-400 transition-colors"
-                        placeholder="citizen@domain.et"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                        {f.phone}
-                      </label>
-                      <input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                        className="w-full bg-slate-950/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-hidden focus:border-amber-400 transition-colors"
-                        placeholder="+251 91 123 4567"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                        {f.zone}
-                      </label>
-                      <select
-                        value={formData.zone}
-                        onChange={(e) => setFormData({...formData, zone: e.target.value})}
-                        className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-hidden focus:border-amber-400 transition-colors"
-                      >
-                        <option value="Assosa Zone">Assosa Zone (አሶሳ ዞን)</option>
-                        <option value="Metekel Zone">Metekel Zone (መተከል ዞን)</option>
-                        <option value="Kamashi Zone">Kamashi Zone (ካማሺ ዞን)</option>
-                        <option value="Federal / Diaspora">Federal / Diaspora</option>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <Field id="cp-name" label={f.fullName} required requiredLabel={t.required}>
+                      <input id="cp-name" type="text" required autoComplete="name" value={form.fullName} onChange={set('fullName')} className={inputClass} />
+                    </Field>
+                    <Field id="cp-email" label={f.email} required requiredLabel={t.required}>
+                      <input id="cp-email" type="email" required autoComplete="email" value={form.email} onChange={set('email')} className={inputClass} />
+                    </Field>
+                    <Field id="cp-phone" label={f.phone}>
+                      <input id="cp-phone" type="tel" autoComplete="tel" value={form.phone} onChange={set('phone')} className={inputClass} placeholder="+251" />
+                    </Field>
+                    <Field id="cp-zone" label={f.zone}>
+                      <select id="cp-zone" value={form.zone} onChange={set('zone')} className={inputClass}>
+                        {t.zones.map((z) => <option key={z}>{z}</option>)}
                       </select>
-                    </div>
+                    </Field>
                   </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                      {f.subject} *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.subject}
-                      onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                      className="w-full bg-slate-950/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-hidden focus:border-amber-400 transition-colors"
-                      placeholder="Brief title of feedback or memorandum"
-                    />
+                  <Field id="cp-category" label={f.category}>
+                    <select id="cp-category" value={form.category} onChange={set('category')} className={inputClass}>
+                      {t.categories.map((c) => <option key={c}>{c}</option>)}
+                    </select>
+                  </Field>
+                  <Field id="cp-subject" label={f.subject} required requiredLabel={t.required}>
+                    <input id="cp-subject" type="text" required maxLength={150} value={form.subject} onChange={set('subject')} className={inputClass} />
+                  </Field>
+                  <Field id="cp-message" label={f.message} required requiredLabel={t.required}>
+                    <textarea id="cp-message" required rows={6} value={form.message} onChange={set('message')} className={`${inputClass} resize-y`} />
+                  </Field>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm">{t.note}</p>
+                    <PrimaryButton type="submit" icon={false}>
+                      <Send className="w-4 h-4" />
+                      {f.submit}
+                    </PrimaryButton>
                   </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                      {f.message} *
-                    </label>
-                    <textarea
-                      required
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      className="w-full bg-slate-950/80 border border-slate-700 rounded-xl p-4 text-sm text-white focus:outline-hidden focus:border-amber-400 transition-colors"
-                      placeholder="Detail your message, inquiry, or regional feedback..."
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 ring-1 ring-amber-300/40"
-                  >
-                    <Send className="w-4 h-4 text-slate-950" />
-                    <span>{isSubmitting ? f.submitting : f.submit}</span>
-                  </button>
                 </form>
               )}
             </div>
-
           </div>
         </div>
-
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

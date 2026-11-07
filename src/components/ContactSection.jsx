@@ -1,169 +1,80 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Clock, Shield, Globe, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, ExternalLink } from 'lucide-react';
+import { PageHeader, SectionHeading, PrimaryButton } from './ui';
+import { ui } from '../data/ui';
 
-export function ContactSection({ content }) {
+// Assosa, Benishangul Gumuz
+const LAT = 10.0667;
+const LON = 34.5333;
+const MAP_EMBED = `https://www.openstreetmap.org/export/embed.html?bbox=${LON - 0.045}%2C${LAT - 0.03}%2C${LON + 0.045}%2C${LAT + 0.03}&layer=mapnik&marker=${LAT}%2C${LON}`;
+const MAP_LINK = `https://www.openstreetmap.org/?mlat=${LAT}&mlon=${LON}#map=14/${LAT}/${LON}`;
+
+export function ContactSection({ content, currentLang, onNavigate }) {
   const m = content.meta;
+  const t = (ui[currentLang] || ui.en).contact;
+
+  const blocks = [
+    { icon: MapPin, title: t.address, lines: [content.footer.address] },
+    { icon: Phone, title: t.phone, lines: t.phones, tel: true },
+    { icon: Mail, title: t.email, lines: [m.email, 'press@bgrs-po.gov.et', 'cabinet@bgrs-po.gov.et'], mail: true },
+    { icon: Clock, title: t.hours, lines: [m.workingHours, t.closed] },
+  ];
 
   return (
-    <section id="contact" className="py-12 sm:py-16 bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider mb-2">
-            <Phone className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
-            <span>EXECUTIVE COMMUNICATIONS</span>
+    <div id="contact">
+      <PageHeader content={content} onNavigate={onNavigate} eyebrow={t.eyebrow} title={content.nav.contact} description={t.lead} image="/images/assosa-city.jpg" />
+
+      <section className="py-16 sm:py-24 bg-white dark:bg-[#0a1a26]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading eyebrow={m.office} title={m.hq} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 mb-16">
+            {blocks.map(({ icon: Icon, title, lines, tel, mail }) => (
+              <div key={title} className="bg-white dark:bg-[#0a1a26] p-8">
+                <Icon className="w-6 h-6 text-[#3a6d8c] dark:text-[#dab26a] mb-5" />
+                <h3 className="eyebrow font-sans text-slate-800 dark:text-slate-100 mb-3">{title}</h3>
+                <span className="block w-8 h-[2px] bg-[#dab26a] mb-4" />
+                <ul className="space-y-1.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {lines.map((line) => {
+                    if (mail) return <li key={line}><a href={`mailto:${line}`} className="hover:text-[#1a4f6d] dark:hover:text-white hover:underline underline-offset-4 break-all">{line}</a></li>;
+                    if (tel) {
+                      const num = line.split(/[:：፦]\s*/).pop().replace(/\s/g, '');
+                      return <li key={line}><a href={`tel:${num}`} className="hover:text-[#1a4f6d] dark:hover:text-white hover:underline underline-offset-4">{line}</a></li>;
+                    }
+                    return <li key={line}>{line}</li>;
+                  })}
+                </ul>
+              </div>
+            ))}
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
-            {content.nav.contact}
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
-        </div>
 
-        {/* Contact Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
-          {/* Contact Details Card (7 Cols) */}
-          <div className="lg:col-span-7 bg-white dark:bg-slate-800/90 p-6 sm:p-10 rounded-3xl border border-slate-200/90 dark:border-slate-700 shadow-xl space-y-6">
-            <div className="flex items-center gap-4 border-b border-slate-100 dark:border-slate-700 pb-6">
-              <img src="/images/bgrs-emblem-new.png" alt="Official BGRS Emblem" className="w-16 h-16 object-contain" />
-              <img src="/images/bgrs-flag-new.png" alt="Official BGRS Flag" className="w-13 h-8.5 object-cover rounded shadow-sm border border-slate-200 dark:border-slate-700 hidden sm:block" />
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-sans">
-                  Executive Headquarters & Secretariat
-                </h3>
-                <p className="text-xs text-emerald-800 dark:text-emerald-400 font-semibold uppercase tracking-wider mt-0.5">
-                  Benishangul Gumuz Regional State
-                </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-stretch">
+            <div className="lg:col-span-8">
+              <div className="relative border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 h-[360px] lg:h-full lg:min-h-[420px]">
+                <iframe
+                  title={`${t.location}: ${m.hq}`}
+                  src={MAP_EMBED}
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  className="absolute inset-0 w-full h-full"
+                />
               </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 flex items-center justify-center flex-shrink-0 mt-0.5 border border-emerald-200 dark:border-emerald-800">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wide mb-1">Physical Location</h4>
-                  <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
-                    President's Office Compound,<br />
-                    Assosa City, Benishangul Gumuz Region,<br />
-                    Federal Democratic Republic of Ethiopia
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 flex items-center justify-center flex-shrink-0 mt-0.5 border border-amber-200 dark:border-amber-800">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wide mb-1">Telephone Exchanges</h4>
-                  <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
-                    Hotline: 8181 (Toll-Free)<br />
-                    Main Switchboard: +251 57 775 0012<br />
-                    Media Relations: +251 57 775 0045
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 flex items-center justify-center flex-shrink-0 mt-0.5 border border-emerald-200 dark:border-emerald-800">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wide mb-1">Official Correspondence</h4>
-                  <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed font-mono">
-                    info@bgrs-po.gov.et<br />
-                    press@bgrs-po.gov.et<br />
-                    cabinet@bgrs-po.gov.et
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center flex-shrink-0 mt-0.5 border border-slate-300 dark:border-slate-600">
-                  <Clock className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wide mb-1">Office Hours</h4>
-                  <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
-                    Monday – Friday: 8:30 AM – 5:30 PM<br />
-                    Lunch Recess: 12:30 PM – 1:30 PM<br />
-                    Closed on Public & State Holidays
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-slate-100 dark:border-slate-700 flex flex-wrap items-center justify-between gap-4">
-              <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <Shield className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
-                <span>Official Secretariat of the Benishangul Gumuz Government</span>
-              </span>
-              <a
-                href="#services"
-                className="text-xs font-bold text-emerald-800 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-emerald-300 uppercase tracking-wider flex items-center gap-1"
-              >
-                <span>Direct Citizen Message</span>
+              <a href={MAP_LINK} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-xs text-[#1a4f6d] dark:text-[#dab26a] hover:underline underline-offset-4">
+                {t.openMap}
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
-          </div>
 
-          {/* Regional Administrative Map Representation (5 Cols) */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 to-emerald-950 text-white p-6 sm:p-10 rounded-3xl border border-slate-800 shadow-xl flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
-                  <Globe className="w-4 h-4" />
-                  <span>Regional Capital</span>
-                </span>
-                <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">
-                  9°00'N 34°32'E
-                </span>
-              </div>
-
-              <h4 className="text-xl sm:text-2xl font-bold font-sans mb-2">
-                Assosa Executive Complex
-              </h4>
-              <p className="text-xs text-slate-300 leading-relaxed mb-6 font-light">
-                Positioned in the historic regional capital of Assosa, the President's Office commands administrative oversight across Assosa, Metekel, and Kamashi zones, directly bordering the Blue Nile basin.
-              </p>
-
-              {/* Photo representation of the capital / complex */}
-              <div className="relative rounded-2xl overflow-hidden border border-slate-700 shadow-lg mb-6">
-                <img 
-                  src="/images/assosa-city.jpg" 
-                  alt="Assosa City Regional Capital" 
-                  className="w-full h-44 object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-                <div className="absolute bottom-2 left-3 text-[11px] font-bold text-amber-300">
-                  Assosa City Panorama • Regional Center
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-2 pt-4 border-t border-slate-800 text-xs text-slate-300">
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Assosa Hidase Airport:</span>
-                <span className="font-semibold text-white">12 km East of Compound</span>
-              </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">GERD Guba Site:</span>
-                <span className="font-semibold text-white">~180 km North-East</span>
-              </div>
-              <div className="flex justify-between py-1">
-                <span className="text-slate-400">Addis Ababa Federal Liaison:</span>
-                <span className="font-semibold text-white">660 km via B40 Highway</span>
-              </div>
+            <div className="lg:col-span-4 bg-[#0e2f45] text-white p-8 lg:p-10 flex flex-col justify-center">
+              <img src={m.emblem} alt="" className="w-14 h-14 object-contain mb-6" />
+              <h3 className="font-serif text-2xl mb-4">{t.writeTitle}</h3>
+              <p className="text-slate-300 leading-relaxed mb-8">{t.writeBody}</p>
+              <PrimaryButton onClick={() => onNavigate('services')} className="bg-[#dab26a]! text-[#0e2f45]! hover:bg-white! self-start">
+                {content.nav.services}
+              </PrimaryButton>
             </div>
           </div>
-
         </div>
-
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

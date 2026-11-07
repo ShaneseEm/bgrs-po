@@ -1,154 +1,126 @@
 import React, { useState } from 'react';
-import { Newspaper, Calendar, Clock, ArrowRight, Filter, ChevronRight, Sparkles } from 'lucide-react';
-import { NewsModal } from './NewsModal';
+import { ArrowRight, Clock } from 'lucide-react';
+import { PageHeader } from './ui';
+import { ui } from '../data/ui';
 
-export function NewsHub({ content, currentLang }) {
+// Tab index → category keywords (English and Amharic); index 0 = all
+const TAB_KEYWORDS = [null, ['press', 'መግለጫ'], ['cabinet', 'ካቢኔ'], ['speech', 'ንግግር'], ['development', 'ልማት']];
+
+export function NewsCard({ article, onSelect, readLabel }) {
+  const open = () => onSelect(article);
+  return (
+    <article
+      onClick={open}
+      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), open())}
+      role="button"
+      tabIndex={0}
+      className="group bg-white dark:bg-[#0a1a26] border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col focus-visible:outline-3 focus-visible:outline-[#dab26a]"
+    >
+      <div className="relative aspect-[16/10] overflow-hidden bg-slate-200">
+        <img src={article.image} alt="" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div className="absolute top-0 left-0 w-full h-0 bg-[#004750]/30 backdrop-blur-[2px] transition-all duration-500 ease-in-out group-hover:h-full" />
+        <span className="absolute top-4 left-4 bg-[#1a4f6d] text-white eyebrow text-[9px]! px-3 py-1.5">{article.category}</span>
+      </div>
+      <div className="p-6 flex flex-col flex-1">
+        <div className="text-xs text-slate-400 mb-3">{article.date}</div>
+        <h3 className="font-serif text-xl text-[#1a4f6d] dark:text-white leading-snug mb-3 group-hover:text-[#3a6d8c] dark:group-hover:text-[#dab26a] transition-colors line-clamp-3">
+          {article.title}
+        </h3>
+        <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-3 mb-6">{article.summary}</p>
+        <span className="mt-auto inline-flex items-center gap-2 text-[10px] font-black text-[#1a4f6d] dark:text-[#dab26a] uppercase tracking-[0.2em] group-hover:text-[#dab26a] transition-colors">
+          {readLabel}
+          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+        </span>
+      </div>
+    </article>
+  );
+}
+
+export function NewsHub({ content, currentLang, onNavigate, onSelectNews }) {
   const n = content.news;
-  const [activeTab, setActiveTab] = useState('All');
-  const [selectedArticle, setSelectedArticle] = useState(null);
+  const t = (ui[currentLang] || ui.en).news;
+  const [tab, setTab] = useState(0);
 
-  // Filter articles based on activeTab
-  const filteredArticles = activeTab === 'All' || activeTab === 'ሁሉም'
-    ? n.articles
-    : n.articles.filter((art) => {
-        if (activeTab === 'Press Releases' || activeTab === 'መግለጫዎች') return art.category.toLowerCase().includes('press') || art.category.toLowerCase().includes('መግለጫ');
-        if (activeTab === 'Cabinet Decisions' || activeTab === 'የካቢኔ ውሳኔዎች') return art.category.toLowerCase().includes('cabinet') || art.category.toLowerCase().includes('ካቢኔ');
-        if (activeTab === 'Speeches' || activeTab === 'ንግግሮች') return art.category.toLowerCase().includes('speech') || art.category.toLowerCase().includes('ንግግር');
-        if (activeTab === 'Development' || activeTab === 'የልማት ዜናዎች') return art.category.toLowerCase().includes('development') || art.category.toLowerCase().includes('ልማት');
-        return true;
-      });
-
-  const featuredArticle = filteredArticles[0] || n.articles[0];
-  const secondaryArticles = filteredArticles.slice(1);
+  const keywords = TAB_KEYWORDS[tab];
+  const articles = keywords
+    ? n.articles.filter((a) => keywords.some((k) => a.category.toLowerCase().includes(k)))
+    : n.articles;
+  const [featured, ...rest] = articles;
 
   return (
-    <section id="news" className="py-12 sm:py-16 bg-white dark:bg-slate-950 relative transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
-          <div>
-            <div className="inline-flex items-center gap-1.5 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider mb-2">
-              <Newspaper className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-              <span>{n.subtitle}</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
-              {n.title}
-            </h2>
-          </div>
+    <div id="news">
+      <PageHeader content={content} onNavigate={onNavigate} eyebrow={n.subtitle} title={n.title} image="/images/president-gerd-forum.jpg" />
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 dark:bg-slate-900 p-1.5 rounded-xl border border-slate-200 dark:border-slate-800">
-            {n.tabs.map((tab) => {
-              const isActive = activeTab === tab;
-              return (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    isActive 
-                      ? 'bg-gradient-to-r from-emerald-700 to-emerald-800 text-white shadow-sm ring-1 ring-emerald-500/50' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800'
-                  }`}
-                >
-                  {tab}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Featured + Secondary Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Featured Headline Card (Left 7 Cols) */}
-          {featuredArticle && (
-            <div className="lg:col-span-7 bg-slate-50 dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300 group flex flex-col justify-between">
-              <div>
-                <div className="relative h-64 sm:h-80 overflow-hidden bg-slate-900">
-                  <img 
-                    src={featuredArticle.image} 
-                    alt={featuredArticle.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                  <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black text-xs px-3.5 py-1.5 rounded-full shadow-md uppercase tracking-wider">
-                    {featuredArticle.category}
-                  </div>
-                  <div className="absolute bottom-4 left-4 flex items-center gap-3 text-xs text-white/90 bg-slate-950/80 backdrop-blur-md px-3.5 py-1 rounded-full border border-slate-700">
-                    <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-amber-400" /> {featuredArticle.date}</span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-amber-400" /> {featuredArticle.readTime}</span>
-                  </div>
-                </div>
-
-                <div className="p-6 sm:p-8 space-y-4">
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-sans leading-snug group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
-                    {featuredArticle.title}
-                  </h3>
-                  <p className="text-slate-700 dark:text-slate-200 text-base sm:text-lg leading-relaxed line-clamp-3">
-                    {featuredArticle.summary}
-                  </p>
-                </div>
-              </div>
-
-              <div className="px-6 pb-6 pt-2">
-                <button
-                  onClick={() => setSelectedArticle(featuredArticle)}
-                  className="bg-gradient-to-r from-[#1a4f6d] to-[#245d7e] hover:from-[#12384e] hover:to-[#1a4f6d] text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg flex items-center gap-2 shadow-md transition-all cursor-pointer ring-1 ring-amber-500/20"
-                >
-                  <span>{n.readArticle}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Secondary Feed (Right 5 Cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            {secondaryArticles.map((article) => (
-              <div
-                key={article.id}
-                onClick={() => setSelectedArticle(article)}
-                className="p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 hover:border-amber-500 dark:hover:border-amber-400 hover:shadow-lg transition-all cursor-pointer flex gap-4 group"
+      {/* Filter tabs */}
+      <div className="bg-white dark:bg-[#0a1a26] border-b border-slate-200 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div role="tablist" aria-label={n.title} className="flex overflow-x-auto -mb-px">
+            {n.tabs.map((label, i) => (
+              <button
+                key={label}
+                role="tab"
+                aria-selected={tab === i}
+                onClick={() => setTab(i)}
+                className={`relative whitespace-nowrap px-4 py-5 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors cursor-pointer ${
+                  tab === i ? 'text-[#1a4f6d] dark:text-[#dab26a]' : 'text-slate-500 dark:text-slate-400 hover:text-[#1a4f6d] dark:hover:text-white'
+                }`}
               >
-                <div className="w-24 h-24 rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="flex-1 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[10px] font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
-                      {article.category}
-                    </span>
-                    <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white font-sans mt-1 line-clamp-2 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
-                      {article.title}
-                    </h4>
-                  </div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                    <Calendar className="w-3 h-3 text-amber-500" />
-                    <span>{article.date}</span>
-                  </div>
-                </div>
-              </div>
+                {label}
+                <span className={`absolute left-4 right-4 bottom-0 h-[3px] bg-[#dab26a] transition-transform duration-300 origin-left ${tab === i ? 'scale-x-100' : 'scale-x-0'}`} />
+              </button>
             ))}
           </div>
-
         </div>
-
       </div>
 
-      {/* Reader Modal */}
-      {selectedArticle && (
-        <NewsModal
-          article={selectedArticle}
-          onClose={() => setSelectedArticle(null)}
-          currentLang={currentLang}
-        />
-      )}
-    </section>
+      <section className="py-14 sm:py-20 bg-[#f8fafc] dark:bg-[#0c1f2e]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {!featured ? (
+            <p className="text-center text-slate-500 dark:text-slate-400 py-20">{t.empty}</p>
+          ) : (
+            <>
+              {/* Featured story */}
+              <article
+                onClick={() => onSelectNews(featured)}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), onSelectNews(featured))}
+                role="button"
+                tabIndex={0}
+                className="group grid grid-cols-1 lg:grid-cols-12 bg-white dark:bg-[#0a1a26] border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer mb-10 focus-visible:outline-3 focus-visible:outline-[#dab26a]"
+              >
+                <div className="lg:col-span-7 relative overflow-hidden bg-slate-200 aspect-[16/10] lg:aspect-auto lg:min-h-[420px]">
+                  <img src={featured.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <span className="absolute top-5 left-5 bg-[#dab26a] text-[#0e2f45] eyebrow text-[9px]! px-3 py-1.5">{t.featured}</span>
+                </div>
+                <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center">
+                  <div className="eyebrow text-[#3a6d8c] dark:text-[#dab26a] mb-4">{featured.category}</div>
+                  <h2 className="font-serif text-2xl lg:text-3xl text-[#1a4f6d] dark:text-white leading-snug mb-5 group-hover:text-[#3a6d8c] dark:group-hover:text-[#dab26a] transition-colors">
+                    {featured.title}
+                  </h2>
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 line-clamp-4">{featured.summary}</p>
+                  <div className="flex items-center gap-4 text-xs text-slate-400 mb-8">
+                    <span>{featured.date}</span>
+                    {featured.readTime && (
+                      <span className="inline-flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />{featured.readTime}</span>
+                    )}
+                  </div>
+                  <span className="inline-flex items-center gap-2 text-[10px] font-black text-[#1a4f6d] dark:text-[#dab26a] uppercase tracking-[0.2em]">
+                    {n.readArticle}
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </div>
+              </article>
+
+              {rest.length > 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                  {rest.map((a) => (
+                    <NewsCard key={a.id} article={a} onSelect={onSelectNews} readLabel={n.readArticle} />
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </section>
+    </div>
   );
 }

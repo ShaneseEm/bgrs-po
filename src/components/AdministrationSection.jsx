@@ -1,127 +1,83 @@
-import React, { useState } from 'react';
-import { Users, Building, MapPin, Mail, ArrowUpRight, Shield, Layers } from 'lucide-react';
+import React from 'react';
+import { MapPin, Mail, Building2 } from 'lucide-react';
+import { PageHeader, SectionHeading } from './ui';
+import { ui } from '../data/ui';
 
-export function AdministrationSection({ content }) {
+export function AdministrationSection({ content, currentLang, onNavigate }) {
   const admin = content.administration;
-  const [selectedZone, setSelectedZone] = useState(admin.zones[0]);
+  const t = (ui[currentLang] || ui.en).admin;
 
   return (
-    <section id="administration" className="py-12 sm:py-16 bg-slate-50 dark:bg-slate-900/60 relative transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider mb-2">
-            <Users className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
-            <span>{admin.subtitle}</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-sans uppercase">
-            {admin.title}
-          </h2>
-          <p className="mt-2 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
-            {admin.description}
-          </p>
-          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 via-emerald-600 to-amber-500 mx-auto mt-2.5 rounded-full"></div>
-        </div>
+    <div id="administration">
+      <PageHeader
+        content={content}
+        onNavigate={onNavigate}
+        eyebrow={admin.subtitle}
+        title={admin.title}
+        description={admin.description}
+        image="/images/assosa-city.jpg"
+      />
 
-        {/* 1. Zonal Administrations Grid */}
-        <div className="mb-16">
-          <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-sans mb-6 flex items-center gap-2">
-            <MapPin className="w-5 h-5 text-amber-500" />
-            <span>Administrative Zones</span>
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {admin.zones.map((zone, idx) => {
-              const isSelected = selectedZone.name === zone.name;
+      {/* Zones */}
+      <section className="py-16 sm:py-24 bg-white dark:bg-[#0a1a26]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading eyebrow={admin.subtitle} title={t.zonesTitle} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {admin.zones.map((zone) => {
+              const [count, list] = (zone.woredas || '').split('•').map((s) => s.trim());
               return (
-                <div 
-                  key={idx}
-                  onClick={() => setSelectedZone(zone)}
-                  className={`p-6 rounded-2xl border transition-all cursor-pointer ${
-                    isSelected 
-                      ? 'bg-gradient-to-br from-emerald-900 to-emerald-950 text-white border-amber-400 shadow-xl ring-2 ring-amber-400/50' 
-                      : 'bg-white dark:bg-slate-800/90 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-emerald-600 dark:hover:border-emerald-500 shadow-sm hover:shadow-md'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
-                      isSelected ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
-                    }`}>
-                      Zone Seat: {zone.capital}
-                    </span>
-                    <Layers className={`w-4 h-4 ${isSelected ? 'text-amber-400' : 'text-slate-400'}`} />
+                <article key={zone.name} className="group bg-white dark:bg-[#0a1a26] border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-slate-200">
+                    <img src={zone.image} alt="" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0e2f45]/80 to-transparent" />
+                    <div className="absolute bottom-4 left-5 flex items-center gap-1.5 text-xs text-white">
+                      <MapPin className="w-3.5 h-3.5 text-[#dab26a]" />
+                      {t.zoneSeat}: {zone.capital}
+                    </div>
                   </div>
-
-                  <h4 className={`text-xl font-bold font-sans mb-2 ${isSelected ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
-                    {zone.name}
-                  </h4>
-
-                  <p className={`text-base leading-relaxed mb-4 ${isSelected ? 'text-emerald-100' : 'text-slate-600 dark:text-slate-300'}`}>
-                    {zone.desc}
-                  </p>
-
-                  <div className={`pt-3 border-t text-[11px] font-semibold ${
-                    isSelected ? 'border-emerald-800 text-amber-300' : 'border-slate-100 dark:border-slate-700 text-emerald-800 dark:text-emerald-400'
-                  }`}>
-                    {zone.woredas}
+                  <div className="p-6 lg:p-8 flex flex-col flex-1">
+                    <h3 className="font-serif text-2xl text-[#1a4f6d] dark:text-white mb-3">{zone.name}</h3>
+                    <span className="block w-8 h-[2px] bg-[#dab26a] mb-4 transition-all duration-500 group-hover:w-16" />
+                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">{zone.desc}</p>
+                    {count && (
+                      <div className="mt-auto pt-5 border-t border-slate-100 dark:border-slate-800">
+                        <div className="eyebrow text-[10px]! text-[#3a6d8c] dark:text-[#dab26a] mb-2">{count}</div>
+                        {list && <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{list}</p>}
+                      </div>
+                    )}
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
         </div>
+      </section>
 
-        {/* 2. Key Sectoral Bureaus Directory */}
-        <div className="bg-white dark:bg-slate-800/90 rounded-3xl border border-slate-200/90 dark:border-slate-700 p-6 sm:p-8 shadow-sm">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200 dark:border-slate-700">
-            <div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white font-sans">
-                Regional Sectoral Bureaus Directory
-              </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Executive departments operating under the direct coordination of the President's Office
-              </p>
-            </div>
-            <span className="text-xs font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
-              6 Core Executive Portfolios
-            </span>
+      {/* Bureaus */}
+      <section className="py-16 sm:py-24 bg-[#f8fafc] dark:bg-[#0c1f2e] border-t border-slate-200 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+            <SectionHeading eyebrow={content.meta.region} title={t.bureausTitle} />
+            <p className="text-slate-500 dark:text-slate-400 max-w-sm lg:mb-10">{t.bureausLead}</p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {admin.bureaus.map((bureau, idx) => (
-              <div 
-                key={idx}
-                className="p-4 rounded-xl border border-slate-100 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-900/60 hover:bg-emerald-50/50 dark:hover:bg-slate-900 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Building className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
-                    <span className="text-[11px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wide">
-                      {bureau.head}
-                    </span>
-                  </div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white font-sans mb-2">
-                    {bureau.name}
-                  </h4>
-                </div>
-
-                <div className="pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs">
-                  <span className="text-slate-500 dark:text-slate-400 font-mono truncate">{bureau.email}</span>
-                  <a 
-                    href={`mailto:${bureau.email}`}
-                    className="text-emerald-700 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-emerald-300 font-bold p-1 rounded hover:bg-emerald-100 dark:hover:bg-slate-800"
-                    title={`Email ${bureau.name}`}
-                  >
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
+            {admin.bureaus.map((b) => (
+              <li key={b.email} className="bg-white dark:bg-[#0a1a26] p-6 lg:p-8 flex flex-col">
+                <Building2 className="w-6 h-6 text-[#3a6d8c] dark:text-[#dab26a] mb-5" />
+                <h3 className="font-serif text-lg text-[#1a4f6d] dark:text-white leading-snug mb-2">{b.name}</h3>
+                <div className="text-xs text-slate-500 dark:text-slate-400 mb-6">{b.head}</div>
+                <a
+                  href={`mailto:${b.email}`}
+                  className="mt-auto inline-flex items-center gap-2 text-sm text-[#1a4f6d] dark:text-[#dab26a] hover:underline underline-offset-4 break-all"
+                >
+                  <Mail className="w-4 h-4 flex-shrink-0" />
+                  {b.email}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
-
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

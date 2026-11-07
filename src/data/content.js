@@ -87,11 +87,11 @@ export const contentData = {
         },
         {
           "id": 3,
-          "url": "/images/president-state-portrait.png",
-          "title": "Executive State Profile",
-          "caption": "Chief Administrator of Benishangul Gumuz Regional State",
-          "tag": "Executive Profile",
-          "location": "Assosa Executive Complex"
+          "url": "/images/president-briefing.jpg",
+          "title": "Press Briefing",
+          "caption": "Briefing the media on regional government priorities",
+          "tag": "Press Briefing",
+          "location": "Executive Office, Assosa"
         },
         {
           "id": 4,
@@ -795,11 +795,11 @@ export const contentData = {
         },
         {
           "id": 3,
-          "url": "/images/president-state-portrait.png",
-          "title": "Executive State Profile",
-          "caption": "Chief Administrator of Benishangul Gumuz Regional State",
-          "tag": "Executive Profile",
-          "location": "Assosa Executive Complex"
+          "url": "/images/president-briefing.jpg",
+          "title": "Press Briefing",
+          "caption": "Briefing the media on regional government priorities",
+          "tag": "Press Briefing",
+          "location": "Executive Office, Assosa"
         },
         {
           "id": 4,
