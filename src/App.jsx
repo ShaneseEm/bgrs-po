@@ -227,7 +227,7 @@ export default function App() {
         </div>
       </main>
 
-      <Footer content={content} setActiveSection={navigateTo} />
+      <Footer content={content} currentLang={currentLang} setActiveSection={navigateTo} />
 
       <SearchModal
         isOpen={isSearchOpen}
