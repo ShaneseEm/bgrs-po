@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
-import { Menu, X, Landmark, Users, Compass, Newspaper, MessageSquare, Phone, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, ChevronRight, ArrowRight } from 'lucide-react';
 
 export function Navigation({ content, activeSection, setActiveSection }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 120);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileMenuOpen]);
 
   const navItems = [
     { id: 'home', label: content.nav.home },
@@ -14,96 +27,162 @@ export function Navigation({ content, activeSection, setActiveSection }) {
     { id: 'contact', label: content.nav.contact },
   ];
 
-  const handleNavClick = (id) => {
+  const go = (id) => {
     setActiveSection(id);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const Brand = ({ compact = false }) => (
+    <button onClick={() => go('home')} className="flex items-center gap-3 text-left cursor-pointer min-w-0">
+      <img
+        src="/images/bgrs-emblem-new.png"
+        alt="Emblem of Benishangul Gumuz Regional State"
+        className={`${compact ? 'w-10 h-10' : 'w-12 h-12 sm:w-16 sm:h-16'} object-contain flex-shrink-0 transition-all`}
+      />
+      <span className="min-w-0">
+        <span className={`block font-serif text-[#1a4f6d] dark:text-white leading-tight truncate ${compact ? 'text-sm' : 'text-base sm:text-xl'}`}>
+          {content.meta.office}
+        </span>
+        <span className="block eyebrow !text-[9px] sm:!text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+          {content.meta.region}
+        </span>
+      </span>
+    </button>
+  );
+
   return (
-    <nav className="sticky top-0 z-40 bg-[#062415]/85 dark:bg-[#021309]/85 backdrop-blur-md text-white shadow-lg shadow-emerald-950/20 border-b border-amber-500/40 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14">
-          
-          {/* Desktop Navigation Links - Single Line Guaranteed (whitespace-nowrap), Classic Glassmorphism & Smooth Animations */}
-          <div className="hidden lg:flex items-center space-x-1.5 xl:space-x-2">
-            {navItems.map((item) => {
-              const isActive = activeSection === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`whitespace-nowrap px-3.5 py-2 rounded-lg text-xs xl:text-sm uppercase font-bold tracking-wider transition-all duration-300 cursor-pointer select-none ${
-                    isActive 
-                      ? 'bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 text-slate-950 shadow-md shadow-amber-500/30 ring-1 ring-amber-300/60 scale-[1.02]' 
-                      : 'text-emerald-100/90 hover:text-white hover:bg-white/10 hover:scale-105 active:scale-95'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Quick Citizen Action button - Single Line with Classic Gold Glow */}
-          <div className="hidden lg:flex items-center">
+    <>
+      {/* Brand row */}
+      <div className="bg-white dark:bg-[#0a1a26] border-b border-slate-100 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+          <Brand />
+          <div className="flex items-center gap-4">
+            <img
+              src="/images/bgrs-flag-new.png"
+              alt="Flag of Benishangul Gumuz Regional State"
+              className="hidden md:block w-14 h-9 object-cover border border-slate-200 dark:border-slate-700 shadow-sm"
+            />
             <button
-              onClick={() => handleNavClick('services')}
-              className="whitespace-nowrap bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 px-4 py-2 rounded-lg text-xs xl:text-sm font-black uppercase tracking-wider shadow-md shadow-amber-500/25 hover:shadow-lg hover:shadow-amber-500/40 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 cursor-pointer ring-1 ring-amber-300/40"
+              onClick={() => go('services')}
+              className="hidden md:inline-flex items-center gap-2 bg-[#1a4f6d] hover:bg-[#0e2f45] text-white px-5 py-3 text-[11px] font-bold uppercase tracking-[0.2em] shadow-md transition-all active:scale-95 cursor-pointer"
             >
-              <MessageSquare className="w-4 h-4 text-slate-950" />
-              <span>{content.nav.services}</span>
+              {content.nav.services}
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="lg:hidden w-11 h-11 inline-flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[#1a4f6d] dark:text-white shadow-md active:scale-95 cursor-pointer"
+              aria-label="Open menu"
+            >
+              <Menu className="w-5 h-5" />
             </button>
           </div>
-
-          {/* Mobile menu button & Title */}
-          <div className="lg:hidden flex items-center justify-between w-full py-2">
-            <span className="text-xs sm:text-sm font-bold tracking-wider text-amber-300 uppercase truncate max-w-[240px]">
-              {content.meta.office}
-            </span>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-emerald-800 dark:hover:bg-emerald-950 focus:outline-hidden transition-colors cursor-pointer"
-              aria-label="Toggle Navigation Menu"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-amber-400" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-
         </div>
       </div>
 
-      {/* Mobile Drawer with Classic Glassmorphic Styling */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#062415]/95 dark:bg-[#021309]/95 backdrop-blur-xl border-t border-amber-500/30 px-4 pt-3 pb-5 space-y-2 shadow-2xl animate-fade-in">
-          {navItems.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 text-left cursor-pointer ${
-                  isActive 
-                    ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20' 
-                    : 'text-emerald-100/90 hover:bg-white/10 hover:text-white'
-                }`}
-              >
-                <span>{item.label}</span>
-                <ChevronRight className={`w-4 h-4 ${isActive ? 'text-slate-950' : 'text-amber-400'}`} />
-              </button>
-            );
-          })}
-          <div className="pt-2 border-t border-emerald-800/60 mt-2">
-            <button
-              onClick={() => handleNavClick('services')}
-              className="w-full bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 py-3 rounded-lg text-sm font-black uppercase tracking-wider shadow-md shadow-amber-500/30 flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <MessageSquare className="w-4 h-4 text-slate-950" />
-              <span>{content.nav.services}</span>
-            </button>
+      {/* Sticky link row (desktop) */}
+      <nav
+        className={`hidden lg:block sticky top-0 z-40 border-b transition-all duration-300 ${
+          scrolled
+            ? 'bg-white/90 dark:bg-[#0a1a26]/90 backdrop-blur-md border-slate-200 dark:border-slate-800 shadow-sm'
+            : 'bg-white dark:bg-[#0a1a26] border-slate-100 dark:border-slate-800'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-6">
+          <div className={`transition-all duration-300 overflow-hidden ${scrolled ? 'max-w-xs opacity-100 py-2' : 'max-w-0 opacity-0'}`}>
+            <Brand compact />
           </div>
+          <ul className="flex items-stretch flex-1 justify-center xl:justify-start">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <li key={item.id}>
+                  <button
+                    onClick={() => go(item.id)}
+                    className={`relative whitespace-nowrap px-3 xl:px-4 py-4 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors cursor-pointer ${
+                      isActive
+                        ? 'text-[#1a4f6d] dark:text-[#dab26a]'
+                        : 'text-slate-500 dark:text-slate-400 hover:text-[#1a4f6d] dark:hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                    <span
+                      className={`absolute left-3 right-3 xl:left-4 xl:right-4 bottom-0 h-[3px] bg-[#dab26a] origin-left transition-transform duration-300 ${
+                        isActive ? 'scale-x-100' : 'scale-x-0'
+                      }`}
+                    />
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </nav>
+
+      {/* Mobile sticky mini bar */}
+      <div
+        className={`lg:hidden fixed top-0 inset-x-0 z-40 bg-white/95 dark:bg-[#0a1a26]/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300 ${
+          scrolled ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="px-4 py-2 flex items-center justify-between gap-3">
+          <Brand compact />
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="w-10 h-10 inline-flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 text-[#1a4f6d] dark:text-white cursor-pointer"
+            aria-label="Open menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 z-[100]">
+          <div className="absolute inset-0 bg-[#0e2f45]/60 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
+          <aside className="absolute top-0 right-0 bottom-0 w-80 max-w-full bg-white dark:bg-[#0a1a26] shadow-2xl flex flex-col overflow-y-auto animate-fade-in">
+            <div className="flex items-center justify-between p-5 border-b border-slate-100 dark:border-slate-800">
+              <span className="eyebrow text-[#1a4f6d] dark:text-[#dab26a]">Menu</span>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-10 h-10 inline-flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 cursor-pointer"
+                aria-label="Close menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <ul className="flex-1 py-2">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <li key={item.id}>
+                    <button
+                      onClick={() => go(item.id)}
+                      className={`w-full flex items-center justify-between px-5 py-4 text-sm font-semibold border-l-[3px] transition-colors cursor-pointer ${
+                        isActive
+                          ? 'border-[#dab26a] bg-slate-50 dark:bg-slate-800/50 text-[#1a4f6d] dark:text-white'
+                          : 'border-transparent text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                      }`}
+                    >
+                      {item.label}
+                      <ChevronRight className="w-4 h-4 text-slate-300" />
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+            <div className="p-5 border-t border-slate-100 dark:border-slate-800">
+              <button
+                onClick={() => go('services')}
+                className="w-full bg-[#1a4f6d] hover:bg-[#0e2f45] text-white py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] cursor-pointer"
+              >
+                {content.nav.services}
+              </button>
+            </div>
+          </aside>
         </div>
       )}
-    </nav>
+    </>
   );
 }

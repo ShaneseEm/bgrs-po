@@ -2,92 +2,140 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+  Design system — formal federal-portal aesthetic
+  Primary: deep state navy-teal (#1a4f6d)   Accent: ceremonial gold (#dab26a)
+  The emerald & amber scales are remapped so every page inherits the palette.
+*/
+@theme {
+  --font-sans: 'Inter', 'Noto Sans Ethiopic', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', 'Noto Sans Ethiopic', Georgia, 'Times New Roman', serif;
+
+  --color-brand: #1a4f6d;
+  --color-brand-dark: #0e2f45;
+  --color-brand-deep: #0a2233;
+  --color-gold: #dab26a;
+
+  /* Navy-teal scale (replaces emerald) */
+  --color-emerald-50: #eef5f9;
+  --color-emerald-100: #d8e7f0;
+  --color-emerald-200: #b3cfe0;
+  --color-emerald-300: #82afca;
+  --color-emerald-400: #5590b4;
+  --color-emerald-500: #3a6d8c;
+  --color-emerald-600: #2a5f80;
+  --color-emerald-700: #1a4f6d;
+  --color-emerald-800: #15425c;
+  --color-emerald-900: #12364a;
+  --color-emerald-950: #0e2f45;
+
+  /* Ceremonial gold scale (replaces amber) */
+  --color-amber-50: #fbf7ee;
+  --color-amber-100: #f5ecd5;
+  --color-amber-200: #ecdbb0;
+  --color-amber-300: #e3c88a;
+  --color-amber-400: #dab26a;
+  --color-amber-500: #c99a4a;
+  --color-amber-600: #b0823a;
+  --color-amber-700: #8a642c;
+  --color-amber-800: #6f5027;
+  --color-amber-900: #5b4224;
+  --color-amber-950: #342411;
+
+  /* Crisper, more institutional corners */
+  --radius-md: 0.25rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.375rem;
+  --radius-2xl: 0.5rem;
+  --radius-3xl: 0.75rem;
+}
+
 @layer base {
-  :root {
-    --primary-green: #0d4a2c;
-    --primary-gold: #c8963e;
-    --primary-dark: #0a2618;
-    --federal-navy: #0f1e36;
-  }
-  
   html {
     scroll-behavior: smooth;
     font-size: 18px;
   }
 
   body {
-    @apply bg-slate-50 text-slate-800 antialiased selection:bg-amber-200 selection:text-amber-900 transition-colors duration-300;
-    font-family: 'Inter', 'Noto Sans Ethiopic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    @apply bg-white text-slate-700 antialiased selection:bg-amber-200 selection:text-emerald-950 transition-colors duration-300;
+    font-family: var(--font-sans);
   }
 
-  /* Classic large paragraph typography for enhanced readability */
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+
   p {
     line-height: 1.75;
   }
 }
 
-/* Dark mode overrides */
 .dark {
   color-scheme: dark;
 }
 
 .dark body {
-  background-color: #0f172a;
-  color: #f1f5f9;
+  background-color: #0a1a26;
+  color: #e2e8f0;
 }
 
-/* Custom smooth transitions */
-.transition-standard {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Section heading accent (short gold rule) */
+.gold-rule {
+  display: block;
+  width: 3rem;
+  height: 3px;
+  border-radius: 9999px;
+  background: var(--color-gold);
 }
 
-/* Benishangul-Gumuz Regional Flag Top Accent Strip */
+/* Small uppercase eyebrow labels */
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Regional flag accent strip */
 .bgrs-flag-bar {
   background: linear-gradient(90deg, #dc2626 0%, #dc2626 4%, #18181b 4%, #18181b 36%, #eab308 36%, #eab308 68%, #16a34a 68%, #16a34a 100%);
-  height: 5px;
+  height: 3px;
 }
 
-/* Ethiopian Federal Tricolor Accent Strip */
+/* Ethiopian federal tricolor strip */
 .ethiopian-tricolor-bar {
   background: linear-gradient(90deg, #15803d 33.3%, #facc15 33.3%, #facc15 66.6%, #dc2626 66.6%);
   height: 3px;
 }
 
-/* Smooth ticker marquee */
+/* Ticker marquee */
 @keyframes marquee {
   0% { transform: translateX(100%); }
   100% { transform: translateX(-100%); }
 }
+.animate-marquee { animation: marquee 35s linear infinite; }
+.animate-marquee:hover { animation-play-state: paused; }
 
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-/* Smooth fade in animation */
+/* Fade in */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+.animate-fade-in { animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-.animate-fade-in {
-  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+/* Slow Ken Burns zoom for hero imagery */
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
 }
+.animate-kenburns { animation: kenburns 8s ease-out forwards; }
 
-/* Presidential Gold Crest Glow */
-.gold-glow {
-  box-shadow: 0 10px 30px -5px rgba(234, 179, 8, 0.25), 0 4px 12px -2px rgba(13, 74, 44, 0.3);
-}
+/* Legacy helpers kept for inner pages */
+.gold-glow { box-shadow: 0 10px 30px -10px rgba(14, 47, 69, 0.35); }
+.gold-glow-hover:hover { box-shadow: 0 15px 35px -10px rgba(14, 47, 69, 0.45); }
+.transition-standard { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
-.gold-glow-hover:hover {
-  box-shadow: 0 15px 35px -5px rgba(234, 179, 8, 0.35), 0 6px 16px -2px rgba(13, 74, 44, 0.4);
+@media (prefers-reduced-motion: reduce) {
+  .animate-kenburns, .animate-marquee, .animate-fade-in { animation: none; }
 }

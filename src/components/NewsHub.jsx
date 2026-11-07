@@ -95,7 +95,7 @@ export function NewsHub({ content, currentLang }) {
               <div className="px-6 pb-6 pt-2">
                 <button
                   onClick={() => setSelectedArticle(featuredArticle)}
-                  className="bg-gradient-to-r from-[#0d4a2c] to-[#146039] hover:from-[#125c38] hover:to-[#1a7a49] text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg flex items-center gap-2 shadow-md transition-all cursor-pointer ring-1 ring-amber-500/20"
+                  className="bg-gradient-to-r from-[#1a4f6d] to-[#245d7e] hover:from-[#12384e] hover:to-[#1a4f6d] text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg flex items-center gap-2 shadow-md transition-all cursor-pointer ring-1 ring-amber-500/20"
                 >
                   <span>{n.readArticle}</span>
                   <ArrowRight className="w-4 h-4" />

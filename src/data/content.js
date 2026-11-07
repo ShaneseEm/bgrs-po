@@ -36,7 +36,7 @@ export const contentData = {
           "subheadline": "H.E. President Ashadli Hassan coordinates the Regional Executive Council in expanding mechanization across 1.2 million hectares, stewarding gold reserves, and deepening peace across all zones.",
           "actionPrimary": "President's Official Address",
           "actionSecondary": "Explore Strategic Initiatives",
-          "image": "/images/president-official.png",
+          "image": "/images/president-gerd-forum.jpg",
           "alt": "H.E. Ashadli Hassan - President of Benishangul Gumuz Regional State (Official State Portrait)"
         },
         {
@@ -390,7 +390,7 @@ export const contentData = {
           "subheadline": "ክቡር ርዕሰ መስተዳድር አሻድሊ ሀሰን የክልሉን ስራ አስፈፃሚ ምክር ቤት በመምራት 1.2 ሚሊዮን ሄክታር መሬት በማልማት፣ የማዕድን ሀብትን በማስተዳደር እና አስተማማኝ ሰላም በማስፈን ላይ ይገኛሉ።",
           "actionPrimary": "የክቡር ርዕሰ መስተዳድሩ መልዕክት",
           "actionSecondary": "ስትራቴጂካዊ ፕሮጀክቶች",
-          "image": "/images/president-official.png",
+          "image": "/images/president-gerd-forum.jpg",
           "alt": "ክቡር አቶ አሻድሊ ሀሰን - የቤኒሻንጉል ጉሙዝ ክልል ርዕሰ መስተዳድር (ይፋዊ ምስል)"
         },
         {
@@ -744,7 +744,7 @@ export const contentData = {
           "subheadline": "H.E. President Ashadli Hassan coordinates the Regional Executive Council in expanding mechanization across 1.2 million hectares, stewarding gold reserves, and deepening peace across all zones.",
           "actionPrimary": "President's Official Address",
           "actionSecondary": "Explore Strategic Initiatives",
-          "image": "/images/president-official.png",
+          "image": "/images/president-gerd-forum.jpg",
           "alt": "H.E. Ashadli Hassan - President of Benishangul Gumuz Regional State (Official State Portrait)"
         },
         {

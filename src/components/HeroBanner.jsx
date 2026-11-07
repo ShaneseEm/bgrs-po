@@ -1,164 +1,118 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
-export function HeroBanner({ content, onSelectNews }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+const primaryTargets = ['president', 'initiatives', 'administration'];
+const secondaryTargets = ['initiatives', 'initiatives', 'administration'];
+
+export function HeroBanner({ content, onNavigate }) {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
   const slides = content.hero.slides;
 
-  // 3D Card Tilt State
-  const cardRef = useRef(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0, glareX: 50, glareY: 50 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  // Auto transition slides
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [isPaused, slides.length]);
+    if (paused) return;
+    const t = setInterval(() => setCurrent((p) => (p + 1) % slides.length), 7000);
+    return () => clearInterval(t);
+  }, [paused, slides.length]);
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
-
-  // Mouse move handler for realistic 3D perspective tilt
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    // Normalize coordinates (-0.5 to 0.5)
-    const normX = (x / rect.width) - 0.5;
-    const normY = (y / rect.height) - 0.5;
-
-    // Max tilt angles: 14deg
-    setTilt({
-      x: -normY * 16,
-      y: normX * 16,
-      glareX: (x / rect.width) * 100,
-      glareY: (y / rect.height) * 100,
-    });
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    setIsPaused(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setIsPaused(false);
-    setTilt({ x: 0, y: 0, glareX: 50, glareY: 50 });
-  };
+  const go = (dir) => setCurrent((p) => (p + dir + slides.length) % slides.length);
+  const slide = slides[current];
 
   return (
-    <section 
-      className="relative bg-slate-950 text-white overflow-hidden border-b border-emerald-950/60"
+    <section
+      className="relative bg-[#0e2f45] text-white overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
-      {/* Background Ambience */}
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/90 via-slate-950 to-slate-900/90 z-0" />
-      <div className="absolute top-0 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Main Slide Content - Clean & Non-Bulky */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          {/* Left Column: Headlines & Actions (No arrows, no dot counters) */}
-          <div className="lg:col-span-7 space-y-4 sm:space-y-5">
-            
-            <div className="inline-flex items-center gap-2 bg-emerald-950/90 border border-emerald-500/50 px-3.5 py-1 rounded-full text-xs font-bold text-emerald-200 shadow-sm">
-              <img src="/images/bgrs-flag-new.png" alt="BGRS Flag" className="w-4 h-3 object-cover rounded-xs" />
-              <span>{content.hero.badge}</span>
-            </div>
-
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-white font-sans transition-all duration-500">
-              {slides[currentSlide].headline}
-            </h2>
-
-            <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal max-w-2xl transition-all duration-500">
-              {slides[currentSlide].subheadline}
-            </p>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-1">
-              <a
-                href="#president"
-                className="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2"
-              >
-                <span>{slides[currentSlide].actionPrimary}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-
-              <a
-                href="#initiatives"
-                className="bg-slate-900/80 hover:bg-slate-800 text-white border border-slate-700 px-5 py-2.5 rounded-lg font-semibold text-xs transition-all flex items-center gap-2"
-              >
-                <span>{slides[currentSlide].actionSecondary}</span>
-              </a>
-            </div>
-
-          </div>
-
-          {/* Right Column: Interactive 3D Holographic Perspective Card */}
-          <div 
-            className="lg:col-span-5 relative flex items-center justify-center py-2"
-            style={{ perspective: '1200px' }}
+      {/* Image layers (crossfade) */}
+      <div className="relative h-[min(82vh,720px)] min-h-[520px]">
+        {slides.map((s, i) => (
+          <div
+            key={s.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ${i === current ? 'opacity-100' : 'opacity-0'}`}
+            aria-hidden={i !== current}
           >
-            <div
-              ref={cardRef}
-              onClick={nextSlide}
-              onMouseMove={handleMouseMove}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className="relative w-full max-w-sm rounded-2xl overflow-hidden cursor-pointer transition-transform duration-200 ease-out select-none border-2 border-amber-400/50 shadow-2xl group"
-              style={{
-                transform: isHovered 
-                  ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(1.03, 1.03, 1.03)` 
-                  : 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
-                boxShadow: isHovered
-                  ? '0 30px 60px -15px rgba(13, 74, 44, 0.6), 0 0 35px rgba(234, 179, 8, 0.35)'
-                  : '0 20px 40px -10px rgba(0, 0, 0, 0.5)',
-                transformStyle: 'preserve-3d',
-              }}
-              title="Click to explore next regional showcase"
-            >
-              {/* Image layer */}
-              <img
-                src={slides[currentSlide].image}
-                alt={slides[currentSlide].alt}
-                className="w-full h-80 sm:h-96 object-cover object-top transition-transform duration-700 pointer-events-none"
-              />
+            <img
+              src={s.image}
+              alt={s.alt}
+              className={`w-full h-full object-cover object-center ${i === current ? 'animate-kenburns' : ''}`}
+            />
+          </div>
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a2233]/95 via-[#0e2f45]/70 to-[#0e2f45]/10" />
+        <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-[#0a2233]/80 to-transparent" />
 
-              {/* 3D Dynamic Glare Effect */}
-              {isHovered && (
-                <div 
-                  className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-60 z-20"
-                  style={{
-                    background: `radial-gradient(circle at ${tilt.glareX}% ${tilt.glareY}%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 65%)`
-                  }}
-                />
-              )}
+        {/* Copy */}
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <div key={current} className="max-w-2xl animate-fade-in">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="w-8 h-[2px] bg-[#dab26a]" />
+                <span className="eyebrow text-[#dab26a]">{content.hero.badge}</span>
+              </div>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.15] text-white mb-5">
+                {slide.headline}
+              </h2>
+              <p className="text-base sm:text-lg text-slate-200/90 leading-relaxed mb-8 max-w-xl">
+                {slide.subheadline}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => onNavigate?.(primaryTargets[current % primaryTargets.length])}
+                  className="min-h-11 inline-flex items-center justify-center gap-2 bg-[#dab26a] hover:bg-white text-[#0e2f45] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg transition-all active:scale-95 cursor-pointer"
+                >
+                  {slide.actionPrimary}
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => onNavigate?.(secondaryTargets[current % secondaryTargets.length])}
+                  className="min-h-11 inline-flex items-center justify-center border-2 border-white/70 hover:bg-white hover:text-[#0e2f45] text-white px-7 py-3 text-[11px] font-bold uppercase tracking-[0.2em] transition-all active:scale-95 cursor-pointer"
+                >
+                  {slide.actionSecondary}
+                </button>
+              </div>
             </div>
           </div>
+        </div>
 
+        {/* Slide controls */}
+        <div className="absolute bottom-6 inset-x-0">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              {slides.map((s, i) => (
+                <button
+                  key={s.id}
+                  onClick={() => setCurrent(i)}
+                  className="group flex items-center gap-2 cursor-pointer py-2"
+                  aria-label={`Slide ${i + 1}`}
+                >
+                  <span className={`text-[11px] font-bold tabular-nums ${i === current ? 'text-[#dab26a]' : 'text-white/50 group-hover:text-white'}`}>
+                    0{i + 1}
+                  </span>
+                  <span className={`h-[2px] transition-all duration-500 ${i === current ? 'w-12 bg-[#dab26a]' : 'w-6 bg-white/30 group-hover:bg-white/60'}`} />
+                </button>
+              ))}
+            </div>
+            <div className="hidden sm:flex items-center gap-2">
+              <button onClick={() => go(-1)} aria-label="Previous slide" className="w-10 h-10 rounded-full bg-white/5 backdrop-blur-md border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/15 transition-all cursor-pointer">
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button onClick={() => go(1)} aria-label="Next slide" className="w-10 h-10 rounded-full bg-white/5 backdrop-blur-md border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/15 transition-all cursor-pointer">
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Live Official Briefing Ticker Bar */}
-      <div className="bg-slate-950/90 border-t border-slate-800 text-xs py-2 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center gap-3">
-          <div className="flex-shrink-0 flex items-center gap-1.5 bg-red-600 text-white px-2 py-0.5 rounded font-black tracking-wider text-[10px] uppercase">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
-            </span>
-            <span>{content.hero.tickerLabel}</span>
+      {/* Briefing ticker */}
+      <div className="bg-white dark:bg-[#0a1a26] border-b border-slate-200 dark:border-slate-800 text-xs">
+        <div className="max-w-7xl mx-auto flex items-stretch">
+          <div className="flex-shrink-0 flex items-center bg-[#1a4f6d] text-white px-4 sm:px-6 py-3 eyebrow !text-[10px]">
+            {content.hero.tickerLabel}
           </div>
-          
-          <div className="overflow-hidden whitespace-nowrap flex-1">
-            <div className="inline-block animate-marquee text-slate-300 text-xs font-normal">
+          <div className="overflow-hidden whitespace-nowrap flex-1 min-w-0 flex items-center px-4">
+            <div className="inline-block animate-marquee text-slate-600 dark:text-slate-300 text-[13px]">
               {content.hero.tickerText}
             </div>
           </div>
