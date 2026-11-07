@@ -22,7 +22,7 @@ export function ContactSection({ content, currentLang, onNavigate }) {
 
   return (
     <div id="contact">
-      <PageHeader content={content} onNavigate={onNavigate} eyebrow={t.eyebrow} title={content.nav.contact} description={t.lead} image="/images/assosa-city.jpg" />
+      <PageHeader content={content} onNavigate={onNavigate} title={content.nav.contact} description={t.lead} image="/images/assosa-city.jpg" />
 
       <section className="py-16 sm:py-24 bg-white dark:bg-[#0a1a26]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

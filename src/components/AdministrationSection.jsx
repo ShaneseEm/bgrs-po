@@ -12,7 +12,6 @@ export function AdministrationSection({ content, currentLang, onNavigate }) {
       <PageHeader
         content={content}
         onNavigate={onNavigate}
-        eyebrow={admin.subtitle}
         title={admin.title}
         description={admin.description}
         image="/images/assosa-city.jpg"
@@ -41,7 +40,7 @@ export function AdministrationSection({ content, currentLang, onNavigate }) {
                     <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">{zone.desc}</p>
                     {count && (
                       <div className="mt-auto pt-5 border-t border-slate-100 dark:border-slate-800">
-                        <div className="eyebrow text-[10px]! text-[#3a6d8c] dark:text-[#dab26a] mb-2">{count}</div>
+                        <div className="eyebrow text-[#3a6d8c] dark:text-[#dab26a] mb-2">{count}</div>
                         {list && <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{list}</p>}
                       </div>
                     )}

@@ -15,7 +15,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { SearchModal } from './components/SearchModal';
 import { NewsModal } from './components/NewsModal';
-import { SectionHeading, PrimaryButton, OutlineButton } from './components/ui';
+import { SectionHeading, PrimaryButton, OutlineButton, titleCase } from './components/ui';
 
 const SECTIONS = ['home', 'president', 'initiatives', 'news', 'administration', 'services', 'contact'];
 
@@ -24,7 +24,7 @@ const sectionFromHash = () => {
   return SECTIONS.includes(h) ? h : 'home';
 };
 
-const titleCase = (s) => s.toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase());
+
 
 const readStored = (key, allowed, fallback) => {
   try {
@@ -203,7 +203,7 @@ export default function App() {
                           <span className="block w-8 h-[2px] bg-[#dab26a] mb-4 transition-all duration-500 group-hover:w-16" />
                           <div className="font-serif text-white text-xl leading-snug mb-2">{content.nav[card.id]}</div>
                           <div className="text-xs text-slate-200/90 mb-4">{t.explore[card.id]}</div>
-                          <span className="inline-flex items-center gap-2 eyebrow text-[10px]! text-[#dab26a]">
+                          <span className="inline-flex items-center gap-2 eyebrow text-[#dab26a]">
                             {t.learnMore} <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                           </span>
                         </div>

@@ -49,7 +49,6 @@ export function CitizenPortal({ content, currentLang, onNavigate }) {
       <PageHeader
         content={content}
         onNavigate={onNavigate}
-        eyebrow={cp.subtitle}
         title={cp.title}
         description={cp.intro}
         image="/images/culture.jpg"
@@ -80,7 +79,7 @@ export function CitizenPortal({ content, currentLang, onNavigate }) {
             <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-10">{cp.formDesc}</p>
 
             <div className="bg-white dark:bg-[#0a1a26] border border-slate-200 dark:border-slate-800">
-              <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 eyebrow text-[10px]! text-[#3a6d8c] dark:text-[#dab26a]">
+              <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 eyebrow text-[#3a6d8c] dark:text-[#dab26a]">
                 {t.directContact}
               </div>
               <ul className="divide-y divide-slate-200 dark:divide-slate-800 text-sm">
@@ -114,7 +113,7 @@ export function CitizenPortal({ content, currentLang, onNavigate }) {
                   </p>
                   <button
                     onClick={() => { setForm(empty); setSent(false); }}
-                    className="min-h-11 inline-flex items-center justify-center border-2 border-[#1a4f6d] dark:border-slate-500 text-[#1a4f6d] dark:text-slate-100 px-7 py-3 text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-[#1a4f6d] hover:text-white transition-all cursor-pointer"
+                    className="min-h-11 inline-flex items-center justify-center border-2 border-[#1a4f6d] dark:border-slate-500 text-[#1a4f6d] dark:text-slate-100 px-7 py-3 text-[15px] font-semibold hover:bg-[#1a4f6d] hover:text-white transition-all cursor-pointer"
                   >
                     {t.another}
                   </button>

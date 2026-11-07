@@ -78,7 +78,7 @@ export function SearchModal({ isOpen, onClose, content, currentLang, onSelectNew
             <div className="space-y-8">
               {groups.map((g) => (
                 <div key={g.label}>
-                  <div className="eyebrow text-[10px]! text-slate-400 mb-3">{g.label} ({g.items.length})</div>
+                  <div className="eyebrow text-slate-400 mb-3">{g.label} ({g.items.length})</div>
                   <ul className="divide-y divide-slate-100 dark:divide-slate-800 border-y border-slate-100 dark:border-slate-800">
                     {g.items.map((it) => (
                       <li key={it.key}>
@@ -87,7 +87,7 @@ export function SearchModal({ isOpen, onClose, content, currentLang, onSelectNew
                           className="group w-full text-left py-4 flex items-start justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/40 px-2 transition-colors cursor-pointer"
                         >
                           <span className="min-w-0">
-                            <span className="block eyebrow text-[9px]! text-[#3a6d8c] dark:text-[#dab26a] mb-1">{it.eyebrow}</span>
+                            <span className="block eyebrow text-[#3a6d8c] dark:text-[#dab26a] mb-1">{it.eyebrow}</span>
                             <span className="block font-serif text-[#1a4f6d] dark:text-white leading-snug">{it.title}</span>
                             <span className="block text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">{it.sub}</span>
                           </span>

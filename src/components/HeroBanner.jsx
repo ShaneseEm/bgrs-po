@@ -59,14 +59,14 @@ export function HeroBanner({ content, onNavigate }) {
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => onNavigate?.(primaryTargets[current % primaryTargets.length])}
-                  className="min-h-11 inline-flex items-center justify-center gap-2 bg-[#dab26a] hover:bg-white text-[#0e2f45] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg transition-all active:scale-95 cursor-pointer"
+                  className="min-h-11 inline-flex items-center justify-center gap-2 bg-[#dab26a] hover:bg-white text-[#0e2f45] px-7 py-3.5 text-[15px] font-semibold shadow-lg transition-all active:scale-95 cursor-pointer"
                 >
                   {slide.actionPrimary}
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => onNavigate?.(secondaryTargets[current % secondaryTargets.length])}
-                  className="min-h-11 inline-flex items-center justify-center border-2 border-white/70 hover:bg-white hover:text-[#0e2f45] text-white px-7 py-3 text-[11px] font-bold uppercase tracking-[0.2em] transition-all active:scale-95 cursor-pointer"
+                  className="min-h-11 inline-flex items-center justify-center border-2 border-white/70 hover:bg-white hover:text-[#0e2f45] text-white px-7 py-3 text-[15px] font-semibold transition-all active:scale-95 cursor-pointer"
                 >
                   {slide.actionSecondary}
                 </button>
@@ -86,7 +86,7 @@ export function HeroBanner({ content, onNavigate }) {
                   className="group flex items-center gap-2 cursor-pointer py-2"
                   aria-label={`Slide ${i + 1}`}
                 >
-                  <span className={`text-[11px] font-bold tabular-nums ${i === current ? 'text-[#dab26a]' : 'text-white/50 group-hover:text-white'}`}>
+                  <span className={`text-xs font-bold tabular-nums ${i === current ? 'text-[#dab26a]' : 'text-white/50 group-hover:text-white'}`}>
                     0{i + 1}
                   </span>
                   <span className={`h-[2px] transition-all duration-500 ${i === current ? 'w-12 bg-[#dab26a]' : 'w-6 bg-white/30 group-hover:bg-white/60'}`} />
@@ -107,8 +107,8 @@ export function HeroBanner({ content, onNavigate }) {
 
       {/* Briefing ticker */}
       <div className="bg-white dark:bg-[#0a1a26] border-b border-slate-200 dark:border-slate-800 text-xs">
-        <div className="max-w-7xl mx-auto flex items-stretch">
-          <div className="flex-shrink-0 flex items-center bg-[#1a4f6d] text-white px-4 sm:px-6 py-3 eyebrow text-[10px]!">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-stretch">
+          <div className="flex-shrink-0 flex items-center bg-[#1a4f6d] text-white px-4 sm:px-6 py-3 eyebrow">
             {content.hero.tickerLabel}
           </div>
           <div className="overflow-hidden whitespace-nowrap flex-1 min-w-0 flex items-center px-4">

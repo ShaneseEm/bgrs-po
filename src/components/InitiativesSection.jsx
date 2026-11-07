@@ -10,7 +10,6 @@ export function InitiativesSection({ content, onNavigate }) {
       <PageHeader
         content={content}
         onNavigate={onNavigate}
-        eyebrow={init.subtitle}
         title={content.nav.initiatives}
         description={init.description}
         image="/images/gerd-dam.jpg"

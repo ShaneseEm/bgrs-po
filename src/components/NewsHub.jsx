@@ -19,7 +19,7 @@ export function NewsCard({ article, onSelect, readLabel }) {
       <div className="relative aspect-[16/10] overflow-hidden bg-slate-200">
         <img src={article.image} alt="" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
         <div className="absolute top-0 left-0 w-full h-0 bg-[#004750]/30 backdrop-blur-[2px] transition-all duration-500 ease-in-out group-hover:h-full" />
-        <span className="absolute top-4 left-4 bg-[#1a4f6d] text-white eyebrow text-[9px]! px-3 py-1.5">{article.category}</span>
+        <span className="absolute top-4 left-4 bg-[#1a4f6d] text-white eyebrow px-3 py-1.5">{article.category}</span>
       </div>
       <div className="p-6 flex flex-col flex-1">
         <div className="text-xs text-slate-400 mb-3">{article.date}</div>
@@ -27,7 +27,7 @@ export function NewsCard({ article, onSelect, readLabel }) {
           {article.title}
         </h3>
         <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-3 mb-6">{article.summary}</p>
-        <span className="mt-auto inline-flex items-center gap-2 text-[10px] font-black text-[#1a4f6d] dark:text-[#dab26a] uppercase tracking-[0.2em] group-hover:text-[#dab26a] transition-colors">
+        <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[#1a4f6d] dark:text-[#dab26a] group-hover:text-[#dab26a] transition-colors">
           {readLabel}
           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
         </span>
@@ -49,7 +49,7 @@ export function NewsHub({ content, currentLang, onNavigate, onSelectNews }) {
 
   return (
     <div id="news">
-      <PageHeader content={content} onNavigate={onNavigate} eyebrow={n.subtitle} title={n.title} image="/images/president-gerd-forum.jpg" />
+      <PageHeader content={content} onNavigate={onNavigate} title={n.title} image="/images/president-gerd-forum.jpg" />
 
       {/* Filter tabs */}
       <div className="bg-white dark:bg-[#0a1a26] border-b border-slate-200 dark:border-slate-800">
@@ -61,7 +61,7 @@ export function NewsHub({ content, currentLang, onNavigate, onSelectNews }) {
                 role="tab"
                 aria-selected={tab === i}
                 onClick={() => setTab(i)}
-                className={`relative whitespace-nowrap px-4 py-5 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors cursor-pointer ${
+                className={`relative whitespace-nowrap px-4 py-5 text-[15px] font-medium transition-colors cursor-pointer ${
                   tab === i ? 'text-[#1a4f6d] dark:text-[#dab26a]' : 'text-slate-500 dark:text-slate-400 hover:text-[#1a4f6d] dark:hover:text-white'
                 }`}
               >
@@ -89,7 +89,7 @@ export function NewsHub({ content, currentLang, onNavigate, onSelectNews }) {
               >
                 <div className="lg:col-span-7 relative overflow-hidden bg-slate-200 aspect-[16/10] lg:aspect-auto lg:min-h-[420px]">
                   <img src={featured.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <span className="absolute top-5 left-5 bg-[#dab26a] text-[#0e2f45] eyebrow text-[9px]! px-3 py-1.5">{t.featured}</span>
+                  <span className="absolute top-5 left-5 bg-[#dab26a] text-[#0e2f45] eyebrow px-3 py-1.5">{t.featured}</span>
                 </div>
                 <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center">
                   <div className="eyebrow text-[#3a6d8c] dark:text-[#dab26a] mb-4">{featured.category}</div>
@@ -103,7 +103,7 @@ export function NewsHub({ content, currentLang, onNavigate, onSelectNews }) {
                       <span className="inline-flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />{featured.readTime}</span>
                     )}
                   </div>
-                  <span className="inline-flex items-center gap-2 text-[10px] font-black text-[#1a4f6d] dark:text-[#dab26a] uppercase tracking-[0.2em]">
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a4f6d] dark:text-[#dab26a]">
                     {n.readArticle}
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                   </span>

@@ -35,7 +35,7 @@ export function NewsModal({ article, onClose, currentLang }) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="sticky top-0 z-10 bg-white/95 dark:bg-[#0a1a26]/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 px-5 sm:px-8 py-3 flex items-center justify-between gap-4">
-          <span className="bg-[#1a4f6d] text-white eyebrow text-[9px]! px-3 py-1.5 truncate">{article.category}</span>
+          <span className="bg-[#1a4f6d] text-white eyebrow px-3 py-1.5 truncate">{article.category}</span>
           <div className="flex items-center gap-2">
             <button onClick={() => window.print()} className={`${iconBtn} hidden sm:inline-flex`} title={t.news.print} aria-label={t.news.print}>
               <Printer className="w-4 h-4" />

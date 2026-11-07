@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronRight, ArrowRight } from 'lucide-react';
+import { titleCase } from './ui';
 
 export function Navigation({ content, activeSection, setActiveSection }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -41,9 +42,9 @@ export function Navigation({ content, activeSection, setActiveSection }) {
       />
       <span className="min-w-0">
         <span className={`block font-serif text-[#1a4f6d] dark:text-white leading-tight truncate ${compact ? 'text-sm' : 'text-base sm:text-xl'}`}>
-          {content.meta.office}
+          {titleCase(content.meta.office)}
         </span>
-        <span className="block eyebrow text-[9px]! sm:text-[10px]! text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+        <span className="block eyebrow text-slate-500 dark:text-slate-400 mt-0.5 truncate">
           {content.meta.region}
         </span>
       </span>
@@ -64,7 +65,7 @@ export function Navigation({ content, activeSection, setActiveSection }) {
             />
             <button
               onClick={() => go('services')}
-              className="hidden md:inline-flex items-center gap-2 bg-[#1a4f6d] hover:bg-[#0e2f45] text-white px-5 py-3 text-[11px] font-bold uppercase tracking-[0.2em] shadow-md transition-all active:scale-95 cursor-pointer"
+              className="hidden md:inline-flex items-center gap-2 bg-[#1a4f6d] hover:bg-[#0e2f45] text-white px-5 py-3 text-[15px] font-semibold shadow-md transition-all active:scale-95 cursor-pointer"
             >
               {content.nav.services}
               <ArrowRight className="w-3.5 h-3.5" />
@@ -89,17 +90,17 @@ export function Navigation({ content, activeSection, setActiveSection }) {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-6">
-          <div className={`transition-all duration-300 overflow-hidden ${scrolled ? 'max-w-xs opacity-100 py-2' : 'max-w-0 opacity-0'}`}>
+          <div className={`hidden xl:block transition-all duration-300 overflow-hidden ${scrolled ? 'max-w-xs opacity-100 py-2' : 'max-w-0 opacity-0'}`}>
             <Brand compact />
           </div>
-          <ul className="flex items-stretch flex-1 justify-center xl:justify-start">
+          <ul className={`flex items-stretch flex-1 justify-center xl:justify-start ${scrolled ? "" : "xl:-ml-4"}`}>
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
                 <li key={item.id}>
                   <button
                     onClick={() => go(item.id)}
-                    className={`relative whitespace-nowrap px-3 xl:px-4 py-4 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors cursor-pointer ${
+                    className={`relative whitespace-nowrap px-2.5 xl:px-4 py-4 text-sm xl:text-[15px] font-medium transition-colors cursor-pointer ${
                       isActive
                         ? 'text-[#1a4f6d] dark:text-[#dab26a]'
                         : 'text-slate-500 dark:text-slate-400 hover:text-[#1a4f6d] dark:hover:text-white'
@@ -107,7 +108,7 @@ export function Navigation({ content, activeSection, setActiveSection }) {
                   >
                     {item.label}
                     <span
-                      className={`absolute left-3 right-3 xl:left-4 xl:right-4 bottom-0 h-[3px] bg-[#dab26a] origin-left transition-transform duration-300 ${
+                      className={`absolute left-2.5 right-2.5 xl:left-4 xl:right-4 bottom-0 h-[3px] bg-[#dab26a] origin-left transition-transform duration-300 ${
                         isActive ? 'scale-x-100' : 'scale-x-0'
                       }`}
                     />
@@ -175,7 +176,7 @@ export function Navigation({ content, activeSection, setActiveSection }) {
             <div className="p-5 border-t border-slate-100 dark:border-slate-800">
               <button
                 onClick={() => go('services')}
-                className="w-full bg-[#1a4f6d] hover:bg-[#0e2f45] text-white py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] cursor-pointer"
+                className="w-full bg-[#1a4f6d] hover:bg-[#0e2f45] text-white py-3.5 text-[15px] font-semibold cursor-pointer"
               >
                 {content.nav.services}
               </button>

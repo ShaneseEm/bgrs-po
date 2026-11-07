@@ -96,7 +96,7 @@ export function PresidentSection({ content, currentLang = 'en', onOpenSpeeches, 
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a2233] via-[#0e2f45]/95 to-[#0e2f45]/80" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 lg:pb-24">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[11px] text-slate-400 mb-10 lg:mb-14">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-slate-300 mb-8 lg:mb-12">
             <button onClick={() => onNavigate?.('home')} className="hover:text-white transition-colors cursor-pointer">{t.home}</button>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#dab26a]">{content.nav.president}</span>
@@ -134,14 +134,14 @@ export function PresidentSection({ content, currentLang = 'en', onOpenSpeeches, 
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={onOpenSpeeches}
-                  className="min-h-11 inline-flex items-center justify-center gap-2 bg-[#dab26a] hover:bg-white text-[#0e2f45] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg transition-all active:scale-95 cursor-pointer"
+                  className="min-h-11 inline-flex items-center justify-center gap-2 bg-[#dab26a] hover:bg-white text-[#0e2f45] px-7 py-3.5 text-[15px] font-semibold shadow-lg transition-all active:scale-95 cursor-pointer"
                 >
                   <Mic className="w-4 h-4" />
                   {p.viewSpeeches}
                 </button>
                 <button
                   onClick={() => onNavigate?.('services')}
-                  className="min-h-11 inline-flex items-center justify-center gap-2 border-2 border-white/70 hover:bg-white hover:text-[#0e2f45] text-white px-7 py-3 text-[11px] font-bold uppercase tracking-[0.2em] transition-all active:scale-95 cursor-pointer"
+                  className="min-h-11 inline-flex items-center justify-center gap-2 border-2 border-white/70 hover:bg-white hover:text-[#0e2f45] text-white px-7 py-3 text-[15px] font-semibold transition-all active:scale-95 cursor-pointer"
                 >
                   {t.contactTitle}
                 </button>
@@ -156,7 +156,7 @@ export function PresidentSection({ content, currentLang = 'en', onOpenSpeeches, 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="eyebrow text-[#3a6d8c] dark:text-[#dab26a] mb-8">{t.message}</div>
           <blockquote>
-            <p className="font-serif italic text-2xl sm:text-3xl lg:text-[2.1rem] text-[#1a4f6d] dark:text-slate-100 leading-[1.5]">
+            <p className="font-serif italic text-2xl lg:text-[1.75rem] text-[#1a4f6d] dark:text-slate-100 leading-[1.5]">
               &ldquo;{p.quote}&rdquo;
             </p>
             <footer className="mt-10 flex flex-col items-center gap-4">
@@ -224,7 +224,7 @@ export function PresidentSection({ content, currentLang = 'en', onOpenSpeeches, 
                   <div key={label} className="px-8 py-5 flex gap-4">
                     <Icon className="w-5 h-5 text-[#3a6d8c] dark:text-[#dab26a] flex-shrink-0 mt-0.5" />
                     <div>
-                      <dt className="eyebrow text-[10px]! text-slate-400 mb-1">{label}</dt>
+                      <dt className="eyebrow text-slate-400 mb-1">{label}</dt>
                       <dd className="text-sm text-slate-800 dark:text-slate-200 leading-snug">{value}</dd>
                     </div>
                   </div>
@@ -252,9 +252,9 @@ export function PresidentSection({ content, currentLang = 'en', onOpenSpeeches, 
                   <div className="absolute top-0 left-0 w-full h-0 bg-[#004750]/40 backdrop-blur-[2px] transition-all duration-500 ease-in-out group-hover:h-full" />
                   <Maximize2 className="absolute top-4 right-4 w-4 h-4 text-white/0 group-hover:text-white transition-colors" />
                   <div className="absolute inset-x-0 bottom-0 p-5">
-                    <span className="eyebrow text-[9px]! text-[#dab26a]">{photo.tag}</span>
+                    <span className="eyebrow text-[#dab26a]">{photo.tag}</span>
                     <div className="font-serif text-white text-lg leading-snug mt-2">{photo.title}</div>
-                    <div className="flex items-center gap-1.5 text-[11px] text-slate-300 mt-2">
+                    <div className="flex items-center gap-1.5 text-xs text-slate-300 mt-2">
                       <MapPin className="w-3 h-3" />
                       {photo.location}
                     </div>
@@ -275,7 +275,7 @@ export function PresidentSection({ content, currentLang = 'en', onOpenSpeeches, 
           </div>
           <button
             onClick={() => onNavigate?.('services')}
-            className="min-h-11 inline-flex items-center justify-center gap-2 bg-[#dab26a] hover:bg-white text-[#0e2f45] px-8 py-4 text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg transition-all active:scale-95 cursor-pointer flex-shrink-0"
+            className="min-h-11 inline-flex items-center justify-center gap-2 bg-[#dab26a] hover:bg-white text-[#0e2f45] px-8 py-4 text-[15px] font-semibold shadow-lg transition-all active:scale-95 cursor-pointer flex-shrink-0"
           >
             {t.contactCta}
             <ArrowRight className="w-4 h-4" />
