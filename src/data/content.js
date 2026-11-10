@@ -100,6 +100,22 @@ export const contentData = {
           "caption": "Outlining the 1.2M hectare farming roadmap & \"Bounty of the Basket\" initiatives",
           "tag": "Economic Roadmap",
           "location": "Media Secretariat, Assosa"
+        },
+        {
+          "id": 5,
+          "url": "/images/news/assosa-press-briefing.jpg",
+          "title": "With the Prime Minister: Press Briefing",
+          "caption": "President Ashadli Hassan with Prime Minister Abiy Ahmed at a press briefing in Assosa",
+          "tag": "Federal Visit",
+          "location": "Assosa"
+        },
+        {
+          "id": 6,
+          "url": "/images/news/assosa-press-conference.jpg",
+          "title": "With the Prime Minister: Press Conference",
+          "caption": "President Ashadli Hassan with Prime Minister Abiy Ahmed at a press conference in Assosa",
+          "tag": "Federal Visit",
+          "location": "Assosa"
         }
       ],
       "quote": "Our region is blessed by history and nature. We are the proud host of the Grand Ethiopian Renaissance Dam, the custodian of ancient fertile river basins, and the cradle of vibrant brotherly peoples. Our central priority is enduring peace, disciplined governance, and shared economic bounty for every citizen.",
@@ -256,11 +272,6 @@ export const contentData = {
               "type": "youtube",
               "id": "fDL2uVO55h8",
               "title": "Visit to Assosa, Benishangul Gumuz"
-            },
-            {
-              "type": "link",
-              "url": "https://www.facebook.com/poaenglish/videos/prime-minister-abiy-ahmeds-visit-to-assosa-benishangul-gumuz-region-of-ethiopia/4397806703779955/",
-              "label": "Watch on Facebook: Prime Minister Abiy Ahmed's visit to Assosa"
             }
           ],
           "source": {
@@ -530,6 +541,22 @@ export const contentData = {
           "caption": "በ1.2 ሚሊዮን ሄክታር መሬት ልማትና የሌማት ትሩፋት ዙሪያ የተሰጠ ማብራሪያ",
           "tag": "የኢኮኖሚ ራዕይ",
           "location": "የሚዲያ ማዕከል"
+        },
+        {
+          "id": 5,
+          "url": "/images/news/assosa-press-briefing.jpg",
+          "title": "ከጠቅላይ ሚኒስትሩ ጋር፡ ጋዜጣዊ መግለጫ",
+          "caption": "ፕሬዚዳንት አሸድሊ ሀሰን ከጠቅላይ ሚኒስትር ዐቢይ አሕመድ ጋር በአሶሳ በጋዜጣዊ መግለጫ ላይ",
+          "tag": "የፌዴራል ጉብኝት",
+          "location": "አሶሳ"
+        },
+        {
+          "id": 6,
+          "url": "/images/news/assosa-press-conference.jpg",
+          "title": "ከጠቅላይ ሚኒስትሩ ጋር፡ ጋዜጣዊ ጉባኤ",
+          "caption": "ፕሬዚዳንት አሸድሊ ሀሰን ከጠቅላይ ሚኒስትር ዐቢይ አሕመድ ጋር በአሶሳ በጋዜጣዊ ጉባኤ ላይ",
+          "tag": "የፌዴራል ጉብኝት",
+          "location": "አሶሳ"
         }
       ],
       "quote": "ክልላችን በተፈጥሮም ሆነ በታሪክ የታደለች ናት። ታላቁን የህዳሴ ግድብ በማስተናገዳችን፣ በለም ወንዞቻችን እና በአስተዋዩ ህዝባችን እንኮራለን። ዋናው አላማችን አስተማማኝ ሰላምን ማስፈን፣ መልካም አስተዳደርን መገንባት እና ፍትሃዊ የልማት ተጠቃሚነትን ማረጋገጥ ነው።",
@@ -686,11 +713,6 @@ export const contentData = {
               "type": "youtube",
               "id": "fDL2uVO55h8",
               "title": "Visit to Assosa, Benishangul Gumuz"
-            },
-            {
-              "type": "link",
-              "url": "https://www.facebook.com/poaenglish/videos/prime-minister-abiy-ahmeds-visit-to-assosa-benishangul-gumuz-region-of-ethiopia/4397806703779955/",
-              "label": "Watch on Facebook: Prime Minister Abiy Ahmed's visit to Assosa"
             }
           ],
           "source": {
@@ -960,6 +982,22 @@ export const contentData = {
           "caption": "Outlining the 1.2M hectare farming roadmap & \"Bounty of the Basket\" initiatives",
           "tag": "Economic Roadmap",
           "location": "Media Secretariat, Assosa"
+        },
+        {
+          "id": 5,
+          "url": "/images/news/assosa-press-briefing.jpg",
+          "title": "With the Prime Minister: Press Briefing",
+          "caption": "President Ashadli Hassan with Prime Minister Abiy Ahmed at a press briefing in Assosa",
+          "tag": "Federal Visit",
+          "location": "Assosa"
+        },
+        {
+          "id": 6,
+          "url": "/images/news/assosa-press-conference.jpg",
+          "title": "With the Prime Minister: Press Conference",
+          "caption": "President Ashadli Hassan with Prime Minister Abiy Ahmed at a press conference in Assosa",
+          "tag": "Federal Visit",
+          "location": "Assosa"
         }
       ],
       "quote": "Our region is blessed by history and nature. We are the proud host of the Grand Ethiopian Renaissance Dam, the custodian of ancient fertile river basins, and the cradle of vibrant brotherly peoples. Our central priority is enduring peace, disciplined governance, and shared economic bounty for every citizen.",
@@ -1116,11 +1154,6 @@ export const contentData = {
               "type": "youtube",
               "id": "fDL2uVO55h8",
               "title": "Visit to Assosa, Benishangul Gumuz"
-            },
-            {
-              "type": "link",
-              "url": "https://www.facebook.com/poaenglish/videos/prime-minister-abiy-ahmeds-visit-to-assosa-benishangul-gumuz-region-of-ethiopia/4397806703779955/",
-              "label": "Watch on Facebook: Prime Minister Abiy Ahmed's visit to Assosa"
             }
           ],
           "source": {
