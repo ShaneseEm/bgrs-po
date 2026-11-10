@@ -104,7 +104,11 @@ export default function App() {
     if (speech) setSelectedArticle(speech);
   };
 
-  const pageProps = { content, currentLang, onNavigate: navigateTo };
+  const homeVideos = content.news.articles
+    .flatMap((a) => a.videos || [])
+    .filter((v, i, all) => v.type === 'youtube' && all.findIndex((x) => x.id === v.id) === i);
+
+  const pageProps ={ content, currentLang, onNavigate: navigateTo };
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-white dark:bg-[#0a1a26] text-slate-700 dark:text-slate-100">
@@ -188,6 +192,35 @@ export default function App() {
                   </div>
                 </div>
               </section>
+
+              {/* Featured videos (collected from news articles) */}
+              {homeVideos.length > 0 && (
+                <section className="py-16 sm:py-24 bg-white dark:bg-[#0a1a26]">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+                      <SectionHeading eyebrow={currentLang === 'am' ? 'ሚዲያ' : 'Media'} title={currentLang === 'am' ? 'ቪዲዮዎች' : 'Videos'} className="mb-0!" />
+                      <OutlineButton onClick={() => navigateTo('news')}>{currentLang === 'am' ? 'የፎቶና ቪዲዮ ማዕከል' : 'Photo & video gallery'}</OutlineButton>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                      {homeVideos.map((v, i) => (
+                        <Reveal key={v.id} delay={i * 120}>
+                          <div className="aspect-video bg-black">
+                            <iframe
+                              src={`https://www.youtube-nocookie.com/embed/${v.id}`}
+                              title={v.title}
+                              loading="lazy"
+                              allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
+                              allowFullScreen
+                              className="w-full h-full border-0"
+                            />
+                          </div>
+                          <div className="text-sm text-slate-500 dark:text-slate-400 mt-2">{v.title}</div>
+                        </Reveal>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              )}
 
               {/* Explore the office */}
               <section className="py-16 sm:py-24 bg-white dark:bg-[#0a1a26]">
