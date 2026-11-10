@@ -104,6 +104,7 @@ export const contentData = {
         {
           "id": 5,
           "url": "/images/news/assosa-press-briefing.jpg",
+          "wide": true,
           "title": "With the Prime Minister: Press Briefing",
           "caption": "President Ashadli Hassan with Prime Minister Abiy Ahmed at a press briefing in Assosa",
           "tag": "Federal Visit",
@@ -112,6 +113,7 @@ export const contentData = {
         {
           "id": 6,
           "url": "/images/news/assosa-press-conference.jpg",
+          "wide": true,
           "title": "With the Prime Minister: Press Conference",
           "caption": "President Ashadli Hassan with Prime Minister Abiy Ahmed at a press conference in Assosa",
           "tag": "Federal Visit",
@@ -545,6 +547,7 @@ export const contentData = {
         {
           "id": 5,
           "url": "/images/news/assosa-press-briefing.jpg",
+          "wide": true,
           "title": "ከጠቅላይ ሚኒስትሩ ጋር፡ ጋዜጣዊ መግለጫ",
           "caption": "ፕሬዚዳንት አሸድሊ ሀሰን ከጠቅላይ ሚኒስትር ዐቢይ አሕመድ ጋር በአሶሳ በጋዜጣዊ መግለጫ ላይ",
           "tag": "የፌዴራል ጉብኝት",
@@ -553,6 +556,7 @@ export const contentData = {
         {
           "id": 6,
           "url": "/images/news/assosa-press-conference.jpg",
+          "wide": true,
           "title": "ከጠቅላይ ሚኒስትሩ ጋር፡ ጋዜጣዊ ጉባኤ",
           "caption": "ፕሬዚዳንት አሸድሊ ሀሰን ከጠቅላይ ሚኒስትር ዐቢይ አሕመድ ጋር በአሶሳ በጋዜጣዊ ጉባኤ ላይ",
           "tag": "የፌዴራል ጉብኝት",
@@ -986,6 +990,7 @@ export const contentData = {
         {
           "id": 5,
           "url": "/images/news/assosa-press-briefing.jpg",
+          "wide": true,
           "title": "With the Prime Minister: Press Briefing",
           "caption": "President Ashadli Hassan with Prime Minister Abiy Ahmed at a press briefing in Assosa",
           "tag": "Federal Visit",
@@ -994,6 +999,7 @@ export const contentData = {
         {
           "id": 6,
           "url": "/images/news/assosa-press-conference.jpg",
+          "wide": true,
           "title": "With the Prime Minister: Press Conference",
           "caption": "President Ashadli Hassan with Prime Minister Abiy Ahmed at a press conference in Assosa",
           "tag": "Federal Visit",

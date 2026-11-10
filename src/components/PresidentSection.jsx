@@ -237,7 +237,7 @@ export function PresidentSection({ content, currentLang = 'en', onOpenSpeeches, 
                 <button
                   key={photo.id}
                   onClick={() => setLightbox(idx)}
-                  className="group relative aspect-[4/5] overflow-hidden bg-slate-200 text-left cursor-pointer focus-visible:outline-3 focus-visible:outline-[#dab26a]"
+                  className={`group relative overflow-hidden bg-slate-200 text-left cursor-pointer ${photo.wide ? 'sm:col-span-2 aspect-[16/10] sm:aspect-auto sm:h-full sm:min-h-[20rem]' : 'aspect-[4/5]'} focus-visible:outline-3 focus-visible:outline-[#dab26a]`}
                 >
                   <img src={photo.url} alt={photo.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0e2f45] via-[#0e2f45]/30 to-transparent" />
