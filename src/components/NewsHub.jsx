@@ -58,7 +58,7 @@ export function NewsHub({ content, currentLang, onSelectNews }) {
         <div className="pb-6 border-b-4 border-[#1a4f6d] dark:border-[#dab26a] flex flex-col md:flex-row md:items-end justify-between gap-6 animate-rise">
           <div>
             <div className="eyebrow text-[#3a6d8c] dark:text-[#dab26a] mb-3">{n.subtitle}</div>
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-[#0e2f45] dark:text-white leading-none tracking-tight">{n.title}</h1>
+            <h1 className="font-serif text-3xl lg:text-4xl text-[#1a4f6d] dark:text-white leading-tight tracking-tight">{n.title}</h1>
           </div>
           <div className="text-sm text-slate-500 dark:text-slate-400 md:text-right shrink-0">
             <div className="font-medium text-slate-700 dark:text-slate-200">{today}</div>

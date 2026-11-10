@@ -2,6 +2,13 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Plain "&" everywhere: Playfair's decorative ampersand is swapped for a standard serif one */
+@font-face {
+  font-family: 'Plain Ampersand';
+  src: local('Georgia'), local('Times New Roman'), local('Times');
+  unicode-range: U+0026;
+}
+
 /*
   Design system — formal federal-portal aesthetic
   Primary: deep state navy-teal (#1a4f6d)   Accent: ceremonial gold (#dab26a)
@@ -9,7 +16,7 @@
 */
 @theme {
   --font-sans: 'Inter', 'Noto Sans Ethiopic', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Playfair Display', 'Noto Sans Ethiopic', Georgia, 'Times New Roman', serif;
+  --font-serif: 'Plain Ampersand', 'Playfair Display', 'Noto Sans Ethiopic', Georgia, 'Times New Roman', serif;
 
   --color-brand: #1a4f6d;
   --color-brand-dark: #0e2f45;

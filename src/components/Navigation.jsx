@@ -117,6 +117,11 @@ export function Navigation({ content, activeSection, setActiveSection }) {
               );
             })}
           </ul>
+          <img
+            src="/images/bgrs-flag-new.png"
+            alt="Flag of Benishangul Gumuz Regional State"
+            className={`w-12 h-8 object-cover border border-slate-200 dark:border-slate-700 shadow-sm shrink-0 transition-all duration-300 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none w-0 border-0'}`}
+          />
         </div>
       </nav>
 
