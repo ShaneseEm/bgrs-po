@@ -41,10 +41,10 @@ export function Navigation({ content, activeSection, setActiveSection }) {
         className={`${compact ? 'w-10 h-10' : 'w-12 h-12 sm:w-16 sm:h-16'} object-contain flex-shrink-0 transition-all`}
       />
       <span className="min-w-0">
-        <span className={`block font-serif text-[#1a4f6d] dark:text-white leading-tight truncate ${compact ? 'text-sm' : 'text-base sm:text-xl'}`}>
+        <span className={`block font-serif text-[#1a4f6d] dark:text-white leading-tight ${compact ? 'whitespace-nowrap text-sm' : 'truncate text-base sm:text-xl'}`}>
           {titleCase(content.meta.office)}
         </span>
-        <span className="block eyebrow text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+        <span className={`block eyebrow text-slate-500 dark:text-slate-400 mt-0.5 ${compact ? 'whitespace-nowrap' : 'truncate'}`}>
           {content.meta.region}
         </span>
       </span>
@@ -90,7 +90,7 @@ export function Navigation({ content, activeSection, setActiveSection }) {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-6">
-          <div className={`hidden xl:block transition-all duration-300 overflow-hidden ${scrolled ? 'max-w-xs opacity-100 py-2' : 'max-w-0 opacity-0'}`}>
+          <div className={`hidden xl:block transition-all duration-300 overflow-hidden ${scrolled ? 'max-w-md opacity-100 py-2 shrink-0' : 'max-w-0 opacity-0'}`}>
             <Brand compact />
           </div>
           <ul className={`flex items-stretch flex-1 justify-center xl:justify-start ${scrolled ? "" : "xl:-ml-4"}`}>

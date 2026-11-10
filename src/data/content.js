@@ -189,7 +189,7 @@ export const contentData = {
           "title": "Sustained Regional Peace, Unity & Cultural Integration",
           "category": "Governance & Security",
           "image": "/images/culture.jpg",
-          "desc": "Consolidating peace agreements in Metekel and Kamashi, reintegrating ex-combatants into agriculture, and celebrating the indigenous heritage of the Berta, Gumuz, Shinasha, Mao, and Komo peoples.",
+          "desc": "Consolidating peace agreements in Metekel and Kamashi, reintegrating ex-combatants into agriculture, and celebrating the indigenous heritage of the Benishangul, Gumuz, Shinasha, Mao, and Komo peoples.",
           "metrics": "All 20+ Woredas Fully Reconciled"
         }
       ]
@@ -259,7 +259,7 @@ export const contentData = {
           "capital": "Assosa",
           "image": "/images/assosa-city.jpg",
           "desc": "Administrative capital seat, regional government headquarters, and commercial transit center with Assosa Hidase Airport.",
-          "woredas": "7 Woredas • Bambasi, Homosha, Kurmuk, Menge, Oda Bildigilu, Assosa Zuria, Sherkole"
+          "woredas": "10 Woredas • Bambasi, Homosha, Kurmuk, Menge, Oda Bildigilu, Assosa Zuria, Sherkole, Abrhamo, Undulu, Ura"
         },
         {
           "name": "Metekel Zone",
@@ -613,7 +613,7 @@ export const contentData = {
           "capital": "አሶሳ",
           "image": "/images/assosa-city.jpg",
           "desc": "የክልሉ ዋና የፖለቲካ እና የኢኮኖሚ ማዕከል፣ የአሶሳ ህዳሴ አውሮፕላን ማረፊያ እና የድንበር ንግድ መቀመጫ።",
-          "woredas": "7 ወረዳዎች • ባምባሲ፣ ሆሞሻ፣ ኩርሙክ፣ መንጌ፣ ኦዳ ቢልዲግሉ፣ አሶሳ ዙሪያ፣ ሸርቆሌ"
+          "woredas": "10 ወረዳዎች • ባምባሲ፣ ሆሞሻ፣ ኩርሙክ፣ መንጌ፣ ኦዳ ቢልዲግሉ፣ አሶሳ ዙሪያ፣ ሸርቆሌ፣ አብርሃሞ፣ ኡንዱሉ፣ ኡራ"
         },
         {
           "name": "መተከል ዞን",
@@ -897,7 +897,7 @@ export const contentData = {
           "title": "Sustained Regional Peace, Unity & Cultural Integration",
           "category": "Governance & Security",
           "image": "/images/culture.jpg",
-          "desc": "Consolidating peace agreements in Metekel and Kamashi, reintegrating ex-combatants into agriculture, and celebrating the indigenous heritage of the Berta, Gumuz, Shinasha, Mao, and Komo peoples.",
+          "desc": "Consolidating peace agreements in Metekel and Kamashi, reintegrating ex-combatants into agriculture, and celebrating the indigenous heritage of the Benishangul, Gumuz, Shinasha, Mao, and Komo peoples.",
           "metrics": "All 20+ Woredas Fully Reconciled"
         }
       ]
@@ -967,7 +967,7 @@ export const contentData = {
           "capital": "Assosa",
           "image": "/images/assosa-city.jpg",
           "desc": "Administrative capital seat, regional government headquarters, and commercial transit center with Assosa Hidase Airport.",
-          "woredas": "7 Woredas • Bambasi, Homosha, Kurmuk, Menge, Oda Bildigilu, Assosa Zuria, Sherkole"
+          "woredas": "10 Woredas • Bambasi, Homosha, Kurmuk, Menge, Oda Bildigilu, Assosa Zuria, Sherkole, Abrhamo, Undulu, Ura"
         },
         {
           "name": "Metekel Zone",
