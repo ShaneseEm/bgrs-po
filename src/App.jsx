@@ -10,6 +10,7 @@ import { StatisticsSection } from './components/StatisticsSection';
 import { PresidentSection } from './components/PresidentSection';
 import { InitiativesSection } from './components/InitiativesSection';
 import { NewsHub, NewsCard } from './components/NewsHub';
+import { MediaGallery } from './components/MediaGallery';
 import { AdministrationSection } from './components/AdministrationSection';
 import { CitizenPortal } from './components/CitizenPortal';
 import { ContactSection } from './components/ContactSection';
@@ -18,7 +19,7 @@ import { SearchModal } from './components/SearchModal';
 import { NewsModal } from './components/NewsModal';
 import { SectionHeading, PrimaryButton, OutlineButton, Reveal, titleCase } from './components/ui';
 
-const SECTIONS = ['home', 'president', 'initiatives', 'news', 'administration', 'services', 'contact'];
+const SECTIONS = ['home', 'president', 'initiatives', 'news', 'administration', 'services', 'contact', 'gallery'];
 
 const sectionFromHash = () => {
   const h = window.location.hash.replace(/^#\/?/, '');
@@ -85,8 +86,8 @@ export default function App() {
     const office = titleCase(content.meta.office);
     document.title = activeSection === 'home'
       ? `${office} | ${titleCase(content.meta.region)}`
-      : `${content.nav[activeSection]} | ${office}`;
-  }, [activeSection, content]);
+      : `${content.nav[activeSection] || (currentLang === 'am' ? 'የፎቶና ቪዲዮ ማዕከል' : 'Photo & Video Gallery')} | ${office}`;
+  }, [activeSection, content, currentLang]);
 
   const navigateTo = useCallback((section) => {
     if (section !== sectionFromHash()) {
@@ -199,7 +200,7 @@ export default function App() {
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
                       <SectionHeading eyebrow={currentLang === 'am' ? 'ሚዲያ' : 'Media'} title={currentLang === 'am' ? 'ቪዲዮዎች' : 'Videos'} className="mb-0!" />
-                      <OutlineButton onClick={() => navigateTo('news')}>{currentLang === 'am' ? 'የፎቶና ቪዲዮ ማዕከል' : 'Photo & video gallery'}</OutlineButton>
+                      <OutlineButton onClick={() => navigateTo('gallery')}>{currentLang === 'am' ? 'የፎቶና ቪዲዮ ማዕከል' : 'Photo & video gallery'}</OutlineButton>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                       {homeVideos.map((v, i) => (
@@ -264,6 +265,7 @@ export default function App() {
           {activeSection === 'administration' && <AdministrationSection {...pageProps} />}
           {activeSection === 'services' && <CitizenPortal {...pageProps} />}
           {activeSection === 'contact' && <ContactSection {...pageProps} />}
+          {activeSection === 'gallery' && <MediaGallery page articles={content.news.articles} lang={currentLang} />}
         </div>
       </main>
 
