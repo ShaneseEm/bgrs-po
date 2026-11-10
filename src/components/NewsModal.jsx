@@ -71,6 +71,56 @@ export function NewsModal({ article, onClose, currentLang }) {
           <div className="space-y-5 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
             {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
           </div>
+
+          {article.gallery?.length > 0 && (
+            <section className="mt-10" aria-label="Photo gallery">
+              <h3 className="eyebrow text-[#3a6d8c] dark:text-[#dab26a] mb-4">Photo gallery</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {article.gallery.map((g, i) => (
+                  <a key={g.src} href={g.src} target="_blank" rel="noreferrer" className={`group block overflow-hidden bg-slate-200 ${i === 0 ? 'col-span-2 sm:col-span-3' : ''}`}>
+                    <img src={g.src} alt={g.caption} loading="lazy" className={`w-full object-cover transition-transform duration-500 group-hover:scale-105 ${i === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'}`} />
+                    <span className="block text-xs text-slate-500 dark:text-slate-400 py-1.5">{g.caption}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {article.videos?.length > 0 && (
+            <section className="mt-10 space-y-6" aria-label="Videos">
+              <h3 className="eyebrow text-[#3a6d8c] dark:text-[#dab26a]">Videos</h3>
+              {article.videos.map((v) =>
+                v.type === 'youtube' ? (
+                  <div key={v.id}>
+                    <div className="aspect-video bg-black">
+                      <iframe
+                        src={`https://www.youtube-nocookie.com/embed/${v.id}`}
+                        title={v.title}
+                        loading="lazy"
+                        allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
+                        allowFullScreen
+                        className="w-full h-full border-0"
+                      />
+                    </div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400 mt-1.5">{v.title}</div>
+                  </div>
+                ) : (
+                  <a key={v.url} href={v.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a4f6d] dark:text-[#dab26a] hover:underline">
+                    {v.label}
+                  </a>
+                )
+              )}
+            </section>
+          )}
+
+          {article.source && (
+            <p className="mt-10 pt-5 border-t border-slate-100 dark:border-slate-800 text-sm text-slate-500 dark:text-slate-400">
+              Source:{' '}
+              <a href={article.source.url} target="_blank" rel="noreferrer" className="text-[#1a4f6d] dark:text-[#dab26a] underline">
+                {article.source.label}
+              </a>
+            </p>
+          )}
         </article>
       </div>
     </div>

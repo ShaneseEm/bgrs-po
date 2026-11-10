@@ -208,6 +208,82 @@ export const contentData = {
       "viewAll": "View Media Archive",
       "articles": [
         {
+          "id": 101,
+          "title": "PM Abiy Praises 'Sharp Contrast' in Assosa a Year After His Last Visit",
+          "category": "Development",
+          "date": "23 August 2025 · ENA",
+          "readTime": "3 min read",
+          "summary": "Prime Minister Abiy Ahmed reviewed corridor and industrial development projects in Assosa, noting a clear corridor impact already visible and a promising future for the Kurmuk gold factory.",
+          "content": "Prime Minister Abiy Ahmed reviewed key development projects in Assosa, the capital of Benishangul-Gumuz Regional State. He said what he saw in the city stood in sharp contrast to his visit a year earlier, calling the progress a good start with a clear corridor impact already visible.\n\nHe highlighted the Kurmuk gold factory, a modern, automated facility about a hundred kilometres from Assosa. He said half of its capacity will be in production next year, proving the region's wide gold potential, and that once fully completed its impact will extend across the entire region.\n\nHe described mining projects like this as a solid building block for national prosperity, adding that mining is one of the country's key sectors within a multidimensional development approach, with Benishangul-Gumuz a vital contributor. He shared the remarks on his social media pages.",
+          "image": "/images/news/assosa-museum-courtyard.jpg",
+          "gallery": [
+            {
+              "src": "/images/news/assosa-museum-courtyard.jpg",
+              "caption": "Courtyard of the Assosa Renaissance Museum"
+            },
+            {
+              "src": "/images/news/assosa-museum-front.jpg",
+              "caption": "Assosa Renaissance Museum"
+            },
+            {
+              "src": "/images/news/assosa-museum-visit.jpg",
+              "caption": "Touring the museum exhibits"
+            },
+            {
+              "src": "/images/news/assosa-tree-planting.jpg",
+              "caption": "Tree planting at the museum grounds"
+            },
+            {
+              "src": "/images/news/assosa-ribbon-cutting.jpg",
+              "caption": "Ribbon-cutting ceremony"
+            },
+            {
+              "src": "/images/news/assosa-press-briefing.jpg",
+              "caption": "Press briefing"
+            },
+            {
+              "src": "/images/news/assosa-press-conference.jpg",
+              "caption": "Press conference"
+            }
+          ],
+          "videos": [
+            {
+              "type": "youtube",
+              "id": "2XT2mIKW-JA",
+              "title": "The Benishangul Gumuz Region and the City of Assosa Are Undergoing Visible Change"
+            },
+            {
+              "type": "youtube",
+              "id": "fDL2uVO55h8",
+              "title": "Visit to Assosa, Benishangul Gumuz"
+            },
+            {
+              "type": "link",
+              "url": "https://www.facebook.com/poaenglish/videos/prime-minister-abiy-ahmeds-visit-to-assosa-benishangul-gumuz-region-of-ethiopia/4397806703779955/",
+              "label": "Watch on Facebook: Prime Minister Abiy Ahmed's visit to Assosa"
+            }
+          ],
+          "source": {
+            "label": "ENA: PM Abiy Reviews Key Development Projects in Assosa",
+            "url": "https://www.ena.et/web/eng/w/eng_7187674"
+          }
+        },
+        {
+          "id": 102,
+          "title": "Kurmuk Gold Mine Notifies Ministry of Mines Ahead of Historic First Gold Pour",
+          "category": "Development",
+          "date": "17 September 2026 · Capital Ethiopia",
+          "readTime": "3 min read",
+          "summary": "The Kurmuk Gold Mine in Benishangul-Gumuz has moved into commissioning, connected to the national grid and fed its first ore through the crushing circuit.",
+          "content": "The Kurmuk Gold Mine, operated for Canada-based Allied Gold Corporation through its local subsidiary Kurmuk Gold Mine Plc, has moved into commissioning. It has connected to the national electricity grid and fed its first ore through the crushing circuit, and the subsidiary has told the Ministry of Mines it expects its first gold pour during hot commissioning and production testing. Company executives stress that the pour is part of testing and does not formally launch commercial operations.\n\nAllied Gold projects 240,000 to 270,000 ounces of gold in the first full year, about 300,000 ounces the following year, and an average of roughly 290,000 ounces a year over the first four years. The initial mine-life target is 15 years, backed by 2.7 million ounces of Proven and Probable Mineral Reserves from the Dish Mountain and Ashashire deposits.\n\nKurmuk management will coordinate with the Ministry of Mines and regulators on gold verification, security, transportation and export.",
+          "image": "/images/mining-gold.jpg",
+          "source": {
+            "label": "Capital Ethiopia: Kurmuk Gold Mine Notifies Ministry of Mines",
+            "url": "https://capitalethiopia.com/2026/09/17/kurmuk-gold-mine-notifies-ministry-of-mines-ahead-of-historic-first-gold-pour/"
+          }
+        }
+      ,
+        {
           "id": 1,
           "title": "President Ashadli Hassan Addresses 'GERD for Ethiopia's Renewal' Forum: Hails Dam as Triumph of Unity",
           "category": "Speeches",
@@ -562,6 +638,82 @@ export const contentData = {
       "viewAll": "የሚዲያ ማህደርን ይመልከቱ",
       "articles": [
         {
+          "id": 101,
+          "title": "ጠቅላይ ሚኒስትር ዐቢይ ከአንድ ዓመት በኋላ በአሶሳ ላይ የታየውን ከፍተኛ ለውጥ አደነቁ",
+          "category": "ልማት",
+          "date": "23 Aug 2025 · ENA",
+          "readTime": "3 ደቂቃ ንባብ",
+          "summary": "ጠቅላይ ሚኒስትር ዐቢይ አሕመድ በአሶሳ የኮሪደር እና የኢንዱስትሪ ልማት ፕሮጀክቶችን ጎብኝተዋል፤ የኩርሙክ ወርቅ ፋብሪካ ተስፋ ሰጪ መሆኑንም ገልጸዋል።",
+          "content": "ጠቅላይ ሚኒስትር ዐቢይ አሕመድ በቤኒሻንጉል ጉሙዝ ክልል ዋና ከተማ አሶሳ ቁልፍ የልማት ፕሮጀክቶችን ጎብኝተዋል። ከአንድ ዓመት በፊት ከነበራቸው ጉብኝት ጋር ሲነጻጸር በከተማዋ የታየው ለውጥ ከፍተኛ መሆኑን ጠቅሰው፣ የኮሪደር ልማት ተጽዕኖ አስቀድሞ በግልጽ እንደሚታይ ተናግረዋል።\n\nከአሶሳ ወደ መቶ ኪሎ ሜትር ርቀት ላይ የሚገኘውን ዘመናዊና አውቶሜትድ የኩርሙክ ወርቅ ፋብሪካ አንስተዋል። በሚቀጥለው ዓመት ግማሽ አቅሙ ወደ ምርት እንደሚገባ ገልጸው፣ ይህም የክልሉን ሰፊ የወርቅ ሀብት እንደሚያሳይ ተናግረዋል።\n\nእንዲህ ያሉ የማዕድን ፕሮጀክቶች ለሀገራዊ ብልጽግና ጠንካራ መሠረት መሆናቸውን አስረድተዋል።",
+          "image": "/images/news/assosa-museum-courtyard.jpg",
+          "gallery": [
+            {
+              "src": "/images/news/assosa-museum-courtyard.jpg",
+              "caption": "የአሶሳ ህዳሴ ሙዚየም አደባባይ"
+            },
+            {
+              "src": "/images/news/assosa-museum-front.jpg",
+              "caption": "የአሶሳ ህዳሴ ሙዚየም"
+            },
+            {
+              "src": "/images/news/assosa-museum-visit.jpg",
+              "caption": "በሙዚየሙ ጉብኝት"
+            },
+            {
+              "src": "/images/news/assosa-tree-planting.jpg",
+              "caption": "የችግኝ ተከላ"
+            },
+            {
+              "src": "/images/news/assosa-ribbon-cutting.jpg",
+              "caption": "የምርቃት ሥነ ሥርዓት"
+            },
+            {
+              "src": "/images/news/assosa-press-briefing.jpg",
+              "caption": "ጋዜጣዊ መግለጫ"
+            },
+            {
+              "src": "/images/news/assosa-press-conference.jpg",
+              "caption": "ጋዜጣዊ መግለጫ"
+            }
+          ],
+          "videos": [
+            {
+              "type": "youtube",
+              "id": "2XT2mIKW-JA",
+              "title": "The Benishangul Gumuz Region and the City of Assosa Are Undergoing Visible Change"
+            },
+            {
+              "type": "youtube",
+              "id": "fDL2uVO55h8",
+              "title": "Visit to Assosa, Benishangul Gumuz"
+            },
+            {
+              "type": "link",
+              "url": "https://www.facebook.com/poaenglish/videos/prime-minister-abiy-ahmeds-visit-to-assosa-benishangul-gumuz-region-of-ethiopia/4397806703779955/",
+              "label": "Watch on Facebook: Prime Minister Abiy Ahmed's visit to Assosa"
+            }
+          ],
+          "source": {
+            "label": "ENA: PM Abiy Reviews Key Development Projects in Assosa",
+            "url": "https://www.ena.et/web/eng/w/eng_7187674"
+          }
+        },
+        {
+          "id": 102,
+          "title": "የኩርሙክ ወርቅ ማዕድን የመጀመሪያውን ወርቅ ከማውጣቱ በፊት ለማዕድን ሚኒስቴር አሳወቀ",
+          "category": "ልማት",
+          "date": "17 Sep 2026 · Capital Ethiopia",
+          "readTime": "3 ደቂቃ ንባብ",
+          "summary": "በቤኒሻንጉል ጉሙዝ የሚገኘው የኩርሙክ ወርቅ ማዕድን ወደ ሙከራ ምርት ገብቷል፤ ከብሔራዊ ኤሌክትሪክ መስመር ጋር ተገናኝቷል።",
+          "content": "The Kurmuk Gold Mine, operated for Canada-based Allied Gold Corporation through its local subsidiary Kurmuk Gold Mine Plc, has moved into commissioning. It has connected to the national electricity grid and fed its first ore through the crushing circuit, and the subsidiary has told the Ministry of Mines it expects its first gold pour during hot commissioning and production testing. Company executives stress that the pour is part of testing and does not formally launch commercial operations.\n\nAllied Gold projects 240,000 to 270,000 ounces of gold in the first full year, about 300,000 ounces the following year, and an average of roughly 290,000 ounces a year over the first four years. The initial mine-life target is 15 years, backed by 2.7 million ounces of Proven and Probable Mineral Reserves from the Dish Mountain and Ashashire deposits.\n\nKurmuk management will coordinate with the Ministry of Mines and regulators on gold verification, security, transportation and export.",
+          "image": "/images/mining-gold.jpg",
+          "source": {
+            "label": "Capital Ethiopia: Kurmuk Gold Mine Notifies Ministry of Mines",
+            "url": "https://capitalethiopia.com/2026/09/17/kurmuk-gold-mine-notifies-ministry-of-mines-ahead-of-historic-first-gold-pour/"
+          }
+        }
+      ,
+        {
           "id": 1,
           "title": "ክቡር ርዕሰ መስተዳድር አሻድሊ ሀሰን 'ህዳሴው ለኢትዮጵያ ታዳሽነት' መድረክ ላይ ንግግር አደረጉ",
           "category": "ንግግሮች",
@@ -915,6 +1067,82 @@ export const contentData = {
       "readArticle": "Read Full Statement",
       "viewAll": "View Media Archive",
       "articles": [
+        {
+          "id": 101,
+          "title": "PM Abiy Praises 'Sharp Contrast' in Assosa a Year After His Last Visit",
+          "category": "Development",
+          "date": "23 August 2025 · ENA",
+          "readTime": "3 min read",
+          "summary": "Prime Minister Abiy Ahmed reviewed corridor and industrial development projects in Assosa, noting a clear corridor impact already visible and a promising future for the Kurmuk gold factory.",
+          "content": "Prime Minister Abiy Ahmed reviewed key development projects in Assosa, the capital of Benishangul-Gumuz Regional State. He said what he saw in the city stood in sharp contrast to his visit a year earlier, calling the progress a good start with a clear corridor impact already visible.\n\nHe highlighted the Kurmuk gold factory, a modern, automated facility about a hundred kilometres from Assosa. He said half of its capacity will be in production next year, proving the region's wide gold potential, and that once fully completed its impact will extend across the entire region.\n\nHe described mining projects like this as a solid building block for national prosperity, adding that mining is one of the country's key sectors within a multidimensional development approach, with Benishangul-Gumuz a vital contributor. He shared the remarks on his social media pages.",
+          "image": "/images/news/assosa-museum-courtyard.jpg",
+          "gallery": [
+            {
+              "src": "/images/news/assosa-museum-courtyard.jpg",
+              "caption": "Courtyard of the Assosa Renaissance Museum"
+            },
+            {
+              "src": "/images/news/assosa-museum-front.jpg",
+              "caption": "Assosa Renaissance Museum"
+            },
+            {
+              "src": "/images/news/assosa-museum-visit.jpg",
+              "caption": "Touring the museum exhibits"
+            },
+            {
+              "src": "/images/news/assosa-tree-planting.jpg",
+              "caption": "Tree planting at the museum grounds"
+            },
+            {
+              "src": "/images/news/assosa-ribbon-cutting.jpg",
+              "caption": "Ribbon-cutting ceremony"
+            },
+            {
+              "src": "/images/news/assosa-press-briefing.jpg",
+              "caption": "Press briefing"
+            },
+            {
+              "src": "/images/news/assosa-press-conference.jpg",
+              "caption": "Press conference"
+            }
+          ],
+          "videos": [
+            {
+              "type": "youtube",
+              "id": "2XT2mIKW-JA",
+              "title": "The Benishangul Gumuz Region and the City of Assosa Are Undergoing Visible Change"
+            },
+            {
+              "type": "youtube",
+              "id": "fDL2uVO55h8",
+              "title": "Visit to Assosa, Benishangul Gumuz"
+            },
+            {
+              "type": "link",
+              "url": "https://www.facebook.com/poaenglish/videos/prime-minister-abiy-ahmeds-visit-to-assosa-benishangul-gumuz-region-of-ethiopia/4397806703779955/",
+              "label": "Watch on Facebook: Prime Minister Abiy Ahmed's visit to Assosa"
+            }
+          ],
+          "source": {
+            "label": "ENA: PM Abiy Reviews Key Development Projects in Assosa",
+            "url": "https://www.ena.et/web/eng/w/eng_7187674"
+          }
+        },
+        {
+          "id": 102,
+          "title": "Kurmuk Gold Mine Notifies Ministry of Mines Ahead of Historic First Gold Pour",
+          "category": "Development",
+          "date": "17 September 2026 · Capital Ethiopia",
+          "readTime": "3 min read",
+          "summary": "The Kurmuk Gold Mine in Benishangul-Gumuz has moved into commissioning, connected to the national grid and fed its first ore through the crushing circuit.",
+          "content": "The Kurmuk Gold Mine, operated for Canada-based Allied Gold Corporation through its local subsidiary Kurmuk Gold Mine Plc, has moved into commissioning. It has connected to the national electricity grid and fed its first ore through the crushing circuit, and the subsidiary has told the Ministry of Mines it expects its first gold pour during hot commissioning and production testing. Company executives stress that the pour is part of testing and does not formally launch commercial operations.\n\nAllied Gold projects 240,000 to 270,000 ounces of gold in the first full year, about 300,000 ounces the following year, and an average of roughly 290,000 ounces a year over the first four years. The initial mine-life target is 15 years, backed by 2.7 million ounces of Proven and Probable Mineral Reserves from the Dish Mountain and Ashashire deposits.\n\nKurmuk management will coordinate with the Ministry of Mines and regulators on gold verification, security, transportation and export.",
+          "image": "/images/mining-gold.jpg",
+          "source": {
+            "label": "Capital Ethiopia: Kurmuk Gold Mine Notifies Ministry of Mines",
+            "url": "https://capitalethiopia.com/2026/09/17/kurmuk-gold-mine-notifies-ministry-of-mines-ahead-of-historic-first-gold-pour/"
+          }
+        }
+      ,
         {
           "id": 1,
           "title": "President Ashadli Hassan Addresses 'GERD for Ethiopia's Renewal' Forum: Hails Dam as Triumph of Unity",
